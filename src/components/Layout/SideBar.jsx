@@ -18,7 +18,7 @@ const SideBar = () => {
   const handleOpen = () => setOpen1(true);
   const handleClose = () => setOpen1(false);
   return (
-   <div className=' fixed bg-[#161C27] h-[100vh] pt-6 w-[17%] '>
+   <div className=' bg-[#262f40] px-3 fixed h-[100%]'>
      <div className=''>
       <div className=' flex-col flex items-center'>
       <img src={logo} alt="" />
@@ -26,7 +26,7 @@ const SideBar = () => {
             <Link to='/admin/request' onClick={handleClick(1)} className={` flex items-center justify-center gap-2 ${open === 1 ? "bg-[#ffeda42d] py-3 px-16 rounded-md text-[#FFEDA4]" : " text-center"}`}> {open === 1 ? <><img src={icon1} alt="" /></> : <><img src={icon} alt="" /></>} Request </Link>
             <Link to="/admin/packages" onClick={handleClick(2)} className={` flex items-center justify-center gap-2 ${open === 2 ? "bg-[#ffeda42d] py-3 px-16 rounded-md text-[#FFEDA4]" : " text-center"}`}> {open === 1 ? <><img src={icon2} alt="" /></> : <><img src={icon3} alt="" /></>} Packages</Link>
         </div>
-        <button  onClick={handleOpen} className=' bg-[#3745571A] py-3 px-16 rounded-md absolute bottom-8 flex items-center justify-center gap-2 '> <img src={log} alt="" /> Log Out</button>
+        <button  onClick={handleOpen} className=' bg-[#3745571A] py-3 px-6 rounded-md mt-[26rem] flex items-center justify-center gap-2 '> <img src={log} alt="" /> Log Out</button>
       </div>
         
     </div>

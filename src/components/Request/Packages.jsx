@@ -43,7 +43,7 @@ const Packages = () => {
 
 
   return (
-    <div className="md:w-[80%] w-[90%] mx-auto mt-12 ml-[258px] mb-12">
+    <div className="md:w-[80%] w-[90%] mx-auto mt-12 ml-[258px] h-screen">
       <h1 className=" text-[33px] font-bold ml-12">Packages</h1>
       <div className="grid md:grid-cols-2 grid-cols-1 gap-12 mt-5 mx-12">
         {packages.map((pkg, index) => (

@@ -111,7 +111,7 @@ const Requests = () => {
   ];
 
   return (
-    <div className='w-[80%] pr-8 ml-[288px] mb-12'>
+    <div className=' w-[80%] ml-[288px] h-screen'>
       <h1 className='text-[33px] font-bold text-white mt-4'>Requests</h1>
       <div className='flex items-center justify-between'>
         <div className='flex items-center gap-4 mt-6'>
