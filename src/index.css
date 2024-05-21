@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  background: #161C27;
+  color: white;
+}
+
+/* .back{
+  background: linear-gradient(180deg, rgba(12, 15, 22, 0.00) 18.51%, #161C27 100%);
+  background-color: rgb(21, 20, 20);
+  z-index: 50;
+}  */
+
+/* .img{
+  transform: translate(-50%,-50%);
+  animation: animate 10s infinite linear;
+}
+
+@keyframes animate {
+  0%{
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100%{
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+} */
+
+body{
+
+      max-width: 1600px;
+      margin: 0px auto;
+}
+.back{
+  background-image: url(../src/assets/landing\ page.png);
+  background-position: center; 
+  background-size: cover; 
+  width: 100%;
+ 
+}
+
+
+input{
+  background: #1b222e;
+  border-radius: 8px;
+  padding: 14px 12px;
+}
+
+
+
+.glow-on-hover {
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+}
+
+.glow-on-hover:before {
+  content: '';
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left:-2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+}
+
+.glow-on-hover:active {
+  color: #000
+}
+
+.glow-on-hover:active:after {
+  background: transparent;
+}
+
+.glow-on-hover:before {
+  opacity: 1;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+
+
+.button {
+
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: #313133;
+  background: #FFEDA4;
+background: #FFEDA4;
+  border: none;
+  box-shadow: 12px 12px 24px rgba(200, 209, 79, 0.64);
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  position: relative;
+
+  }
+
+
+
+.button:hover, .button:focus {
+  color: #313133;
+  transform: translateY(-6px);
+}
+
+.button:hover::before, button:focus::before {
+  opacity: 1;
+}
+
+.button::after {
+  content: '';
+  width: 30px; height: 30px;
+  border-radius: 100%;
+  border: 6px solid #ddff00;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
+
+
+
+
+
+.checkbox-round {
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+}
+
+/* .checkbox-round:checked {
+  background-color: ;
+} */
+
+#specifyColor {
+  accent-color: #FFEDA4;
+}
+.css-1u9des2-indicatorSeparator{
+ background-color: transparent !important;
+}
+
+
+
+
+
+body{
+
+  max-width: 1500px;
+  margin: 0px auto;
+}
