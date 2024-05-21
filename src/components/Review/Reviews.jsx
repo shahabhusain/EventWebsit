@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import arr from "../../assets/Right.png";
 import main from '../../assets/Check.png'
 import { Modal } from "@mui/material";
+import { Link } from "react-router-dom";
 const Reviews = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -104,12 +105,12 @@ const Reviews = () => {
               total<span className=" text-white">2500AED</span>
             </h1>
           </div>
-          <button
+          <Link to="/login"
             onClick={handleOpen}
             className=" bg-[#FFEDA4] text-black py-3 px-6 rounded-xl w-full"
           >
             Confirm
-          </button>
+          </Link>
         </div>
       </div>
 
