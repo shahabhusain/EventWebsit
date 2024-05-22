@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 
 const Layout1 = () => {
   return (
-    <div className=' flex justify-between w-full  bg-black'>
+    <div className=' flex justify-between w-full  bg-black h-screen'>
         <SideBar />
         <Outlet />
     </div>

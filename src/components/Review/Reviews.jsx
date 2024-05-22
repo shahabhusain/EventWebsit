@@ -105,12 +105,12 @@ const Reviews = () => {
               total<span className=" text-white">2500AED</span>
             </h1>
           </div>
-          <Link to="/login"
+          <button
             onClick={handleOpen}
             className=" bg-[#FFEDA4] text-black py-3 px-6 rounded-xl w-full"
           >
             Confirm
-          </Link>
+          </button>
         </div>
       </div>
 
@@ -126,12 +126,12 @@ const Reviews = () => {
             Registration Successful!
           </h2>
           <p>Your Event Registration is Successfully Completed!</p>
-          <button
-            onClick={handleClose}
-            className="py-3 px-6 mt-4 rounded-md bg-[#FFEDA4] text-black w-full"
+          <Link to="/login"
+            
+            className="py-3 px-6 mt-4 rounded-md bg-[#FFEDA4] text-black w-full text-center"
           >
             Done
-          </button>
+          </Link>
         </div>
       </Modal>
     </div>

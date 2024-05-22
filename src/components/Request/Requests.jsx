@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Requests = () => {
   const [open, setOpen] = useState(1);
@@ -78,83 +78,70 @@ const Requests = () => {
       price: "AED 60,000",
     },
 
-    {
-      name: "Cooper, Kristin",
-      email: "quasiah@gmail.com",
-      phone: "(229) 555-0109",
-      requestDate: "8 Sep, 2020",
-      eventDate: "Jul 19, 2024",
-      package: "Signature",
-      price: "AED 60,000",
-    },
-
-    {
-      name: "Cooper, Kristin",
-      email: "quasiah@gmail.com",
-      phone: "(229) 555-0109",
-      requestDate: "8 Sep, 2020",
-      eventDate: "Jul 19, 2024",
-      package: "Signature",
-      price: "AED 60,000",
-    },
-
-    {
-      name: "Cooper, Kristin",
-      email: "quasiah@gmail.com",
-      phone: "(229) 555-0109",
-      requestDate: "8 Sep, 2020",
-      eventDate: "Jul 19, 2024",
-      package: "Signature",
-      price: "AED 60,000",
-    },
+    
     // Add more request objects as needed
   ];
 
   return (
-    <div className=' w-[77%] ml-[288px] h-screen'>
-      <h1 className='text-[33px] font-bold text-white mt-4'>Requests</h1>
-      <div className='flex items-center justify-between'>
-        <div className='flex items-center gap-4 mt-6'>
-          {buttons.map(button => (
+    <div className=" w-[77%] ml-[288px]">
+      <h1 className="text-[33px] font-bold text-white mt-4">Requests</h1>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-4 mt-6">
+          {buttons.map((button) => (
             <button
               key={button.id}
               onClick={handleClick(button.id)}
               className={`${
-                open === button.id ? "bg-[#161C27] rounded-md py-2 px-6 text-[12px]" : "  text-[12px] border-[1px] border-[#1e2635] py-2 px-6 rounded-md"
+                open === button.id
+                  ? "bg-[#161C27] rounded-md py-2 px-6 text-[12px]"
+                  : "  text-[12px] border-[1px] border-[#1e2635] py-2 px-6 rounded-md"
               } text-[#dddddd]`}
             >
               {button.label}
             </button>
           ))}
         </div>
-        <input className='bg-[#161C27] py-2 px-6 mt-6' type="search" placeholder='search' />
+        <input
+          className="bg-[#161C27] py-2 px-6 mt-6"
+          type="search"
+          placeholder="search"
+        />
       </div>
-      <div className='flex items-center gap-16 mt-6'>
-        <h1 className='text-white font-medium text-[14px] ml-[1rem]'>Name</h1>
-        <h1 className='text-white font-medium text-[14px] ml-[2.5rem]'>Email Address</h1>
-        <h1 className='text-white font-medium text-[14px]'>Phone Number</h1>
-        <h1 className='text-white font-medium text-[14px]'>Request Date</h1>
-        <h1 className='text-white font-medium text-[14px]'>Event Date</h1>
-        <h1 className='text-white font-medium text-[14px]'>Packages</h1>
-        <h1 className='text-white font-medium text-[14px]'>Price</h1>
-      </div>
-      <div className='flex flex-col gap-3 mt-6'>
-        {requests.map((request, index) => (
-          <div
-            key={index}
-            className='flex items-center justify-between bg-[#161C27] rounded-md py-4 px-6'
-          >
-            <h1 className=' text-[12px] text-[#dddddd]'>{request.name}</h1>
-            <h1 className=' text-[12px] text-[#dddddd]'>{request.email}</h1>
-            <h1 className=' text-[12px] text-[#dddddd]'>{request.phone}</h1>
-            <h1 className=' text-[12px] text-[#dddddd]'>{request.requestDate}</h1>
-            <h1 className=' text-[12px] text-[#dddddd]'>{request.eventDate}</h1>
-            <button className='bg-[#EDBD571A] text-[#EDBD57] text-[12px]'>{request.package}</button>
-            <h1 className=' text-[12px] text-[#dddddd]'>{request.price}</h1>
-            <Link to="/admin/request/review12" className='text-[#FFEDA4] text-[12px]'>View Detail</Link>
-          </div>
-        ))}
-      </div>
+      <table className="w-full">
+  <thead>
+    <tr className="grid grid-cols-8 items-center gap-x-5 mt-6">
+      <th className="text-white font-medium text-[14px]">Name</th>
+      <th className="text-white font-medium text-[14px]">Email Address</th>
+      <th className="text-white font-medium text-[14px]">Phone Number</th>
+      <th className="text-white font-medium text-[14px]">Request Date</th>
+      <th className="text-white font-medium text-[14px]">Event Date</th>
+      <th className="text-white font-medium text-[14px]">Packages</th>
+      <th className="text-white font-medium text-[14px]">Price</th>
+      <th className="text-white font-medium text-[14px]">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {requests.map((request, index) => (
+      <tr key={index} className="grid grid-cols-8 gap-x-[4rem] bg-[#161C27] rounded-md py-4 px-6 mt-6">
+        <td className="text-[12px] text-[#dddddd]">{request.name}</td>
+        <td className="text-[12px] text-[#dddddd]">{request.email}</td>
+        <td className="text-[12px] text-[#dddddd]">{request.phone}</td>
+        <td className="text-[12px] text-[#dddddd]">{request.requestDate}</td>
+        <td className="text-[12px] text-[#dddddd]">{request.eventDate}</td>
+        <td className="bg-[#EDBD571A] text-[#EDBD57] text-[12px] w-fit">{request.package}</td>
+        <td className="text-[12px] text-[#dddddd]">{request.price}</td>
+        <td>
+          <Link to="/admin/request/review12" className="text-[#FFEDA4] text-[12px]">
+            View Detail
+          </Link>
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+
+
     </div>
   );
 };
