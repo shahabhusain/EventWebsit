@@ -20,7 +20,7 @@ const Header = () => {
       },
     },
   };
-  const [openDesktop, setOpenDesktop] = useState(null); // Initialize as null for desktop version
+  const [openDesktop, setOpenDesktop] = useState(0); // Initialize as null for desktop version
   const [openMobile, setOpenMobile] = useState(false); // Initialize as false for mobile version
 
   const handleMenuItemClick = (index) => {

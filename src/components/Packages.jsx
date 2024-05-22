@@ -38,7 +38,7 @@ const Packages = () => {
         <h1 className=" text-[32px] font-[700] text-center">
           <span className=" text-[#FFEDA4]">Our</span>Packages
         </h1>
-        <div className=" bg-[#FFEDA4] h-[2px] md:mx-[544px] mx-[155px]"></div>
+        <div className=" bg-[#FFEDA4] h-[2px] md:mx-[544px] mx-[155px] mt-3"></div>
       </motion.div>
       <motion.p variants={FadeInUpAnimation} className=" text-center text-[16px] font-[400] text-[#C5C5C5] md:mx-[172px] mt-3">
         Discover tailored packages for all your needs. From weddings to

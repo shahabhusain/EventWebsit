@@ -58,13 +58,13 @@ const Services = () => {
         initial="hidden"
         whileInView="show"
         variants={FadeInUpAnimation}
-        className=" md:w-[80%] w-[95%] mx-auto pt-12"
+        className=" md:w-[80%] w-[95%] mx-auto pt-12 flex flex-col gap-2"
       >
         <motion.div variants={FadeInUpAnimation}>
           <h1 className=" text-[32px] font-[700] text-center">
             <span className=" text-[#FFEDA4]">Our</span>Services
           </h1>
-          <div className=" bg-[#FFEDA4] h-[2px] md:mx-[544px] mx-[122px]"></div>
+          <div className=" bg-[#FFEDA4] h-[2px] md:mx-[544px] mx-[122px] mt-3"></div>
         </motion.div>
         <motion.p
           variants={FadeInUpAnimation}

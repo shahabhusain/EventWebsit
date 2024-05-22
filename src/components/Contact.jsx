@@ -27,7 +27,7 @@ const Contact = () => {
           </div>
           <input type="email" placeholder="Email" />
           <input type="message" placeholder="Message" />
-          <button className=" button bg-[#FFEDA4] text-black py-3 px-6 rounded-md">
+          <button className=" font-medium bg-[#FFEDA4] text-black py-3 px-6 rounded-md">
             send
           </button>
         </form>

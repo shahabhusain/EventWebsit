@@ -18,22 +18,21 @@ const SideBar = () => {
   const handleOpen = () => setOpen1(true);
   const handleClose = () => setOpen1(false);
   return (
-   <div className=' bg-[#262f40] px-3 fixed h-[100%]'>
+   <div className=' bg-[#161C27] px-3 fixed h-[100%]'>
      <div className=''>
       <div className=' flex-col flex items-center'>
-      <img src={logo} alt="" />
+      <img className=' mt-12' src={logo} alt="" />
         <div className=' flex flex-col gap-4 mt-24'>
             <Link to='/admin/request' onClick={handleClick(1)} className={` flex items-center justify-center gap-2 ${open === 1 ? "bg-[#ffeda42d] py-3 px-16 rounded-md text-[#FFEDA4]" : " text-center"}`}> {open === 1 ? <><img src={icon1} alt="" /></> : <><img src={icon} alt="" /></>} Request </Link>
             <Link to="/admin/packages" onClick={handleClick(2)} className={` flex items-center justify-center gap-2 ${open === 2 ? "bg-[#ffeda42d] py-3 px-16 rounded-md text-[#FFEDA4]" : " text-center"}`}> {open === 1 ? <><img src={icon2} alt="" /></> : <><img src={icon3} alt="" /></>} Packages</Link>
         </div>
-        <button  onClick={handleOpen} className=' bg-[#3745571A] py-3 px-6 rounded-md mt-[26rem] flex items-center justify-center gap-2 '> <img src={log} alt="" /> Log Out</button>
+        <button  onClick={handleOpen} className=' bg-[#3745571A] py-3 px-6 rounded-md mt-[24rem] flex items-center justify-center gap-2 '> <img src={log} alt="" /> Log Out</button>
       </div>
         
     </div>
      <div>
      <Modal
         open={open1}
-        onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -41,7 +40,7 @@ const SideBar = () => {
         <h1 className='text-[22px] font-medium'>Are You Sure</h1>
         <p>you are attempting to log out</p>
         <div className=' flex items-center gap-3'>
-          <button className=' py-3 px-6 rounded-md bg-[#161C27]'>Cancel</button>
+          <button onClick={handleClose} onClose={handleClose} className=' py-3 px-6 rounded-md bg-[#161C27]'>Cancel</button>
           <button className=' py-3 px-6 rounded-md bg-[#FFEDA4] text-black'>Log Out</button>
         </div>
         </div>

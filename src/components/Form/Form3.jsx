@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Form3 = () => {
   return (
     <div className="w-[60%] mx-auto bg-[#1b222e] h-screen px-24 rounded-md">
-      <h1 className=" text-[32px] font-bold text-center pt-6">
+      <h1 className=" text-[32px] font-bold text-center pt-12">
         Event Planning Registration
       </h1>
       <p className=" text-[16px] text-[#C5C5C5] font-normal text-center">

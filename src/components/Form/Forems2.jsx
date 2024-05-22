@@ -155,7 +155,7 @@ const Forems2 = () => {
       color: "white",
     }),
   };
-  
+
   function storeInpts(title) {
     const updatedData = titleArray.includes(title)
       ? titleArray.filter((item) => item !== title)
@@ -232,30 +232,32 @@ const Forems2 = () => {
               <div className="w-[666px] grid grid-cols-2 gap-4">
                 {ModalItem.map((item, index) => (
                   <div
-                    onClick={() => storeInpts(item.title)}
+                    onClick={() => {
+                      const newOpenItems = [...openItems];
+                      newOpenItems[index] = !newOpenItems[index];
+                      setOpenItems(newOpenItems);
+                      storeInpts(item.title);
+                    }}
                     key={index}
                     className={`${
                       openItems[index]
                         ? "border-[#ffeda43d] bg-[#ffeda418] text-[#FFEDA4]"
                         : "border-[#5954544e]"
-                    } border-[2px] py-3 px-6 rounded-md w-full`}
+                    } border-[2px] py-3 px-6 rounded-md w-full cursor-pointer`} // Added cursor-pointer for better UX
                   >
-                    <div className=" flex items-center gap-2">
+                    <div className="flex items-center gap-2">
                       <input
-                        onClick={() => {
-                          const newOpenItems = [...openItems];
-                          newOpenItems[index] = !newOpenItems[index];
-                          setOpenItems(newOpenItems);
-                        }}
+                        onClick={(e) => e.stopPropagation()} // Stop the click event from propagating to the parent div
                         id="specifyColor"
                         type="radio"
-                        className=" w-[1rem] h-[1rem]"
+                        className="w-[1rem] h-[1rem]"
                         checked={titleArray.includes(item.title)}
                       />
-                      <label> {item.title}</label>
+                      <label>{item.title}</label>
                     </div>
                   </div>
                 ))}
+
                 <button
                   onClick={handleClose}
                   className="py-3 px-6 rounded-md border-[#ddd] border-[2px]"

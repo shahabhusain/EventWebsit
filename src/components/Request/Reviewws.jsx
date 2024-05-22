@@ -2,7 +2,7 @@ import React from "react";
 import arr from "../../assets/Right.png";
 const Reviewws = () => {
   return (
-    <div className="ml-[273px] py-8 pb-[7rem]">
+    <div className="ml-[273px] pt-8 h-screen">
       <h1 className=" text-[33px] font-bold ml-[70px] ">Review</h1>
       <div className=" flex gap-12 w-[90%] mx-auto mt-12">
         <div className="">
