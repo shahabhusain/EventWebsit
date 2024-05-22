@@ -18,7 +18,7 @@ const SideBar = () => {
   const handleOpen = () => setOpen1(true);
   const handleClose = () => setOpen1(false);
   return (
-   <div className=' bg-[#161C27] px-3 fixed h-[100%]'>
+   <div className=' bg-[#161C27] px-3 w-[270px] fixed left-0 h-[100%]'>
      <div className=''>
       <div className=' flex-col flex items-center'>
       <img className=' mt-12' src={logo} alt="" />

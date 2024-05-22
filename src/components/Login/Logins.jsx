@@ -3,7 +3,7 @@ import logo from '../../assets/logo.png'
 import { Link } from 'react-router-dom'
 const Logins = () => {
   return (
-    <div className=' mx-auto bg-[#000] w-[40%] mt-24 rounded-xl'>
+    <div className=' mx-auto bg-[#161C27] w-[40%] mt-24 rounded-xl'>
         <div className=' px-12 py-12 flex flex-col gap-1 items-center  '>
         <img src={logo} alt="" />
         <h1 className=' text-[33px] font-bold text-[#FFEDA4]'>Welcome Back</h1>

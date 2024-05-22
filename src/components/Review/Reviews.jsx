@@ -12,7 +12,7 @@ const Reviews = () => {
       <h1 className=" text-[33px] font-bold text-center mt-12">Review</h1>
       <div className=" flex gap-12 w-[80%] mx-auto mt-12">
         <div className="">
-          <div className="bg-[#262f4068] flex  gap-24 justify-center py-5 px-12 rounded-2xl ">
+          <div className="bg-[#161C27] flex  gap-24 justify-center py-5 px-12 rounded-2xl ">
             <div className=" flex flex-col gap-4">
               <h1 className=" flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
                 Full Name{" "}
@@ -41,7 +41,7 @@ const Reviews = () => {
                 </span>{" "}
               </h1>
             </div>
-            <div className=" h-[400px] w-[2px] bg-[#3f3f3f99]"></div>
+            <div className=" h-[400px] w-[2px] bg-[#161C27]"></div>
             <div className=" flex flex-col gap-4">
               <h1 className=" flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
                 Event Type{" "}
@@ -76,7 +76,7 @@ const Reviews = () => {
             </div>
           </div>
         </div>
-        <div className="bg-[#262f4068] py-12 rounded-2xl w-[fit] px-6 flex flex-col gap-3 ">
+        <div className="bg-[#161C27] py-12 rounded-2xl w-[fit] px-6 flex flex-col gap-3 ">
           <div className=" border-[1px] border-[#616161] py-3 px-4 rounded-xl flex flex-col gap-4 ">
             <h1 className="text-[#C5C5C5] flex items-center justify-between">
               Item <img src={arr} alt="" />

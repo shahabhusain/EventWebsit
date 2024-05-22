@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body{
-  background: #161C27;
+  background: #000;
   color: white;
 }
 
@@ -194,4 +194,11 @@ body{
 
   max-width: 1600px;
   margin: 0px auto;
+}
+
+th{
+  background-color: #161C27;
+}
+td{
+  background-color: #161C27;
 }
