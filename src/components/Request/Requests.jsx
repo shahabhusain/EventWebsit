@@ -1,36 +1,31 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-
-const createData = (name, calories, fat, carbs, protein, ss1, ss2, ss3) => {
-  return { name, calories, fat, carbs, protein, ss1, ss2, ss3 };
-};
 
 const Requests = () => {
   const rows = [
-    createData("Cooper Kriston", "quasiah@gmail.com",  "(229) 555-0109", "8 Sep, 2020", "Jul 19, 2024", "Signature", "AED 000", "View"),
-    createData("Cooper Kriston", "quasiah@gmail.com",  "(229) 555-0109", "8 Sep, 2020", "Jul 19, 2024", "Signature", "AED 000", "View"),
-    createData("Cooper Kriston", "quasiah@gmail.com",  "(229) 555-0109", "8 Sep, 2020", "Jul 19, 2024", "Signature", "AED 000", "View"),
-    createData("Cooper Kriston", "quasiah@gmail.com",  "(229) 555-0109", "8 Sep, 2020", "Jul 19, 2024", "Signature", "AED 000", "View"),
-    createData("Cooper Kriston", "quasiah@gmail.com",  "(229) 555-0109", "8 Sep, 2020", "Jul 19, 2024", "Signature", "AED 000", "View"),
-    createData("Cooper Kriston", "quasiah@gmail.com",  "(229) 555-0109", "8 Sep, 2020", "Jul 19, 2024", "Signature", "AED 000", "View"),
-    createData("Cooper Kriston", "quasiah@gmail.com",  "(229) 555-0109", "8 Sep, 2020", "Jul 19, 2024", "Signature", "AED 000", "View"),
-    createData("Cooper Kriston", "quasiah@gmail.com",  "(229) 555-0109", "8 Sep, 2020", "Jul 19, 2024", "Signature", "AED 000", "View"),
-    createData("Cooper Kriston", "quasiah@gmail.com",  "(229) 555-0109", "8 Sep, 2020", "Jul 19, 2024", "Signature", "AED 000", "View"),
-    createData("Cooper Kriston", "quasiah@gmail.com",  "(229) 555-0109", "8 Sep, 2020", "Jul 19, 2024", "Signature", "AED 000", "View"),
-    createData("Cooper Kriston", "quasiah@gmail.com",  "(229) 555-0109", "8 Sep, 2020", "Jul 19, 2024", "Signature", "AED 000", "View"),
+    { id: 1, name: "Cooper Kriston", email: "quasiah@gmail.com", phone: "(229) 555-0109", requestDate: "8 Sep, 2020", eventDate: "Jul 19, 2024", packageType: "Signature", price: "AED 60,000" },
+    { id: 2, name: "Jane Doe", email: "janedoe@example.com", phone: "(123) 456-7890", requestDate: "12 Jan, 2021", eventDate: "Sep 22, 2024", packageType: "Deluxe", price: "AED 75,000" },
+    { id: 2, name: "Jane Doe", email: "janedoe@example.com", phone: "(123) 456-7890", requestDate: "12 Jan, 2021", eventDate: "Sep 22, 2024", packageType: "Deluxe", price: "AED 75,000" },
+    { id: 2, name: "Jane Doe", email: "janedoe@example.com", phone: "(123) 456-7890", requestDate: "12 Jan, 2021", eventDate: "Sep 22, 2024", packageType: "Deluxe", price: "AED 75,000" },
+    { id: 2, name: "Jane Doe", email: "janedoe@example.com", phone: "(123) 456-7890", requestDate: "12 Jan, 2021", eventDate: "Sep 22, 2024", packageType: "Deluxe", price: "AED 75,000" },
+    { id: 2, name: "Jane Doe", email: "janedoe@example.com", phone: "(123) 456-7890", requestDate: "12 Jan, 2021", eventDate: "Sep 22, 2024", packageType: "Deluxe", price: "AED 75,000" },
+    { id: 2, name: "Jane Doe", email: "janedoe@example.com", phone: "(123) 456-7890", requestDate: "12 Jan, 2021", eventDate: "Sep 22, 2024", packageType: "Deluxe", price: "AED 75,000" },
+    { id: 2, name: "Jane Doe", email: "janedoe@example.com", phone: "(123) 456-7890", requestDate: "12 Jan, 2021", eventDate: "Sep 22, 2024", packageType: "Deluxe", price: "AED 75,000" },
+    { id: 2, name: "Jane Doe", email: "janedoe@example.com", phone: "(123) 456-7890", requestDate: "12 Jan, 2021", eventDate: "Sep 22, 2024", packageType: "Deluxe", price: "AED 75,000" },
+    { id: 2, name: "Jane Doe", email: "janedoe@example.com", phone: "(123) 456-7890", requestDate: "12 Jan, 2021", eventDate: "Sep 22, 2024", packageType: "Deluxe", price: "AED 75,000" },
+    { id: 2, name: "Jane Doe", email: "janedoe@example.com", phone: "(123) 456-7890", requestDate: "12 Jan, 2021", eventDate: "Sep 22, 2024", packageType: "Deluxe", price: "AED 75,000" },
+    { id: 2, name: "Jane Doe", email: "janedoe@example.com", phone: "(123) 456-7890", requestDate: "12 Jan, 2021", eventDate: "Sep 22, 2024", packageType: "Deluxe", price: "AED 75,000" },
   ];
 
   const [open, setOpen] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleClick = (index) => () => {
     setOpen(index);
+  };
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
   };
 
   const buttons = [
@@ -41,6 +36,14 @@ const Requests = () => {
     { id: 5, label: "Individual" },
     { id: 6, label: "Custom" },
   ];
+
+  const filteredRows = rows.filter((row) => {
+    return (
+      row.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      row.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      row.phone.includes(searchTerm)
+    );
+  });
 
   return (
     <div className="mx-4">
@@ -65,45 +68,34 @@ const Requests = () => {
           className="bg-[#161C27] py-2 px-6 mt-6"
           type="search"
           placeholder="search"
+          value={searchTerm}
+          onChange={handleSearch}
         />
       </div>
-      <div className=" mt-8">
-        <TableContainer component={Paper} sx={{ width: "100%" }}>
-          <Table sx={{ width: "100%", backgroundColor: "black", color: "white" }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell sx={{ color: "white", }}>Name</TableCell>
-                <TableCell sx={{ color: "white", }} align="right">E-mail Address</TableCell>
-                <TableCell sx={{ color: "white", }} align="right">Phone Number</TableCell>
-                <TableCell sx={{ color: "white", }} align="right">Request Date</TableCell>
-                <TableCell sx={{ color: "white", }} align="right">Event Date</TableCell>
-                <TableCell sx={{ color: "white", }} align="right">Packages</TableCell>
-                <TableCell sx={{ color: "white", }} align="right">Price</TableCell>
-                <TableCell sx={{ color: "white", }} align="right">Action</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map((row) => (
-                <TableRow
-                  key={row.name}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 }, marginBottom: "10px" }} // Adjust marginBottom as needed
-                >
-                  <TableCell sx={{ color: "white", border:"none" }} component="th" scope="row">
-                    {row.name}
-                  </TableCell>
-                  <TableCell sx={{ color: "#dddddd", border:"none" }} align="right">{row.calories}</TableCell>
-                  <TableCell sx={{ color: "#dddddd", border:"none" }} align="right">{row.fat}</TableCell>
-                  <TableCell sx={{ color: "#dddddd", border:"none" }} align="right">{row.carbs}</TableCell>
-                  <TableCell sx={{ color: "#dddddd", border:"none" }} align="right">{row.protein}</TableCell>
-                  <TableCell sx={{ color: "#dddddd", border:"none" }} align="center"><div className=" bg-[#fdcc6042]">{row.ss1}</div></TableCell>
-                  <TableCell sx={{ color: "#dddddd", border:"none" }} align="right">{row.ss2}</TableCell>
-                  <TableCell sx={{ color: "#dddddd", border:"none" }} align="right"> <Link to="/admin/request/review12" className=" text-[#FFEDA4]">{row.ss3}</Link></TableCell>
-                  
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+      <div className="mt-8">
+        <div className="grid grid-cols-8 gap-6 pl-6 py-3 bg-[#161C27]">
+          <h1>Name</h1>
+          <h1>E-mail Address</h1>
+          <h1>Phone Number</h1>
+          <h1>Request Date</h1>
+          <h1>Event Date</h1>
+          <h1>Packages</h1>
+          <h1>Price</h1>
+        </div>
+        <div className="flex flex-col gap-3 mt-3">
+          {filteredRows.map((item) => (
+            <div key={item.id} className="grid grid-cols-8 gap-6 bg-[#161C27] py-3 pl-6">
+              <h1 className="text-[13px] text-[#dddddd]">{item.name}</h1>
+              <h1 className="text-[13px] text-[#dddddd]">{item.email}</h1>
+              <h1 className="text-[13px] text-[#dddddd]">{item.phone}</h1>
+              <h1 className="text-[13px] text-[#dddddd]">{item.requestDate}</h1>
+              <h1 className="text-[13px] text-[#dddddd]">{item.eventDate}</h1>
+              <h1 className="text-[13px] text-[#EDBD57] bg-[#EDBD571A] w-fit">{item.packageType}</h1>
+              <h1 className="text-[13px] text-[#dddddd]">{item.price}</h1>
+              <Link to="/admin/request/review12" className="text-[13px] text-[#FFEDA4]">view detail</Link>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

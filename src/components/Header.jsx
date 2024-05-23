@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import menu from "../assets/menu.png";
 import { Link } from "react-scroll";
@@ -6,6 +6,17 @@ import { motion } from "framer-motion";
 import Btn from "./Btn";
 
 const Header = () => {
+  const [isActive, setIsActive] = React.useState(false);
+
+  useEffect(() => {
+    const scrollHandler = () => {
+      window.scrollY > 50 ? setIsActive(true) : setIsActive(false);
+    };
+
+    window.addEventListener("scroll", scrollHandler);
+
+    return () => window.removeEventListener("scroll", scrollHandler);
+  }, []);
   const FadeInUpAnimation = {
     hidden: {
       opacity: 0,
@@ -20,12 +31,12 @@ const Header = () => {
       },
     },
   };
-  const [openDesktop, setOpenDesktop] = useState(0); // Initialize as null for desktop version
-  const [openMobile, setOpenMobile] = useState(false); // Initialize as false for mobile version
+  const [openDesktop, setOpenDesktop] = useState(0);
+  const [openMobile, setOpenMobile] = useState(false);
 
   const handleMenuItemClick = (index) => {
     setOpenDesktop(index);
-    setOpenMobile(false); // Close mobile menu after clicking on a menu item
+    setOpenMobile(false);
   };
 
   return (
@@ -43,8 +54,12 @@ const Header = () => {
         initial="hidden"
         animate="show"
         variants={FadeInUpAnimation}
-      className="w-[100%] fixed md:flex hidden items-center justify-center z-[1000]  ">
-        <div className="flex items-center gap-60 bg-[#232c3b] rounded-md py-3 px-6">
+      className="w-[100%] md:flex hidden items-center justify-center z-[1000]  ">
+        <div className={` fixed ${isActive ? " top-0" : "top-4"} w-[80%] bg-[#161C27] z-[100] py-4 flex items-center justify-between px-12 ${
+        isActive
+          ? "bg-[#161C27] shadow-md transition-all fixed w-full duration-300 ease-in-out"
+          : " px-12"
+      }`}>
           <img src={logo} alt="" />
           <div className="flex items-center gap-12">
             <Link
