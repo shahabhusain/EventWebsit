@@ -94,7 +94,8 @@ const Packages = () => {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <div
+         <div className=" flex flex-col items-center justify-center h-screen">
+         <div
             className=" bg-[#11151d] w-[30%]  px-8 mx-auto  rounded-2xl mt-24
       "
           >
@@ -134,6 +135,7 @@ const Packages = () => {
               </div>
             </div>
           </div>
+         </div>
         </Modal>
       </div>
     </div>

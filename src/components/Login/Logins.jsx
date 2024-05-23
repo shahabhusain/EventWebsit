@@ -3,7 +3,8 @@ import logo from '../../assets/logo.png'
 import { Link } from 'react-router-dom'
 const Logins = () => {
   return (
-    <div className=' mx-auto bg-[#161C27] w-[40%] mt-24 rounded-xl'>
+    <div className=' flex flex-col items-center justify-center h-screen'>
+      <div className=' mx-auto bg-[#161C27] w-[40%] rounded-xl'>
         <div className=' px-12 py-12 flex flex-col gap-1 items-center  '>
         <img src={logo} alt="" />
         <h1 className=' text-[33px] font-bold text-[#FFEDA4]'>Welcome Back</h1>
@@ -16,6 +17,7 @@ const Logins = () => {
              <Link to="/admin/request" className=' bg-[#FFEDA4] py-3 px-6 text-black rounded-md mt-4 text-center'>Login </Link>
         </form>
         </div>
+    </div>
     </div>
   )
 }

@@ -218,7 +218,8 @@ const Forems2 = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <div className="flex bg-[#1b222e] rounded-2xl w-[50%] mx-auto items-center justify-center py-7 mt-32">
+      <div className=" flex flex-col items-center justify-center h-screen">
+      <div className="flex bg-[#1b222e] rounded-2xl w-[50%] mx-auto items-center justify-center py-7">
           <div>
             <h1 className="text-[20px] font-bold">Add Items</h1>
             <div className="h-[2px] w-full bg-[#8a8787] my-5"></div>
@@ -269,6 +270,7 @@ const Forems2 = () => {
             </div>
           </div>
         </div>
+      </div>
       </Modal>
     </div>
   );

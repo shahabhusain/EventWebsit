@@ -19,16 +19,15 @@ const SideBar = () => {
   const handleClose = () => setOpen1(false);
   return (
    <div className=' bg-[#161C27] px-3 w-[270px] fixed left-0 h-[100%]'>
-     <div className=''>
+     <div className=' flex flex-col justify-between h-[95%]'>
       <div className=' flex-col flex items-center'>
       <img className=' mt-12' src={logo} alt="" />
         <div className=' flex flex-col gap-4 mt-24'>
             <Link to='/admin/request' onClick={handleClick(1)} className={` flex items-center justify-center gap-2 ${open === 1 ? "bg-[#ffeda42d] py-3 px-16 rounded-md text-[#FFEDA4]" : " text-center"}`}> {open === 1 ? <><img src={icon1} alt="" /></> : <><img src={icon} alt="" /></>} Request </Link>
             <Link to="/admin/packages" onClick={handleClick(2)} className={` flex items-center justify-center gap-2 ${open === 2 ? "bg-[#ffeda42d] py-3 px-16 rounded-md text-[#FFEDA4]" : " text-center"}`}> {open === 1 ? <><img src={icon2} alt="" /></> : <><img src={icon3} alt="" /></>} Packages</Link>
         </div>
-        <button  onClick={handleOpen} className=' bg-[#3745571A] py-3 px-6 rounded-md mt-[24rem] flex items-center justify-center gap-2 '> <img src={log} alt="" /> Log Out</button>
       </div>
-        
+      <button  onClick={handleOpen} className=' bg-[#3745571A] py-3 px-6 rounded-md flex items-center justify-center gap-2 '> <img src={log} alt="" /> Log Out</button>
     </div>
      <div>
      <Modal
@@ -36,7 +35,8 @@ const SideBar = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <div className=' bg-[#191f29] w-[20%] mx-auto flex flex-col items-center py-6 px-6 rounded-2xl gap-6 mt-[13rem]'>
+       <div className=' flex flex-col items-center justify-center h-screen'>
+       <div className=' bg-[#191f29] w-[20%] mx-auto flex flex-col items-center py-6 px-6 rounded-2xl gap-6 '>
         <h1 className='text-[22px] font-medium'>Are You Sure</h1>
         <p>you are attempting to log out</p>
         <div className=' flex items-center gap-3'>
@@ -44,6 +44,7 @@ const SideBar = () => {
           <button className=' py-3 px-6 rounded-md bg-[#FFEDA4] text-black'>Log Out</button>
         </div>
         </div>
+       </div>
       </Modal>
      </div>
    </div>
