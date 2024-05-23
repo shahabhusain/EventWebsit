@@ -88,16 +88,16 @@ const Requests = () => {
                   key={row.name}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 }, marginBottom: "10px" }} // Adjust marginBottom as needed
                 >
-                  <TableCell sx={{ color: "white", }} component="th" scope="row">
+                  <TableCell sx={{ color: "white", border:"none" }} component="th" scope="row">
                     {row.name}
                   </TableCell>
-                  <TableCell sx={{ color: "#dddddd", }} align="right">{row.calories}</TableCell>
-                  <TableCell sx={{ color: "#dddddd", }} align="right">{row.fat}</TableCell>
-                  <TableCell sx={{ color: "#dddddd", }} align="right">{row.carbs}</TableCell>
-                  <TableCell sx={{ color: "#dddddd", }} align="right">{row.protein}</TableCell>
-                  <TableCell sx={{ color: "#dddddd", }} align="center"><div className=" bg-[#fdcc6042]">{row.ss1}</div></TableCell>
-                  <TableCell sx={{ color: "#dddddd", }} align="right">{row.ss2}</TableCell>
-                  <TableCell sx={{ color: "#dddddd", }} align="right"> <Link to="/admin/request/review12" className=" text-[#FFEDA4]">{row.ss3}</Link></TableCell>
+                  <TableCell sx={{ color: "#dddddd", border:"none" }} align="right">{row.calories}</TableCell>
+                  <TableCell sx={{ color: "#dddddd", border:"none" }} align="right">{row.fat}</TableCell>
+                  <TableCell sx={{ color: "#dddddd", border:"none" }} align="right">{row.carbs}</TableCell>
+                  <TableCell sx={{ color: "#dddddd", border:"none" }} align="right">{row.protein}</TableCell>
+                  <TableCell sx={{ color: "#dddddd", border:"none" }} align="center"><div className=" bg-[#fdcc6042]">{row.ss1}</div></TableCell>
+                  <TableCell sx={{ color: "#dddddd", border:"none" }} align="right">{row.ss2}</TableCell>
+                  <TableCell sx={{ color: "#dddddd", border:"none" }} align="right"> <Link to="/admin/request/review12" className=" text-[#FFEDA4]">{row.ss3}</Link></TableCell>
                   
                 </TableRow>
               ))}

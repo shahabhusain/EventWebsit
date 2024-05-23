@@ -62,7 +62,7 @@ const Services = () => {
       >
         <motion.div variants={FadeInUpAnimation}>
           <h1 className=" text-[32px] font-[700] text-center">
-            <span className=" text-[#FFEDA4]">Our</span>Services
+            <span className=" text-[#FFEDA4]">Our</span> Services
           </h1>
           <div className=" bg-[#FFEDA4] h-[2px] md:mx-[544px] mx-[122px] mt-3"></div>
         </motion.div>
@@ -75,7 +75,7 @@ const Services = () => {
           here to bring your vision to life.
         </motion.p>
 
-        <div className=" md:flex block gap-12 mt-24 ">
+        <div className=" md:flex block gap-12 mt-12 ">
           {serviceItem.map((item) => (
             <motion.div
               variants={FadeInUpAnimation}

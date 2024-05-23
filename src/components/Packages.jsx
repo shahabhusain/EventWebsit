@@ -16,7 +16,8 @@ const Packages = () => {
     },
   };
   return (
-    <motion.div
+   <div className=" bg-[#161C27] py-16 mt-20 ">
+     <motion.div
     initial={{
       opacity: 0,
       x: 0,
@@ -28,7 +29,7 @@ const Packages = () => {
         duration: 2,
       },
     }}
-    className=" md:w-[80%] w-[90%] mx-auto mt-32" id="packages">
+    className=" md:w-[80%] w-[90%] mx-auto" id="packages">
       <motion.div
        initial="hidden"
        whileInView="show"
@@ -36,7 +37,7 @@ const Packages = () => {
       >
       <motion.div variants={FadeInUpAnimation}>
         <h1 className=" text-[32px] font-[700] text-center">
-          <span className=" text-[#FFEDA4]">Our</span>Packages
+          <span className=" text-[#FFEDA4]">Our</span> Packages
         </h1>
         <div className=" bg-[#FFEDA4] h-[2px] md:mx-[544px] mx-[155px] mt-3"></div>
       </motion.div>
@@ -142,6 +143,7 @@ const Packages = () => {
 
       </motion.div>
         </motion.div>
+   </div>
   );
 };
 

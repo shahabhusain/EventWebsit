@@ -18,7 +18,7 @@ const Footer = () => {
             <li className=" list-none cursor-pointer md:mt-0 mt-1">Contact</li>
           </div>
         </div>
-        <div className=" bg-white h-[2px]"></div>
+        <div className=" bg-[#dddddd] h-[1px]"></div>
         <div className=" md:flex items-center justify-between">
           <p>© 2024 Eventful.uae All rights reserved</p>
           <div className=" flex items-center gap-4 md:mt-0 mt-3">

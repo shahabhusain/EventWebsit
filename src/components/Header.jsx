@@ -54,7 +54,7 @@ const Header = () => {
               offset={50}
               duration={500}
               className={`list-none cursor-pointer ${
-                openDesktop === 0 ? "border-b-[#FFEDA4] border-b-[2px]" : ""
+                openDesktop === 0 ? "border-b-[#FFEDA4] text-[#FFEDA4] border-b-[2px]" : ""
               }`}
               onClick={() => handleMenuItemClick(0)} // Add onClick handler
             >
@@ -67,7 +67,7 @@ const Header = () => {
               offset={50}
               duration={500}
               className={`list-none cursor-pointer ${
-                openDesktop === 1 ? "border-b-[#FFEDA4] border-b-[2px]" : ""
+                openDesktop === 1 ? "border-b-[#FFEDA4] text-[#FFEDA4] border-b-[2px]" : ""
               }`}
               onClick={() => handleMenuItemClick(1)} // Add onClick handler
             >
@@ -80,7 +80,7 @@ const Header = () => {
               offset={50}
               duration={500}
               className={`list-none cursor-pointer ${
-                openDesktop === 2 ? "border-b-[#FFEDA4] border-b-[2px]" : ""
+                openDesktop === 2 ? "border-b-[#FFEDA4] text-[#FFEDA4] border-b-[2px]" : ""
               }`}
               onClick={() => handleMenuItemClick(2)} // Add onClick handler
             >
@@ -93,7 +93,7 @@ const Header = () => {
               offset={50}
               duration={500}
               className={`list-none cursor-pointer ${
-                openDesktop === 3 ? "border-b-[#FFEDA4] border-b-[2px]" : ""
+                openDesktop === 3 ? "border-b-[#FFEDA4] text-[#FFEDA4] border-b-[2px]" : ""
               }`}
               onClick={() => handleMenuItemClick(3)} // Add onClick handler
             >
@@ -106,7 +106,7 @@ const Header = () => {
               offset={50}
               duration={500}
               className={`list-none cursor-pointer ${
-                openDesktop === 4 ? "border-b-[#FFEDA4] border-b-[2px]" : ""
+                openDesktop === 4 ? "border-b-[#FFEDA4] text-[#FFEDA4] border-b-[2px]" : ""
               }`}
               onClick={() => handleMenuItemClick(4)} // Add onClick handler
             >
