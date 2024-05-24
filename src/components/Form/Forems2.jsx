@@ -249,9 +249,9 @@ const Forems2 = () => {
                         checked={titleArray.includes(item.title)}
                         readOnly
                       />
-                      <label>{item.title}</label>
+                      <label className=" text-[13px]">{item.title}</label>
                     </div>
-                    <h1>{item.subtitle}</h1>
+                    <h1 className=" text-[12px]">{item.subtitle}</h1>
                   </div>
                 </div>
               ))}
