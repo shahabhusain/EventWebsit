@@ -218,12 +218,12 @@ const Forems2 = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-      <div className=" flex flex-col items-center justify-center md:h-screen">
-      <div className="flex bg-[#1b222e] rounded-2xl md:w-[50%]  mx-auto items-center w-full justify-center md:py-7 py-4 pb-12">
+      <div className=" flex flex-col items-center justify-center h-screen">
+      <div className="flex bg-[#1b222e] rounded-2xl md:w-[50%] w-[80%]  mx-auto items-center justify-center md:py-7 py-4 pb-12">
           <div>
             <h1 className="text-[20px] font-bold">Add Items</h1>
             <div className="h-[2px] w-full bg-[#8a8787] my-5"></div>
-            <div className="md:w-[666px] grid md:grid-cols-2 grid-cols-1 md:gap-4 gap-1">
+            <div className="md:w-[666px]  grid md:grid-cols-2 grid-cols-1 md:gap-4 gap-1">
               {ModalItem.map((item, index) => (
                 <div
                   key={index}
