@@ -210,11 +210,9 @@ const Header = () => {
                 Contact
               </Link>
             </div>
-            <div className=" flex items-center justify-center">
-              <button className=" hover:scale-[1.1]  transition-all duration-200 ease-in-out bg-[#F6E9B9] text-black py-3 px-6 rounded-md md:mt-0 mt-6">
-                Book Now
-              </button>
-            </div>
+             <div className=" ml-[6rem] mt-8">
+             <Btn />
+             </div>
           </motion.div>
         )}
       </div>

@@ -47,17 +47,17 @@ const Packages = () => {
         process.
       </motion.p>
 
-     <div className=" grid md:grid-cols-2 grid-cols-1 gap-12 mt-16 mx-12">
+     <div className=" grid md:grid-cols-2 grid-cols-1 gap-12 mt-16 md:mx-12">
    <div className="hover:scale-[1.1] transition-all duration-300 ease-in-out">
    <motion.div variants={FadeInUpAnimation} className=" bg-[#0C0F16] py-6 h-full px-6 rounded-md ">
         <div className=" flex items-center justify-between">
-          <h1 className=" text-[#FFEDA4] text-[27px] font-bold">SIGNATURE</h1>
-          <h2 className=" flex flex-col text-[24px] font-semibold">
+          <h1 className=" text-[#FFEDA4] md:text-[27px] text-[20px] font-bold">SIGNATURE</h1>
+          <h2 className=" flex flex-col md:text-[24px] text-[12px] font-semibold">
             AED 2750
-            <span className=" text-[14px] font-normal">(save AED 300)</span>
+            <span className=" md:text-[14px] text-[10px] font-normal">(save AED 300)</span>
           </h2>
         </div>
-        <form className="">
+        <form className=" md:mt-0 mt-4">
             <input className=" accent-[#FFEDA4]" type="checkbox" name="vehicle1" value="Bike" checked />
             <label for="vehicle1"> Digital invitation</label>
             <br />
@@ -75,13 +75,13 @@ const Packages = () => {
      <div className="hover:scale-[1.1] transition-all duration-300 ease-in-out">
      <motion.div variants={FadeInUpAnimation} className=" bg-[#0C0F16] py-6 px-6 rounded-md ">
         <div className=" flex items-center justify-between">
-          <h1 className=" text-[#FFEDA4] text-[27px] font-bold">PREMIUM</h1>
-          <h2 className=" flex flex-col text-[24px] font-semibold">
+          <h1 className=" text-[#FFEDA4] md:text-[27px] text-[20px] font-bold">PREMIUM</h1>
+          <h2 className=" flex flex-col md:text-[24px] text-[12px] font-semibold">
           AED 2750
-            <span className=" text-[14px] font-normal"> (save AED 500)</span>
+            <span className=" md:text-[14px] text-[10px] font-normal"> (save AED 500)</span>
           </h2>
         </div>
-        <form>
+        <form className=" md:mt-0 mt-4">
             <input className=" accent-[#FFEDA4]" type="checkbox" name="vehicle1" value="Bike" checked />
             <label for="vehicle1"> Digital invitation</label>
             <br />
@@ -109,13 +109,13 @@ const Packages = () => {
       <div className="hover:scale-[1.1] transition-all duration-300 ease-in-out">
       <motion.div variants={FadeInUpAnimation} className=" bg-[#0C0F16] h-full py-6 px-6 rounded-md ">
         <div className=" flex items-center justify-between">
-          <h1 className=" text-[#FFEDA4] text-[27px] font-bold">DELUXE</h1>
-          <h2 className=" flex flex-col text-[24px] font-semibold">
+          <h1 className=" text-[#FFEDA4] md:text-[27px] text-[20px] font-bold">DELUXE</h1>
+          <h2 className=" flex flex-col md:text-[24px] text-[12px] font-semibold">
           AED 2750
-            <span className=" text-[14px] font-normal"> (save AED 500)</span>
+            <span className=" md:text-[14px] text-[10px] font-normal"> (save AED 500)</span>
           </h2>
         </div>
-        <form>
+        <form className=" md:mt-0 mt-4">
             <input className=" accent-[#FFEDA4]" type="checkbox" name="vehicle1" value="Bike" checked />
             <label for="vehicle1"> Digital invitation</label>
             <br />
@@ -132,7 +132,7 @@ const Packages = () => {
 
       <div className="hover:scale-[1.1] transition-all duration-300 ease-in-out">
       <motion.div variants={FadeInUpAnimation} className=" bg-[#0C0F16] py-6 px-6 rounded-md flex flex-col gap-4 ">
-          <h1 className=" text-[#FFEDA4] text-[27px] font-bold">CUSTOM</h1>
+          <h1 className=" text-[#FFEDA4] md:text-[27px]  font-bold">CUSTOM</h1>
 
          <p>A package tailored to your needs</p>
          <p>Let us know about your event, and a member of our team will get back to you within 24 hours. </p>

@@ -3,20 +3,20 @@ import { Link } from "react-router-dom";
 
 const Form3 = () => {
   return (
-    <div className="w-[60%] mx-auto bg-[#1b222e] h-screen px-24 rounded-md">
-      <h1 className=" text-[32px] font-bold text-center pt-12">
+    <div className="md:w-[60%] mx-auto bg-[#1b222e] h-screen md:px-24 px-4 rounded-md">
+      <h1 className=" md:text-[32px] text-[24px] font-bold text-center md:pt-12 pt-7">
         Event Planning Registration
       </h1>
-      <p className=" text-[16px] text-[#C5C5C5] font-normal text-center">
+      <p className=" md:text-[16px] text-[12px] text-[#C5C5C5] font-normal text-center">
         Simplify Your Event Arrangements with Us
       </p>
-      <div className=" flex items-center gap-4 mt-6 mx-32">
+      <div className=" flex items-center gap-4 mt-6 md:mx-32">
         <div className=" bg-[#FFEDA4] h-[3px] w-full"></div>
         <div className="bg-[#FFEDA4] h-[3px] w-full"></div>
       </div>
 
       <form className=" flex flex-col gap-3 mt-6">
-        <div className=" flex items-center gap-3">
+        <div className=" flex flex-col md:flex-row items-center gap-3">
           <div className=" flex flex-col gap-2 w-full">
             <label>Full Name</label>
             <input

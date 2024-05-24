@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 const Logins = () => {
   return (
     <div className=' flex flex-col items-center justify-center h-screen'>
-      <div className=' mx-auto bg-[#161C27] w-[40%] rounded-xl'>
-        <div className=' px-12 py-12 flex flex-col gap-1 items-center  '>
+      <div className=' mx-auto bg-[#161C27] md:w-[40%] w-[90%] rounded-xl'>
+        <div className=' md:px-12 px-4 py-12 flex flex-col gap-1 items-center  '>
         <img src={logo} alt="" />
         <h1 className=' text-[33px] font-bold text-[#FFEDA4]'>Welcome Back</h1>
         <p>Please Log into your account</p>

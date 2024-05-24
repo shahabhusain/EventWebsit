@@ -29,7 +29,7 @@ const Book = () => {
         duration: 2,
       },
     }}
-    className='md:flex items-center gap-16 md:w-[80%] w-[95%] mx-auto mt-24 bg-[#1b222e] py-6 px-12 rounded-md '>
+    className='md:flex items-center gap-16 md:w-[80%] w-[95%] mx-auto mt-24 bg-[#1b222e] py-6 md:px-12 px-4 rounded-md '>
     
     <motion.div
       initial="hidden"

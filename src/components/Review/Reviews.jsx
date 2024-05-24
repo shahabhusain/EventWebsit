@@ -10,9 +10,9 @@ const Reviews = () => {
   return (
     <div>
       <h1 className=" text-[33px] font-bold text-center mt-12">Review</h1>
-      <div className=" flex gap-12 w-[80%] mx-auto mt-12">
+      <div className=" flex flex-col md:flex-row gap-12 md:w-[80%] w-[90%] mx-auto mt-12">
         <div className="">
-          <div className="bg-[#161C27] flex  gap-24 justify-center py-5 px-12 rounded-2xl ">
+          <div className="bg-[#161C27] flex flex-col md:flex-row gap-4  md:gap-24 justify-center py-5 md:px-12 px-4 rounded-2xl ">
             <div className=" flex flex-col gap-4">
               <h1 className=" flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
                 Full Name{" "}
@@ -41,7 +41,7 @@ const Reviews = () => {
                 </span>{" "}
               </h1>
             </div>
-            <div className=" h-[400px] w-[2px] bg-[#161C27]"></div>
+            <div className=" md:h-[400px] w-[2px] bg-[#161C27]"></div>
             <div className=" flex flex-col gap-4">
               <h1 className=" flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
                 Event Type{" "}
@@ -81,7 +81,7 @@ const Reviews = () => {
             <h1 className="text-[#C5C5C5] flex items-center justify-between">
               Item <img src={arr} alt="" />
             </h1>
-            <div className=" w-[300px] h-[1px] bg-white"></div>
+            <div className=" md:w-[300px]  h-[1px] bg-white"></div>
             <h1 className="text-[#C5C5C5] flex items-center justify-between">
               Light up signage<span className=" text-white">2000AED</span>
             </h1>
@@ -120,7 +120,7 @@ const Reviews = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <div className="w-[40%] mx-auto bg-[#1b222e] px-24 py-16 rounded-md flex flex-col items-center justify-center mt-36">
+        <div className="md:w-[40%] w-[90%] mx-auto bg-[#1b222e] md:px-24 px-4 py-16 rounded-md flex flex-col items-center justify-center mt-36">
           <img src={main} alt="" />
           <h2 className="text-[24px] font-bold text-center mb-4">
             Registration Successful!

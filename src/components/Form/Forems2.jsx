@@ -157,11 +157,11 @@ const Forems2 = () => {
   };
 
   return (
-    <div className="w-[60%] mx-auto bg-[#1b222e] h-screen px-16 rounded-md">
-      <h1 className="text-[32px] font-bold text-center pt-24">
+    <div className="md:w-[60%] mx-auto bg-[#1b222e] h-screen md:px-16 px-4 rounded-md">
+      <h1 className="md:text-[32px] text-[25px] font-bold text-center pt-24">
         Event Planning Registration
       </h1>
-      <p className="text-[16px] text-[#C5C5C5] font-normal text-center">
+      <p className=" md:text-[16px] text-[12px] md:mt-0 mt-2 text-[#C5C5C5] font-normal text-center">
         Simplify Your Event Arrangements with Us
       </p>
       <div className="flex items-center gap-4 mt-6 mx-32">
@@ -218,12 +218,12 @@ const Forems2 = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-      <div className=" flex flex-col items-center justify-center h-screen">
-      <div className="flex bg-[#1b222e] rounded-2xl w-[50%] mx-auto items-center justify-center py-7">
+      <div className=" flex flex-col items-center justify-center md:h-screen">
+      <div className="flex bg-[#1b222e] rounded-2xl md:w-[50%]  mx-auto items-center w-full justify-center md:py-7 py-4 pb-12">
           <div>
             <h1 className="text-[20px] font-bold">Add Items</h1>
             <div className="h-[2px] w-full bg-[#8a8787] my-5"></div>
-            <div className="w-[666px] grid grid-cols-2 gap-4">
+            <div className="md:w-[666px] grid md:grid-cols-2 grid-cols-1 md:gap-4 gap-1">
               {ModalItem.map((item, index) => (
                 <div
                   key={index}
