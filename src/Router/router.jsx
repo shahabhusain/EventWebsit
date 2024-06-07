@@ -27,7 +27,7 @@ export const router = createBrowserRouter(
 
       <Route path="/admin" element={<Layout1 />}>
         <Route path="/admin/request" element={<Request />} />
-        <Route path="/admin/request/review12" element={<Reviewws />} />
+        <Route path="/admin/request/:id" element={<Reviewws />} />
         <Route path="/admin/packages" element={<PackagesPage />} />
       </Route>
     </>

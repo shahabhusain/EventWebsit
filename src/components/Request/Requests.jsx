@@ -1,31 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../Config/Firebase";
 
 const Requests = () => {
-  const rows = [
-    { id: 1, name: "Cooper Kriston", email: "quasiah@gmail.com", phone: "(229) 555-0109", requestDate: "8 Sep, 2020", eventDate: "Jul 19, 2024", packageType: "Signature", price: "AED 60,000" },
-    { id: 2, name: "Jane Doe", email: "janedoe@example.com", phone: "(123) 456-7890", requestDate: "12 Jan, 2021", eventDate: "Sep 22, 2024", packageType: "Deluxe", price: "AED 75,000" },
-    { id: 2, name: "Jane Doe", email: "janedoe@example.com", phone: "(123) 456-7890", requestDate: "12 Jan, 2021", eventDate: "Sep 22, 2024", packageType: "Deluxe", price: "AED 75,000" },
-    { id: 2, name: "Jane Doe", email: "janedoe@example.com", phone: "(123) 456-7890", requestDate: "12 Jan, 2021", eventDate: "Sep 22, 2024", packageType: "Deluxe", price: "AED 75,000" },
-    { id: 2, name: "Jane Doe", email: "janedoe@example.com", phone: "(123) 456-7890", requestDate: "12 Jan, 2021", eventDate: "Sep 22, 2024", packageType: "Deluxe", price: "AED 75,000" },
-    { id: 2, name: "Jane Doe", email: "janedoe@example.com", phone: "(123) 456-7890", requestDate: "12 Jan, 2021", eventDate: "Sep 22, 2024", packageType: "Deluxe", price: "AED 75,000" },
-    { id: 2, name: "Jane Doe", email: "janedoe@example.com", phone: "(123) 456-7890", requestDate: "12 Jan, 2021", eventDate: "Sep 22, 2024", packageType: "Deluxe", price: "AED 75,000" },
-    { id: 2, name: "Jane Doe", email: "janedoe@example.com", phone: "(123) 456-7890", requestDate: "12 Jan, 2021", eventDate: "Sep 22, 2024", packageType: "Deluxe", price: "AED 75,000" },
-    { id: 2, name: "Jane Doe", email: "janedoe@example.com", phone: "(123) 456-7890", requestDate: "12 Jan, 2021", eventDate: "Sep 22, 2024", packageType: "Deluxe", price: "AED 75,000" },
-    { id: 2, name: "Jane Doe", email: "janedoe@example.com", phone: "(123) 456-7890", requestDate: "12 Jan, 2021", eventDate: "Sep 22, 2024", packageType: "Deluxe", price: "AED 75,000" },
-    { id: 2, name: "Jane Doe", email: "janedoe@example.com", phone: "(123) 456-7890", requestDate: "12 Jan, 2021", eventDate: "Sep 22, 2024", packageType: "Deluxe", price: "AED 75,000" },
-    { id: 2, name: "Jane Doe", email: "janedoe@example.com", phone: "(123) 456-7890", requestDate: "12 Jan, 2021", eventDate: "Sep 22, 2024", packageType: "Deluxe", price: "AED 75,000" },
-  ];
-
-  const [open, setOpen] = useState(1);
+  const [registerData, setRegisterData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [open, setOpen] = useState(1);
 
-  const handleClick = (index) => () => {
-    setOpen(index);
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "registrations"));
+        const data = [];
+        querySnapshot.forEach((doc) => {
+          data.push({ id: doc.id, ...doc.data() });
+        });
+        setRegisterData(data);
+      } catch (error) {
+        console.error("Error fetching registration data: ", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  console.log("rgsiter data => ", registerData);
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
+  };
+
+  const handleClick = (index) => {
+    setOpen(index);
   };
 
   const buttons = [
@@ -37,23 +43,53 @@ const Requests = () => {
     { id: 6, label: "Custom" },
   ];
 
-  const filteredRows = rows.filter((row) => {
-    return (
-      row.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      row.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      row.phone.includes(searchTerm)
-    );
-  });
-
+  const filteredData = registerData
+    .filter((item) => {
+      const lowercaseName = item.step2.name
+        ? item?.step2?.name.toLowerCase()
+        : "";
+      const lowercaseEmail = item.step2.email
+        ? item?.step2?.email.toLowerCase()
+        : "";
+      const lowercasePhone = item.step2.number
+        ? item?.step2?.number.toLowerCase()
+        : "";
+      const lowercaseRequestDate = item.step2.dates
+        ? item?.step2?.dates.toLowerCase()
+        : "";
+      const lowercaseEventDate = item.step2.dates
+        ? item?.step2?.dates.toLowerCase()
+        : "";
+      const lowercasePackage = item?.step1?.package
+        ? item?.step1?.package?.label.toLowerCase()
+        : "";
+      const searchTermLower = searchTerm.toLowerCase();
+      return (
+        lowercaseName.includes(searchTermLower) ||
+        lowercaseEmail.includes(searchTermLower) ||
+        lowercasePhone.includes(searchTermLower) ||
+        lowercaseRequestDate.includes(searchTermLower) ||
+        lowercaseEventDate.includes(searchTermLower) ||
+        lowercasePackage.includes(searchTermLower)
+      );
+    })
+    .filter((item) => {
+      if (open === 1) {
+        return true;
+      } else {
+        const selectedButtonLabel = buttons.find((btn) => btn.id === open).label;
+        return item.step1.package?.label === selectedButtonLabel;
+      }
+    });
   return (
     <div className="mx-4">
       <h1 className="text-[33px] font-bold text-white mt-4">Requests</h1>
-      <div className="flex items-center justify-between">
+      <div className=" flex items-center justify-between">
         <div className="flex items-center gap-4 mt-6">
           {buttons.map((button) => (
             <button
               key={button.id}
-              onClick={handleClick(button.id)}
+              onClick={() => handleClick(button.id)}
               className={`${
                 open === button.id
                   ? "bg-[#161C27] rounded-md py-2 px-6 text-[12px]"
@@ -67,7 +103,7 @@ const Requests = () => {
         <input
           className="bg-[#161C27] py-2 px-6 mt-6"
           type="search"
-          placeholder="search"
+          placeholder="Search"
           value={searchTerm}
           onChange={handleSearch}
         />
@@ -81,18 +117,31 @@ const Requests = () => {
           <h1>Event Date</h1>
           <h1>Packages</h1>
           <h1>Price</h1>
+          <h1>Action</h1>
         </div>
         <div className="flex flex-col gap-3 mt-3">
-          {filteredRows.map((item) => (
-            <div key={item.id} className="grid grid-cols-8 gap-6 bg-[#161C27] py-3 pl-6">
-              <h1 className="text-[13px] text-[#dddddd]">{item.name}</h1>
-              <h1 className="text-[13px] text-[#dddddd]">{item.email}</h1>
-              <h1 className="text-[13px] text-[#dddddd]">{item.phone}</h1>
-              <h1 className="text-[13px] text-[#dddddd]">{item.requestDate}</h1>
-              <h1 className="text-[13px] text-[#dddddd]">{item.eventDate}</h1>
-              <h1 className="text-[13px] text-[#EDBD57] bg-[#EDBD571A] w-fit">{item.packageType}</h1>
-              <h1 className="text-[13px] text-[#dddddd]">{item.price}</h1>
-              <Link to="/admin/request/review12" className="text-[13px] text-[#FFEDA4]">view detail</Link>
+          {filteredData.map((item) => (
+            <div
+              key={item.id}
+              className="grid grid-cols-8 gap-6 bg-[#161C27] py-3 pl-6"
+            >
+              <h1 className="text-[13px] text-[#dddddd]">{item.step2.name}</h1>
+              <h1 className="text-[13px] text-[#dddddd]">{item.step2.email}</h1>
+              <h1 className="text-[13px] text-[#dddddd]">
+                {item.step2.number}
+              </h1>
+              <h1 className="text-[13px] text-[#dddddd]">{item.step2.dates}</h1>
+              <h1 className="text-[13px] text-[#dddddd]">{item.step2.dates}</h1>
+              <h1 className="text-[13px] text-[#EDBD57] bg-[#EDBD571A] w-fit px-2">
+                {item.step1.package?.label}
+              </h1>
+              <h1 className="text-[13px] text-[#dddddd]">{item.totalValue}</h1>
+              <Link
+                to={`/admin/request/${item.id}`}
+                className="text-[13px] text-[#FFEDA4]"
+              >
+                View Detail
+              </Link>
             </div>
           ))}
         </div>
