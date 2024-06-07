@@ -227,11 +227,11 @@ const Forems2 = () => {
         aria-describedby="modal-modal-description"
       >
         <div className="flex flex-col items-center justify-center h-screen">
-          <div className="flex bg-[#1b222e] rounded-2xl md:w-[50%] w-[80%] mx-auto items-center justify-center md:py-7 py-4 pb-12">
+          <div className="flex bg-[#1b222e] rounded-2xl md:w-[50%] w-[95%] mx-auto items-center justify-center px-2 md:py-7 py-4 pb-12">
             <div>
               <h1 className="text-[20px] font-bold">Add Items</h1>
               <div className="h-[2px] w-full bg-[#8a8787] my-5"></div>
-              <div className="md:w-[666px] grid md:grid-cols-2 grid-cols-1 md:gap-4 gap-1">
+              <div className="md:w-[666px] grid md:grid-cols-2 grid-cols-2 md:gap-4 gap-1">
                 {ModalItem.map((item, index) => (
                   <div
                     key={index}
@@ -248,7 +248,7 @@ const Forems2 = () => {
                       )
                         ? "border-[#ffeda43d] bg-[#ffeda418] text-[#FFEDA4]"
                         : "border-[#5954544e] bg-[#1b222e] text-white"
-                    } border-[2px] py-3 px-6 rounded-md w-full cursor-pointer`}
+                    } border-[2px] py-3 md:px-6 px-3 rounded-md w-full cursor-pointer`}
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
@@ -267,7 +267,7 @@ const Forems2 = () => {
                           required
                         />
                         <div
-                          className="custom-radio"
+                          className="custom-radio md:w-[1rem] md:h-[1rem] w-[.8rem] h-[.8rem] "
                           onClick={() => {
                             const updatedTitleArray = titleArray.map(
                               (titleItem) => {
@@ -281,8 +281,7 @@ const Forems2 = () => {
                             setTitleArray(updatedTitleArray);
                           }}
                           style={{
-                            width: "1rem",
-                            height: "1rem",
+                           
                             backgroundColor: titleArray.some(
                               (titleItem) =>
                                 titleItem.title === item.title ||
@@ -295,23 +294,23 @@ const Forems2 = () => {
                             cursor: "pointer",
                           }}
                         />
-                        <label className="text-[13px]">{item.title}</label>
+                        <label className="md:text-[13px] text-[9px]">{item.title}</label>
                       </div>
-                      <h1 className="text-[12px]">{item.subtitle}</h1>
+                      <h1 className="md:text-[12px] text-[9px]">{item.subtitle}</h1>
                     </div>
                   </div>
                 ))}
                 <button
                   type="button"
                   onClick={handleGoBack}
-                  className="py-3 px-6 rounded-md border-[#ddd] border-[2px]"
+                  className="md:py-3 md:px-6 py-2 px-3 md:text-[15px] text-[12px] rounded-md border-[#ddd] border-[2px] mt-3"
                 >
                   Go Back
                 </button>
                 <button
                   type="button"
                   onClick={handleClose}
-                  className="py-3 px-6 rounded-md bg-[#FFEDA4] text-black"
+                  className="md:py-3 md:px-6 py-2 px-3 md:text-[15px] text-[12px] font-medium rounded-md bg-[#FFEDA4] text-black mt-3"
                 >
                   Add Items
                 </button>

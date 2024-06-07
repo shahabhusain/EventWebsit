@@ -35,6 +35,7 @@ const Form3 = () => {
 
   const onModalChange = (newValue) => {
     setDates(newValue);
+    handleClose()
   };
 
   const formatDate = (date) => {
@@ -48,7 +49,7 @@ const Form3 = () => {
   };
 
   return (
-    <div className="md:w-[60%] mx-auto bg-[#161C27] h-[100vh] md:px-24 px-4 rounded-md">
+    <div className="md:w-[60%] mx-auto bg-[#161C27] h-full pb-12 md:px-24 px-4 rounded-md">
       <h1 className="md:text-[32px] text-[24px] font-bold text-center md:pt-12 pt-7">
         Event Planning Registration
       </h1>
@@ -112,13 +113,17 @@ const Form3 = () => {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           >
-            <div>
+            <div className="flex flex-col items-center justify-center h-screen">
+            <div className='  bg-black '>
+              <h1 className=" text-white text-center my-3 border-b-[1px] w-full border-[#454343]">Select Date</h1>
               <Calendar
-                className=' bg-black absolute top-[40%] left-[40%] border-[#292929]'
+                className='bg-black border-none'
                 onChange={onModalChange}
                 value={dates}
               />
             </div>
+            </div>
+         
           </Modal>
         </div>
         <div className="flex flex-col gap-2">

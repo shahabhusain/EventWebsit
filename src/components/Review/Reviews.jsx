@@ -43,10 +43,10 @@ const Reviews = () => {
   };
 
   return (
-    <div className="">
+    <div className="pb-12">
       <h1 className="text-[33px] font-bold text-center mt-12">Review</h1>
       <div className="flex flex-col md:flex-row gap-12 md:w-[80%] w-[90%] mx-auto mt-12">
-        <div className="w-[60%]">
+        <div className="md:w-[60%] md:text-start text-center">
           <div className="bg-[#161C27] flex flex-col md:flex-row gap-4 md:gap-24 justify-center py-5 md:px-12 px-4 rounded-2xl ">
             <div className="flex flex-col gap-4">
               <h1 className="flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
@@ -103,7 +103,7 @@ const Reviews = () => {
             </div>
           </div>
         </div>
-        <div className="bg-[#161C27] py-12 rounded-2xl w-[40%] px-6 flex flex-col gap-3">
+        <div className="bg-[#161C27] py-12 rounded-2xl md:w-[40%] px-6 flex flex-col gap-3">
           <div className="border-[1px] border-[#616161] py-3 px-4 rounded-xl flex flex-col gap-4">
             <h1 className="text-[#C5C5C5] flex items-center justify-between">
               Item <img src={arr} alt="" />
