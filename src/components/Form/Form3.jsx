@@ -122,7 +122,7 @@ const Form3 = () => {
   };
 
   return (
-    <div className="md:w-[60%] mx-auto bg-[#161C27] h-screen flex flex-col justify-center pb-12 md:px-24 px-4 rounded-md">
+    <div className="md:w-[60%] mx-auto bg-[#161C27] h-screen pb-12 md:px-24 px-4 rounded-md">
       <h1 className="md:text-[32px] text-[24px] font-bold text-center md:pt-12 pt-7">
         Event Planning Registration
       </h1>

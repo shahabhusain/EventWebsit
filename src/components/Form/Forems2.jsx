@@ -133,7 +133,7 @@ const Forems2 = () => {
   };
 
   return (
-    <div className="md:w-[60%] mx-auto bg-[#161C27] h-screen flex flex-col items-center justify-center pb-12 md:px-16 px-4 rounded-md">
+    <div className="md:w-[60%] mx-auto bg-[#161C27] h-screen pb-12 md:px-16 px-4 rounded-md">
       <h1 className="md:text-[32px] text-[25px] font-bold text-center pt-24">
         Event Planning Registration
       </h1>
