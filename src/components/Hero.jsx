@@ -43,7 +43,7 @@ const Hero = () => {
         <div className=" md:w-[45%] w-[90%] mx-auto flex flex-col gap-8">
           <motion.h1
             variants={fadeInUpAnimation}
-            className=" xl:text-[46px] md:text-[36px] text-[27px] font-bold text-center"
+            className=" xl:text-[46px] md:leading-[3.9rem] leading-[2.4rem] md:text-[36px] text-[27px] font-bold text-center"
           >
             <span className=" text-[#F6E9B9]">Unlock</span> Unforgettable
             Moments: Your{" "}
