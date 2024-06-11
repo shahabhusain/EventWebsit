@@ -133,7 +133,7 @@ const Forems2 = () => {
   };
 
   return (
-    <div className="md:w-[60%] mx-auto bg-[#161C27] h-[100%] pb-12 md:px-16 px-4 rounded-md">
+    <div className="md:w-[60%] mx-auto bg-[#161C27] h-screen flex flex-col items-center justify-center pb-12 md:px-16 px-4 rounded-md">
       <h1 className="md:text-[32px] text-[25px] font-bold text-center pt-24">
         Event Planning Registration
       </h1>
@@ -187,7 +187,7 @@ const Forems2 = () => {
           <div className="mt-3">
             <p
               onClick={() => setOpen(true)}
-              className="flex items-center gap-3 bg-[#0C0F16] py-3 px-6 rounded-full w-fit cursor-pointer"
+              className="flex items-center gap-3 bg-[#0C0F16]  py-3 px-6 rounded-full w-fit cursor-pointer"
             >
               <img src={icon} alt="" /> click to add items
             </p>

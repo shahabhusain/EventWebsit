@@ -3,16 +3,18 @@ import img1 from "../assets/fra1.png";
 import img2 from "../assets/fra2.png";
 import emailjs from "@emailjs/browser";
 import { Loader } from "rsuite";
-// import "rsuite/dist/rsuite.min.css";
+import "rsuite/dist/rsuite.min.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Contact = () => {
+  const notify = () => toast("Email Send SuccessFully");
   const form = useRef();
   const [isSending, setIsSending] = useState(false);
 
   const sendEmail = (e) => {
     e.preventDefault();
     setIsSending(true);
-
     emailjs
       .sendForm("service_ixifyhw", "template_7d9yeuf", form.current, {
         publicKey: "L-7wXdwK47FDl2W4m",
@@ -20,13 +22,13 @@ const Contact = () => {
       .then(
         () => {
           console.log("SUCCESS!");
-          // Reset the state after successful submission
           setIsSending(false);
+          notify(); // Notify user on successful submission
         },
         (error) => {
           console.log("FAILED...", error.text);
-          // Reset the state after failed submission
           setIsSending(false);
+          toast.error('Failed to send email'); // Notify user on failed submission
         }
       );
   };
@@ -46,7 +48,7 @@ const Contact = () => {
           </div>
           <div className="flex items-center rounded-[50px] gap-4 bg-[#1b222e] py-3 px-6">
             <img src={img2} alt="email icon" />
-            <p>eventfuLcae@gmail.com</p>
+            <p>eventfulcae@gmail.com</p>
           </div>
         </div>
       </div>
@@ -84,6 +86,7 @@ const Contact = () => {
           </button>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 };

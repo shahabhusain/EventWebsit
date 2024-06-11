@@ -9,13 +9,19 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import close from "../../assets/close.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Packages = () => {
+  const notify = () => toast("Feature Added SuccessFully");
+  const notify1 = () => toast("Feature Remove SuccessFully");
   const [packages, setPackages] = useState([]);
   const [open, setOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [newFeature, setNewFeature] = useState("");
   const [newFeatures, setNewFeatures] = useState([]);
+  const [isAddingFeature, setIsAddingFeature] = useState(false);
+  const [isRemovingFeature, setIsRemovingFeature] = useState(false);
 
   // Fetch packages from Firestore
   const fetchPackages = async () => {
@@ -52,6 +58,7 @@ const Packages = () => {
     if (newFeature.trim()) {
       setNewFeatures([...newFeatures, newFeature.trim()]);
       setNewFeature("");
+      setIsAddingFeature(true);
     }
   };
 
@@ -59,6 +66,7 @@ const Packages = () => {
     const updatedFeatures = [...newFeatures];
     updatedFeatures.splice(index, 1);
     setNewFeatures(updatedFeatures);
+    setIsRemovingFeature(true);
   };
 
   const handleSaveChanges = async () => {
@@ -69,14 +77,22 @@ const Packages = () => {
       });
 
       // Update the local state
-      const updatedPackages = packages.map((pkg) => 
+      const updatedPackages = packages.map((pkg) =>
         pkg.id === selectedPackage.id ? { ...pkg, features: newFeatures } : pkg
       );
       setPackages(updatedPackages);
 
       console.log("Changes saved successfully!");
+      if (isAddingFeature) {
+        notify();
+        setIsAddingFeature(false);
+      } else if (isRemovingFeature) {
+        notify1();
+        setIsRemovingFeature(false);
+      }
     } catch (error) {
       console.error("Error saving changes: ", error);
+      toast.error("Failed to send email");
     }
   };
 
@@ -198,6 +214,7 @@ const Packages = () => {
           </div>
         </div>
       </Modal>
+      <ToastContainer />
     </div>
   );
 };
