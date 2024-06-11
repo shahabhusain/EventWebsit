@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Import useHistory hook
+import { Link, useNavigate } from "react-router-dom";
 import Modal from "@mui/material/Modal";
-import { auth } from "../../Config/Firebase"; // Import Firebase authentication instance
+import { auth } from "../../Config/Firebase";
 import logo from "../../assets/logo.png";
 import icon from "../../assets/icon2.png";
 import icon1 from "../../assets/icon1.png";
@@ -14,18 +14,16 @@ const SideBar = () => {
   const handleClick = (index) => () => {
     setOpen(index);
   };
-
   const [open1, setOpen1] = useState(false);
   const handleOpen = () => setOpen1(true);
   const handleClose = () => setOpen1(false);
 
-  const navigate = useNavigate(); // Initialize useHistory hook
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     auth
       .signOut(auth)
       .then(() => {
-        // Redirect after successful logout
         navigate("/login");
       })
       .catch((error) => {
@@ -39,10 +37,12 @@ const SideBar = () => {
         <div className=" flex-col flex items-center">
           <img className=" mt-12" src={logo} alt="" />
           <div className=" flex flex-col gap-4 mt-24">
-            <Link
-              to="/admin/request"
-              onClick={handleClick(1)}
-              className={` flex items-center justify-center gap-2 ${
+            <h5
+              onClick={() => {
+                handleClick(1)();
+                navigate("/admin/request");
+              }}
+              className={` flex items-center justify-center gap-2 cursor-pointer ${
                 open === 1
                   ? "bg-[#ffeda42d] py-3 px-16 rounded-md text-[#FFEDA4]"
                   : " text-center"
@@ -58,27 +58,29 @@ const SideBar = () => {
                 </>
               )}
               Request
-            </Link>
-            <Link
-              to="/admin/packages"
-              onClick={handleClick(2)}
-              className={` flex items-center justify-center gap-2 ${
+            </h5>
+            <h5
+              onClick={() => {
+                handleClick(2)();
+                navigate("/admin/packages");
+              }}
+              className={` flex items-center justify-center gap-2 cursor-pointer ${
                 open === 2
-                  ? "bg-[#ffeda42d] py-3 px-16 rounded-md text-[#FFEDA4]"
+                  ? "bg-[#ffeda42d] py-3 px-16 rounded-md text-[#FFEDA4] "
                   : " text-center"
               }`}
             >
-              {open === 1 ? (
-                <>
-                  <img src={icon2} alt="" />
-                </>
-              ) : (
+              {open === 2 ? (
                 <>
                   <img src={icon3} alt="" />
                 </>
+              ) : (
+                <>
+                  <img src={icon2} alt="" />
+                </>
               )}
               Packages
-            </Link>
+            </h5>
           </div>
         </div>
         <button
@@ -91,6 +93,7 @@ const SideBar = () => {
       <div>
         <Modal
           open={open1}
+          onClose={handleClose}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >

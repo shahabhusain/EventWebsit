@@ -14,9 +14,16 @@ const Requests = () => {
         const querySnapshot = await getDocs(collection(db, "registrations"));
         const data = [];
         querySnapshot.forEach((doc) => {
-          data.push({ id: doc.id, ...doc.data() });
+          const item = doc.data();
+          if (item.createdAt && item.createdAt.toDate) {
+            item.createdAt = item.createdAt.toDate(); // Parse Firestore Timestamp to Date
+          }
+          data.push({ id: doc.id, ...item });
         });
-        setRegisterData(data);
+
+        // Sort data by createdAt in descending order
+        const sortedData = data.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+        setRegisterData(sortedData);
       } catch (error) {
         console.error("Error fetching registration data: ", error);
       }
@@ -24,7 +31,6 @@ const Requests = () => {
 
     fetchData();
   }, []);
-  console.log("rgsiter data => ", registerData);
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -34,6 +40,7 @@ const Requests = () => {
     setOpen(index);
   };
 
+  // Button data
   const buttons = [
     { id: 1, label: "All" },
     { id: 2, label: "Signature" },
@@ -43,25 +50,17 @@ const Requests = () => {
     { id: 6, label: "Custom" },
   ];
 
+  // Filter and sort data based on search term and selected package
   const filteredData = registerData
     .filter((item) => {
-      const lowercaseName = item.step2.name
-        ? item?.step2?.name.toLowerCase()
+      const lowercaseName = item.step2.name ? item.step2.name.toLowerCase() : "";
+      const lowercaseEmail = item.step2.email ? item.step2.email.toLowerCase() : "";
+      const lowercasePhone = item.step2.number ? item.step2.number.toLowerCase() : "";
+      const lowercaseRequestDate = item.createdAt
+        ? item.createdAt.toLocaleDateString().toLowerCase()
         : "";
-      const lowercaseEmail = item.step2.email
-        ? item?.step2?.email.toLowerCase()
-        : "";
-      const lowercasePhone = item.step2.number
-        ? item?.step2?.number.toLowerCase()
-        : "";
-      const lowercaseRequestDate = item.step2.dates
-        ? item?.step2?.dates.toLowerCase()
-        : "";
-      const lowercaseEventDate = item.step2.dates
-        ? item?.step2?.dates.toLowerCase()
-        : "";
-      const lowercasePackage = item?.step1?.package
-        ? item?.step1?.package?.label.toLowerCase()
+      const lowercasePackage = item.step1.package
+        ? item.step1.package.label.toLowerCase()
         : "";
       const searchTermLower = searchTerm.toLowerCase();
       return (
@@ -69,7 +68,6 @@ const Requests = () => {
         lowercaseEmail.includes(searchTermLower) ||
         lowercasePhone.includes(searchTermLower) ||
         lowercaseRequestDate.includes(searchTermLower) ||
-        lowercaseEventDate.includes(searchTermLower) ||
         lowercasePackage.includes(searchTermLower)
       );
     })
@@ -81,10 +79,11 @@ const Requests = () => {
         return item.step1.package?.label === selectedButtonLabel;
       }
     });
+
   return (
     <div className="mx-4">
       <h1 className="text-[33px] font-bold text-white mt-4">Requests</h1>
-      <div className=" flex items-center justify-between">
+      <div className="flex items-center justify-between">
         <div className="flex items-center gap-4 mt-6">
           {buttons.map((button) => (
             <button
@@ -110,14 +109,14 @@ const Requests = () => {
       </div>
       <div className="mt-8">
         <div className="grid grid-cols-8 gap-6 pl-6 py-3 bg-[#161C27]">
-          <h1>Name</h1>
-          <h1>E-mail Address</h1>
-          <h1>Phone Number</h1>
-          <h1>Request Date</h1>
-          <h1>Event Date</h1>
-          <h1>Packages</h1>
-          <h1>Price</h1>
-          <h1>Action</h1>
+          <h4>Name</h4>
+          <h4>E-mail Address</h4>
+          <h4>Phone Number</h4>
+          <h4>Request Date</h4>
+          <h4>Event Date</h4>
+          <h4>Packages</h4>
+          <h4>Price</h4>
+          <h4>Action</h4>
         </div>
         <div className="flex flex-col gap-3 mt-3">
           {filteredData.map((item) => (
@@ -125,23 +124,27 @@ const Requests = () => {
               key={item.id}
               className="grid grid-cols-8 gap-6 bg-[#161C27] py-3 pl-6"
             >
-              <h1 className="text-[13px] text-[#dddddd]">{item.step2.name}</h1>
-              <h1 className="text-[13px] text-[#dddddd]">{item.step2.email}</h1>
-              <h1 className="text-[13px] text-[#dddddd]">
-                {item.step2.number}
-              </h1>
-              <h1 className="text-[13px] text-[#dddddd]">{item.step2.dates}</h1>
-              <h1 className="text-[13px] text-[#dddddd]">{item.step2.dates}</h1>
-              <h1 className="text-[13px] text-[#EDBD57] bg-[#EDBD571A] w-fit px-2">
+              <h5 className="text-[13px] text-[#dddddd]">{item.step2.name}</h5>
+              <h5 className="text-[13px] text-[#dddddd]">{item.step2.email}</h5>
+              <h5 className="text-[13px] text-[#dddddd]">{item.step2.number}</h5>
+              <h5 className="text-[13px] text-[#dddddd]">
+                {item.createdAt.toLocaleDateString()}
+              </h5>
+              <h5 className="text-[13px] text-[#dddddd]">
+                {item.createdAt.toLocaleDateString()}
+              </h5>
+              <h5 className="text-[13px] text-[#EDBD57] bg-[#EDBD571A] w-fit px-2">
                 {item.step1.package?.label}
-              </h1>
-              <h1 className="text-[13px] text-[#dddddd]">{item.totalValue}</h1>
-              <Link
-                to={`/admin/request/${item.id}`}
-                className="text-[13px] text-[#FFEDA4]"
-              >
-                View Detail
-              </Link>
+              </h5>
+              <h5 className="text-[13px] text-[#dddddd]">{item.totalValue}</h5>
+              <h5>
+                <Link
+                  to={`/admin/request/${item.id}`}
+                  className="text-[13px] text-[#FFEDA4] hover:text-[#FFEDA4] hover:no-underline"
+                >
+                  View Detail
+                </Link>
+              </h5>
             </div>
           ))}
         </div>

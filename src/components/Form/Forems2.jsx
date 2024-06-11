@@ -185,22 +185,22 @@ const Forems2 = () => {
 
         {!open && (
           <div className="mt-3">
-            <h1
+            <p
               onClick={() => setOpen(true)}
               className="flex items-center gap-3 bg-[#0C0F16] py-3 px-6 rounded-full w-fit cursor-pointer"
             >
               <img src={icon} alt="" /> click to add items
-            </h1>
+            </p>
             <div className="flex gap-2 items-center flex-wrap mt-4">
               {titleArray.map((item, index) => (
                 <div
                   key={index}
-                  className="border-[2px] border-[#ddd] rounded-full py-3 px-6 flex items-center gap-4"
+                  className="border-[2px] border-[#ddd] py-3 rounded-full px-6 flex items-center gap-4"
                 >
-                  <h1 className="text-[13px] text-[#dddddd]">{item.title}</h1>
-                  <h2 className="text-[13px] text-[#dddddd]">
+                  <h5 className="text-[13px] text-[#dddddd]">{item.title}</h5>
+                  <h5 className="text-[13px] text-[#dddddd]">
                     {item.subtitle}
-                  </h2>
+                  </h5>
                   <img
                     src={close}
                     alt="close"
@@ -248,7 +248,7 @@ const Forems2 = () => {
                       )
                         ? "border-[#ffeda43d] bg-[#ffeda418] text-[#FFEDA4]"
                         : "border-[#5954544e] bg-[#1b222e] text-white"
-                    } border-[2px] py-3 md:px-6 px-3 rounded-md w-full cursor-pointer`}
+                    } border-[2px] md:px-6 px-3 rounded-md w-full cursor-pointer`}
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
@@ -296,7 +296,7 @@ const Forems2 = () => {
                         />
                         <label className="md:text-[13px] text-[9px]">{item.title}</label>
                       </div>
-                      <h1 className="md:text-[12px] text-[9px]">{item.subtitle}</h1>
+                      <h3 className="md:text-[12px] text-[9px]">{item.subtitle}</h3>
                     </div>
                   </div>
                 ))}

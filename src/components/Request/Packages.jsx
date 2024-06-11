@@ -161,7 +161,7 @@ const Packages = () => {
               </div>
               <div className="flex items-center gap-4 justify-between bg-[#161C27] py-1 px-3 rounded-md">
                 <input
-                  className="bg-[#0C0F16] py-3 w-full"
+                  className="bg-[#0C0F16] py-3 px-3 w-full"
                   type="text"
                   placeholder="Write feature"
                   value={newFeature}

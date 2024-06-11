@@ -7,8 +7,6 @@ import Over from "../components/Over";
 import Packages from "../components/Packages";
 import Services from "../components/Services";
 
-
-
 const Home = () => {
   return (
     <div>

@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Btn from "./Btn";
 
 const Header = () => {
-  const [isActive, setIsActive] = React.useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     const scrollHandler = () => {
@@ -68,8 +68,8 @@ const Header = () => {
               smooth={true}
               offset={50}
               duration={500}
-              className={`list-none cursor-pointer ${
-                openDesktop === 0 ? "border-b-[#FFEDA4] text-[#FFEDA4] border-b-[2px]" : ""
+              className={` cursor-pointer a list-none a  ${
+                openDesktop === 0 ? "border-b-[#FFEDA4] text-[#FFEDA4] border-b-[2px] " : ""
               }`}
               onClick={() => handleMenuItemClick(0)} // Add onClick handler
             >
@@ -81,7 +81,7 @@ const Header = () => {
               smooth={true}
               offset={50}
               duration={500}
-              className={`list-none cursor-pointer ${
+              className={`list-none cursor-pointer a a ${
                 openDesktop === 1 ? "border-b-[#FFEDA4] text-[#FFEDA4] border-b-[2px]" : ""
               }`}
               onClick={() => handleMenuItemClick(1)} // Add onClick handler
@@ -94,7 +94,7 @@ const Header = () => {
               smooth={true}
               offset={50}
               duration={500}
-              className={`list-none cursor-pointer ${
+              className={`list-none cursor-pointer a ${
                 openDesktop === 2 ? "border-b-[#FFEDA4] text-[#FFEDA4] border-b-[2px]" : ""
               }`}
               onClick={() => handleMenuItemClick(2)} // Add onClick handler
@@ -107,7 +107,7 @@ const Header = () => {
               smooth={true}
               offset={50}
               duration={500}
-              className={`list-none cursor-pointer ${
+              className={`list-none cursor-pointer a ${
                 openDesktop === 3 ? "border-b-[#FFEDA4] text-[#FFEDA4] border-b-[2px]" : ""
               }`}
               onClick={() => handleMenuItemClick(3)} // Add onClick handler
@@ -120,7 +120,7 @@ const Header = () => {
               smooth={true}
               offset={50}
               duration={500}
-              className={`list-none cursor-pointer ${
+              className={`list-none cursor-pointer a ${
                 openDesktop === 4 ? "border-b-[#FFEDA4] text-[#FFEDA4] border-b-[2px]" : ""
               }`}
               onClick={() => handleMenuItemClick(4)} // Add onClick handler
@@ -150,7 +150,7 @@ const Header = () => {
                 smooth={true}
                 offset={50}
                 duration={500}
-                className={`list-none cursor-pointer ${
+                className={`list-none cursor-pointer a ${
                   openDesktop === 0 ? "border-b-[#FFEDA4] border-b-[2px]" : ""
                 }`}
                 onClick={() => handleMenuItemClick(0)} // Add onClick handler
@@ -163,7 +163,7 @@ const Header = () => {
                 smooth={true}
                 offset={50}
                 duration={500}
-                className={`list-none cursor-pointer ${
+                className={`list-none cursor-pointer a ${
                   openDesktop === 1 ? "border-b-[#FFEDA4] border-b-[2px]" : ""
                 }`}
                 onClick={() => handleMenuItemClick(1)} // Add onClick handler
@@ -176,7 +176,7 @@ const Header = () => {
                 smooth={true}
                 offset={50}
                 duration={500}
-                className={`list-none cursor-pointer ${
+                className={`list-none cursor-pointer a ${
                   openDesktop === 2 ? "border-b-[#FFEDA4] border-b-[2px]" : ""
                 }`}
                 onClick={() => handleMenuItemClick(2)} // Add onClick handler
@@ -189,7 +189,7 @@ const Header = () => {
                 smooth={true}
                 offset={50}
                 duration={500}
-                className={`list-none cursor-pointer ${
+                className={`list-none cursor-pointer a ${
                   openDesktop === 3 ? "border-b-[#FFEDA4] border-b-[2px]" : ""
                 }`}
                 onClick={() => handleMenuItemClick(3)} // Add onClick handler
@@ -202,7 +202,7 @@ const Header = () => {
                 smooth={true}
                 offset={50}
                 duration={500}
-                className={`list-none cursor-pointer ${
+                className={`list-none cursor-pointer a ${
                   openDesktop === 4 ? "border-b-[#FFEDA4] border-b-[2px]" : ""
                 }`}
                 onClick={() => handleMenuItemClick(4)} // Add onClick handler

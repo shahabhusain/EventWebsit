@@ -2,50 +2,123 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addForm2data } from "../../store/dataSlice";
-import Modal from "@mui/material/Modal";
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+import DatePicker from "react-datepicker"; // Importing DatePicker
+import "react-datepicker/dist/react-datepicker.css"; // Importing DatePicker CSS
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+import {
+  isValidPhoneNumber,
+  parsePhoneNumberFromString,
+} from "libphonenumber-js";
 
 const Form3 = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const { step2 } = useSelector((state) => state.register.form);
-  const [name, setName] = useState(step2.name || "");
-  const [email, setEmail] = useState(step2.email || "");
-  const [message, setMessage] = useState(step2.message || "");
-  const [dates, setDates] = useState(step2.dates ? new Date(step2.dates) : null);
-  const [number, setNumber] = useState(step2.number || "");
+  const { step2 } = useSelector((state) => state.register.form) || {}; // Provide default empty object
 
+  const [name, setName] = useState(step2?.name || ""); // Use optional chaining to prevent error
+  const [email, setEmail] = useState(step2?.email || "");
+  const [message, setMessage] = useState(step2?.message || "");
+  const [dates, setDates] = useState(
+    step2?.dates ? new Date(step2.dates) : null
+  );
+  const [number, setNumber] = useState(step2?.number || "");
+  const [errors, setErrors] = useState({});
+  console.log("date", dates);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const isMeaningfulText = (text) => {
+    const pattern = /[a-zA-Z]{3,}/;
+    return pattern.test(text);
+  };
+
+  const isValidEmailDomain = (email) => {
+    const emailDomain = email.split("@")[1];
+    const domainPattern = /^[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
+    return domainPattern.test(emailDomain);
+  };
+
+  const isValidEmailPattern = (email) => {
+    // Basic email pattern check
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+  };
+
+  const validateForm = () => {
+    const errors = {};
+
+    if (!name.trim()) {
+      errors.name = "Name is required";
+    } else if (!/^[a-zA-Z\s]+$/.test(name)) {
+      errors.name = "Name should only contain alphabetic characters and spaces";
+    } else if (!isMeaningfulText(name)) {
+      errors.name = "Name should be meaningful";
+    }
+
+    if (!email.trim()) {
+      errors.email = "Email is required";
+    } else if (!isValidEmailPattern(email)) {
+      errors.email = "Email address is invalid";
+    } else if (!isValidEmailDomain(email)) {
+      errors.email = "Email domain is invalid";
+    }
+
+    if (!number.trim()) {
+      errors.number = "Contact number is required";
+    } else {
+      const phoneNumber = parsePhoneNumberFromString(number, "PK");
+      if (!phoneNumber || !phoneNumber.isValid()) {
+        errors.number = "Contact number is invalid";
+      }
+    }
+
+    if (!dates) {
+      errors.dates = "Event date is required";
+    }
+
+    if (!message.trim()) {
+      errors.message = "Additional comments are required";
+    } else if (!isMeaningfulText(message)) {
+      errors.message =
+        "Additional comments should be meaningful and contain at least 3 alphabetic characters";
+    } else if (message.length < 10) {
+      errors.message =
+        "Additional comments should be at least 10 characters long";
+    }
+
+    setErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleEmailChange = (e) => {
+    // Get the entered email value
+    const email = e.target.value;
+  
+    // Check if the length of the email exceeds 20 characters
+    if (email.length > 20) {
+      // If yes, truncate the email to 20 characters
+      setEmail(email.slice(0, 20));
+    } else {
+      // If not, update the email state with the entered value
+      setEmail(email);
+    }
+  };
+
   const onclick = (e) => {
     e.preventDefault();
-    const data = {
-      name: name || step2?.name,
-      email: email || step2?.email,
-      message: message || step2?.message,
-      dates: dates ? formatDate(dates) : null,
-      number: number || step2?.number,
-    };
-    dispatch(addForm2data(data));
-    navigate("/reg/review");
-  };
-
-  const onModalChange = (newValue) => {
-    setDates(newValue);
-    handleClose()
-  };
-
-  const formatDate = (date) => {
-    if (!date || isNaN(date.getTime())) {
-      return "dd/mm/yyyy";
+    if (validateForm()) {
+      const data = {
+        name: name || step2?.name,
+        email: email || step2?.email,
+        message: message || step2?.message,
+        dates: dates ? dates.getTime() : null, // Store date as timestamp
+        number: number || step2?.number,
+      };
+      dispatch(addForm2data(data));
+      navigate("/reg/review");
     }
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    return `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
   };
 
   return (
@@ -67,64 +140,67 @@ const Form3 = () => {
             <label>Full Name</label>
             <input
               onChange={(e) => setName(e.target.value)}
-              className="bg-[#0C0F16] py-4 px-6"
+              className="bg-[#0C0F16] py-4 px-6 rounded-md"
               type="name"
               placeholder={step2?.name || "User Name"}
               value={name}
               required
             />
+            {errors.name && <span className="text-red-500">{errors.name}</span>}
           </div>
           <div className="flex flex-col gap-2 w-full">
             <label>Email Address</label>
             <input
-              onChange={(e) => setEmail(e.target.value)}
-              className="bg-[#0C0F16] py-4 px-6"
+              onChange={handleEmailChange}
+              className="bg-[#0C0F16] py-4 px-6 rounded-md"
               type="email"
               placeholder={step2?.email || "Enter Email Address"}
               value={email}
               required
             />
+            {errors.email && (
+              <span className="text-red-500">{errors.email}</span>
+            )}
           </div>
         </div>
         <div className="flex flex-col gap-2">
           <label>Contact Number</label>
-          <input
-            onChange={(e) => setNumber(e.target.value)}
-            className="bg-[#0C0F16] py-4 px-6 w-full"
-            type="number"
-            placeholder={step2?.number || "Enter Contact Number"}
-            value={number}
-            required
-          />
+          <div className=" bg-[#0C0F16] py-3 px-6 rounded-md">
+            <PhoneInput
+              country={"pk"}
+              value={number}
+              onChange={(phone) => setNumber(phone)}
+              containerClass="custom-phone-input"
+              inputStyle={{
+                width: "100%",
+                backgroundColor: "#0C0F16",
+                color: "white",
+                border: "none",
+              }}
+              buttonStyle={{
+                backgroundColor: "black",
+                border: "none",
+              }}
+              dropdownStyle={{
+                backgroundColor: "black",
+                color: "white",
+              }}
+            />
+          </div>
+          {errors.number && (
+            <span className="text-red-500">{errors.number}</span>
+          )}
         </div>
         <div className="flex flex-col gap-2">
           <label>Event Date</label>
-          <input
-            className="bg-[#0C0F16] py-4 px-6 w-full"
-            readOnly
-            value={formatDate(dates)}
-            onClick={handleOpen}
-            required
+          <DatePicker
+            selected={dates}
+            onChange={(date) => setDates(date)}
+            withPortal
+            className="bg-[#0C0F16] py-4 px-6 w-full rounded-md"
+            placeholderText="dd/mm/yyy"
           />
-
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <div className="flex flex-col items-center justify-center h-screen">
-            <div className='  bg-black '>
-              <h1 className=" text-white text-center my-3 border-b-[1px] w-full border-[#454343]">Select Date</h1>
-              <Calendar
-                className='bg-black border-none'
-                onChange={onModalChange}
-                value={dates}
-              />
-            </div>
-            </div>
-         
-          </Modal>
+          {errors.dates && <span className="text-red-500">{errors.dates}</span>}
         </div>
         <div className="flex flex-col gap-2">
           <label>Additional Comments</label>
@@ -136,6 +212,9 @@ const Form3 = () => {
             value={message}
             required
           ></textarea>
+          {errors.message && (
+            <span className="text-red-500">{errors.message}</span>
+          )}
         </div>
 
         <div className="flex items-center gap-3 mt-8">
