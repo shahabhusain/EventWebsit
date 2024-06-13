@@ -51,14 +51,14 @@ const Services = () => {
           duration: 2,
         },
       }}
-      className=" bg-[#1b222e] pb-[233px]"
+      className=" bg-[#1b222e] py-12"
       id="service"
     >
       <motion.div
         initial="hidden"
         whileInView="show"
         variants={FadeInUpAnimation}
-        className=" md:w-[80%] w-[95%] mx-auto pt-12 flex flex-col gap-2"
+        className=" md:w-[80%] w-[95%] mx-auto  flex flex-col gap-2"
       >
         <motion.div variants={FadeInUpAnimation}>
           <h1 className=" text-[32px] font-[700] text-center">

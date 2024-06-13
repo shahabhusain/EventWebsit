@@ -79,7 +79,7 @@ const Header = () => {
               to="service"
               spy={true}
               smooth={true}
-              offset={50}
+              offset={10}
               duration={500}
               className={`list-none cursor-pointer a a ${
                 openDesktop === 1 ? "border-b-[#FFEDA4] text-[#FFEDA4] border-b-[2px]" : ""

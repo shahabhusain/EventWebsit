@@ -214,7 +214,7 @@ const Forems2 = () => {
         )}
         <button
           type="submit"
-          className="bg-[#FFEDA4] text-center py-3 px-6 text-black rounded-md mt-20"
+          className="bg-[#FFEDA4] text-center py-3 px-6 text-black rounded-md"
         >
           Next
         </button>
@@ -230,7 +230,7 @@ const Forems2 = () => {
           <div className="flex bg-[#1b222e] rounded-2xl md:w-[50%] w-[95%] mx-auto items-center justify-center px-2 md:py-7 py-4 pb-12">
             <div>
               <h1 className="text-[20px] font-bold">Add Items</h1>
-              <div className="h-[2px] w-full bg-[#8a8787] my-5"></div>
+              <div className="h-[1px] w-full bg-[#8a8787] mb-5"></div>
               <div className="md:w-[666px] grid md:grid-cols-2 grid-cols-2 md:gap-4 gap-1">
                 {ModalItem.map((item, index) => (
                   <div
@@ -281,7 +281,6 @@ const Forems2 = () => {
                             setTitleArray(updatedTitleArray);
                           }}
                           style={{
-                           
                             backgroundColor: titleArray.some(
                               (titleItem) =>
                                 titleItem.title === item.title ||
@@ -294,9 +293,13 @@ const Forems2 = () => {
                             cursor: "pointer",
                           }}
                         />
-                        <label className="md:text-[13px] text-[9px]">{item.title}</label>
+                        <label className="md:text-[13px] text-[9px]">
+                          {item.title}
+                        </label>
                       </div>
-                      <h3 className="md:text-[12px] text-[9px]">{item.subtitle}</h3>
+                      <h3 className="md:text-[12px] text-[9px]">
+                        {item.subtitle}
+                      </h3>
                     </div>
                   </div>
                 ))}

@@ -6,7 +6,7 @@ import img3 from "../assets/i1.png";
 import img4 from "../assets/t1.png";
 const Footer = () => {
   return (
-    <div className="bg-[#1b222e] py-8 mt-24">
+    <div className="bg-[#1b222e] py-8 mt-32">
       <div className=" flex flex-col gap-5 w-[80%] mx-auto">
         <div className=" flex flex-col md:items-center justify-center gap-3">
           <img className=" w-[93px]" src={logo} alt="" />

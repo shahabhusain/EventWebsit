@@ -3,23 +3,27 @@ import logo from "../../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../Config/Firebase";
+import { Loader } from "rsuite";
+import "rsuite/dist/rsuite.min.css";
 
 const Logins = () => {
+  const [isSending, setIsSending] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const signIn = async (event) => {
     event.preventDefault();
+    setIsSending(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/admin/request");
     } catch (error) {
       console.error("Error signing in:", error.message);
       alert(`Error signing in: ${error.message}`);
+    } finally {
+      setIsSending(false);
     }
-
-    
   };
 
   return (
@@ -50,7 +54,7 @@ const Logins = () => {
               type="submit"
               className="bg-[#FFEDA4] py-3 px-6 text-black rounded-md mt-8 text-center"
             >
-              Login
+              {isSending ? <Loader /> : "Login"}
             </button>
           </form>
         </div>

@@ -195,6 +195,7 @@ const Form3 = () => {
           <label>Event Date</label>
           <DatePicker
             selected={dates}
+            minDate={new Date()}
             onChange={(date) => setDates(date)}
             withPortal
             className="bg-[#0C0F16] py-4 px-6 w-full rounded-md"
@@ -206,7 +207,7 @@ const Form3 = () => {
           <label>Additional Comments</label>
           <textarea
             onChange={(e) => setMessage(e.target.value)}
-            className="bg-[#0C0F16] py-3 px-7 w-full rounded-md"
+            className="bg-[#0C0F16] py-3 px-3 w-full rounded-md"
             placeholder={step2?.message || "Write here ..."}
             rows={4}
             value={message}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../Config/Firebase";
-
+import search from "../../assets/Search.png";
 const Requests = () => {
   const [registerData, setRegisterData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -22,7 +22,9 @@ const Requests = () => {
         });
 
         // Sort data by createdAt in descending order
-        const sortedData = data.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+        const sortedData = data.sort(
+          (a, b) => (b.createdAt || 0) - (a.createdAt || 0)
+        );
         setRegisterData(sortedData);
       } catch (error) {
         console.error("Error fetching registration data: ", error);
@@ -53,9 +55,15 @@ const Requests = () => {
   // Filter and sort data based on search term and selected package
   const filteredData = registerData
     .filter((item) => {
-      const lowercaseName = item.step2.name ? item.step2.name.toLowerCase() : "";
-      const lowercaseEmail = item.step2.email ? item.step2.email.toLowerCase() : "";
-      const lowercasePhone = item.step2.number ? item.step2.number.toLowerCase() : "";
+      const lowercaseName = item.step2.name
+        ? item.step2.name.toLowerCase()
+        : "";
+      const lowercaseEmail = item.step2.email
+        ? item.step2.email.toLowerCase()
+        : "";
+      const lowercasePhone = item.step2.number
+        ? item.step2.number.toLowerCase()
+        : "";
       const lowercaseRequestDate = item.createdAt
         ? item.createdAt.toLocaleDateString().toLowerCase()
         : "";
@@ -75,7 +83,9 @@ const Requests = () => {
       if (open === 1) {
         return true;
       } else {
-        const selectedButtonLabel = buttons.find((btn) => btn.id === open).label;
+        const selectedButtonLabel = buttons.find(
+          (btn) => btn.id === open
+        ).label;
         return item.step1.package?.label === selectedButtonLabel;
       }
     });
@@ -99,13 +109,16 @@ const Requests = () => {
             </button>
           ))}
         </div>
-        <input
-          className="bg-[#161C27] py-2 px-6 mt-6"
-          type="search"
-          placeholder="Search"
-          value={searchTerm}
-          onChange={handleSearch}
-        />
+        <div className=" bg-[#161C27] py-2 px-6 rounded-md mt-6 flex items-center gap-3">
+          <img src={search} alt="" />
+          <input
+            className=" bg-transparent"
+            type="search"
+            placeholder="Search"
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+        </div>
       </div>
       <div className="mt-8">
         <div className="grid grid-cols-8 gap-6 pl-6 py-3 bg-[#161C27]">
@@ -126,7 +139,9 @@ const Requests = () => {
             >
               <h5 className="text-[13px] text-[#dddddd]">{item.step2.name}</h5>
               <h5 className="text-[13px] text-[#dddddd]">{item.step2.email}</h5>
-              <h5 className="text-[13px] text-[#dddddd]">{item.step2.number}</h5>
+              <h5 className="text-[13px] text-[#dddddd]">
+                {item.step2.number}
+              </h5>
               <h5 className="text-[13px] text-[#dddddd]">
                 {item.createdAt.toLocaleDateString()}
               </h5>
