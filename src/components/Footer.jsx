@@ -4,6 +4,7 @@ import img1 from "../assets/d1.png";
 import img2 from "../assets/y1.png";
 import img3 from "../assets/i1.png";
 import img4 from "../assets/t1.png";
+import { Link } from "react-scroll";
 const Footer = () => {
   return (
     <div className="bg-[#1b222e] py-8 mt-32">
@@ -11,11 +12,41 @@ const Footer = () => {
         <div className=" flex flex-col md:items-center justify-center gap-3">
           <img className=" w-[93px]" src={logo} alt="" />
           <div className=" md:flex md:items-center gap-12">
-            <li className=" list-none cursor-pointer">Home</li>
-            <li className=" list-none cursor-pointer md:mt-0 mt-1">Service</li>
-            <li className=" list-none cursor-pointer md:mt-0 mt-1">About Us</li>
-            <li className=" list-none cursor-pointer md:mt-0 mt-1">Packages</li>
-            <li className=" list-none cursor-pointer md:mt-0 mt-1">Contact</li>
+            <Link
+               to="home"
+               spy={true}
+               smooth={true}
+               offset={50}
+               duration={500}
+            className=" list-none cursor-pointer a">Home</Link>
+            <Link
+             to="service"
+             spy={true}
+             smooth={true}
+             offset={10}
+             duration={500}
+            className=" list-none cursor-pointer a md:mt-0 mt-1">Service</Link>
+            <Link
+                  to="about"
+                  spy={true}
+                  smooth={true}
+                  offset={50}
+                  duration={500}
+            className=" list-none cursor-pointer a md:mt-0 mt-1">About Us</Link>
+            <Link
+               to="packages"
+               spy={true}
+               smooth={true}
+               offset={50}
+               duration={500}
+            className=" list-none cursor-pointer a md:mt-0 mt-1">Packages</Link>
+            <Link
+                 to="contact"
+                 spy={true}
+                 smooth={true}
+                 offset={50}
+                 duration={500}
+            className=" list-none cursor-pointer a md:mt-0 mt-1">Contact</Link>
           </div>
         </div>
         <div className=" bg-[#dddddd] h-[1px]"></div>

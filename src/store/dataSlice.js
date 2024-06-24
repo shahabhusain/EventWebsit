@@ -22,6 +22,9 @@ const dataSlice = createSlice({
     addForm2data: (state, action) => {
       state.step2 = action.payload;
     },
+    clearItems: (state) => {
+      state.form.step1.items = [];
+    }
   },
 });
 
@@ -31,6 +34,7 @@ export const {
   fetchDataFailure,
   addForm1data,
   addForm2data,
+  clearItems
 } = dataSlice.actions;
 
 export default dataSlice.reducer;

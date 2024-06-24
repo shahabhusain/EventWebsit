@@ -20,21 +20,31 @@ const Reviews = () => {
   const step2 = formState?.step2 || {};
   const navigate = useNavigate();
 
+  // Calculate totalValue by iterating over step1.items and summing valid numeric values
   const totalValue = step1.items
-    ? step1.items.reduce((total, item) => total + parseFloat(item.subtitle), 0)
+    ? step1.items.reduce((total, item) => {
+        // Parse subtitle and title as floats, defaulting to 0 if they are not valid numbers
+        const subtitleValue = parseFloat(item.subtitle) || 0;
+        const titleValue = parseInt(item.title) || 0;
+        return total + subtitleValue + titleValue;
+      }, 0)
     : 0;
+
+  // Add package price to the totalValue
+  const packagePrice = parseFloat(step1.package?.title) || 0;
+  const totalWithPackage = totalValue + packagePrice;
 
   const formattedDate = step2?.dates
     ? new Date(step2.dates).toLocaleDateString()
     : null;
 
   const handleConfirm = async () => {
-    setActive(true); // Set active to true when starting the process
+    setActive(true);
     try {
       const registrationData = {
         step1,
         step2,
-        totalValue,
+        totalValue: totalWithPackage,
         createdAt: new Date(),
       };
 
@@ -54,7 +64,7 @@ const Reviews = () => {
       <h1 className="text-[33px] font-bold text-center mt-12">Review</h1>
       <div className="flex flex-col md:flex-row gap-12 md:w-[80%] w-[90%] mx-auto mt-12">
         <div className="md:w-[60%] md:text-start text-center">
-          <div className="bg-[#161C27] flex flex-col md:flex-row gap-4 md:gap-24 justify-center py-5 md:px-12 px-4 rounded-2xl">
+          <div className="bg-[#161C27] flex flex-col md:flex-row items-center gap-4 md:gap-24 justify-center py-5 md:px-8 px-4 rounded-2xl">
             <div className="flex flex-col gap-4">
               <h5 className="flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
                 Full Name
@@ -128,11 +138,19 @@ const Reviews = () => {
                   </h4>
                 ))}
             </div>
+            <div>
+              <h4 className="text-[#C5C5C5] flex items-center justify-between">
+                {step1.package?.label || null}
+                <span className="text-white">
+                  {step1.package?.title || null}
+                </span>
+              </h4>
+            </div>
           </div>
           <div className="bg-black py-3 px-4 rounded-xl mt-1">
             <h5 className="text-[#C5C5C5] flex items-center justify-between">
               Total
-              <span className="text-white">{totalValue.toFixed(2)}</span>
+              <span className="text-white">{totalWithPackage.toFixed(2)}</span>
             </h5>
           </div>
           <button

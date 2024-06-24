@@ -1,6 +1,7 @@
 import React from 'react'
 import over from '../assets/book.png'
 import { motion } from "framer-motion";
+import { Link } from 'react-router-dom';
 const Book = () => {
   const FadeInUpAnimation = {
     hidden: {
@@ -39,7 +40,7 @@ const Book = () => {
        <motion.h1 variants={FadeInUpAnimation} className=' text-[46px] font-[700]'><span className=' text-[#FFEDA4]'>Book</span> Now</motion.h1>
        <motion.div variants={FadeInUpAnimation} className=' bg-[#FFEDA4] h-[3px] mr-[422px]'></motion.div>
        <motion.p variants={FadeInUpAnimation} className=' text-[#C5C5C5] text-[14px] font-[400]'>Secure your spot in creating magical moments. Take the first step towards your dream event by booking with us today. Let's embark on this journey together, ensuring every detail is perfectly orchestrated to exceed your expectations.</motion.p>
-       <motion.button variants={FadeInUpAnimation} className=' bg-[#FFEDA4] text-black py-3 px-6 w-fit rounded-md'>Book Now</motion.button>
+       <Link to="/form" variants={FadeInUpAnimation} className=' bg-[#FFEDA4] text-black py-3 px-6 w-fit rounded-md b'>Book Now</Link>
     </motion.div>
 
     <img className=' md:w-1/2 md:mt-0 mt-5' src={over} alt="" />

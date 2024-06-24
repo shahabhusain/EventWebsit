@@ -102,12 +102,12 @@ const Packages = () => {
       <div className="grid md:grid-cols-2 grid-cols-1 gap-12 mt-5 mx-12">
         {packages.map((pkg) => (
           <div key={pkg.id} className="">
-            <div className="bg-[#161C27] py-6 h-full px-6 rounded-md">
+            <div className="bg-[#161C27] py-6 h-full px-6 rounded-md ">
               <div className="flex items-center justify-between">
                 <h1 className="text-[#FFEDA4] text-[27px] font-bold">
                   {pkg.name}
                 </h1>
-                <h2 className="flex flex-col text-[24px] font-semibold">
+                <h2 className="flex flex-col text-[24px] font-semibold leading-[1.8rem]">
                   {pkg.price}
                   <span className="text-[14px] font-normal">
                     ({pkg.discount})

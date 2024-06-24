@@ -50,13 +50,15 @@ const Forems2 = () => {
   };
 
   const handleClose = () => {
-    setTempAddedItems([]); // Clear tempAddedItems when modal is closed
+    setTempAddedItems([]);
     setOpen(false);
   };
 
   const handleOpen = (e) => {
     if (e.value === "Individual") {
       setOpen(true);
+    } else {
+      setOpen(false); // Close the modal if "Custom" is selected
     }
   };
 
@@ -132,6 +134,21 @@ const Forems2 = () => {
     setOpen(false);
   };
 
+  const handleChange = (selectedOption) => {
+    setChoose(selectedOption);
+    handleOpen(selectedOption);
+
+    if (selectedOption.value == "Custom") {
+      console.log("select option => ", selectedOption);
+      const data = {
+        items: [],
+      };
+
+      dispatch(addForm1data(data));
+      setTitleArray([]);
+    }
+  };
+
   return (
     <div className="md:w-[60%] mx-auto bg-[#161C27] h-screen pb-12 md:px-16 px-4 rounded-md">
       <h1 className="md:text-[32px] text-[25px] font-bold text-center pt-24">
@@ -172,18 +189,21 @@ const Forems2 = () => {
         <Select
           placeholder={"Choose a Package"}
           styles={customStyles}
-          onChange={(selectedOption) => {
-            setChoose(selectedOption);
-            handleOpen(selectedOption);
-          }}
+          onChange={handleChange}
           options={options2.filter((item) => item.Id === selectedItem?.id)}
           required
           value={
             choose && options2.find((option) => option.value === choose?.value)
           }
+          formatOptionLabel={(option) => (
+            <div className=" flex justify-between">
+              <span>{option.label}</span>
+              {option.title && <span>({option.title})</span>}
+            </div>
+          )}
         />
 
-        {!open && (
+        {choose?.value !== "Custom" && (
           <div className="mt-3">
             <p
               onClick={() => setOpen(true)}

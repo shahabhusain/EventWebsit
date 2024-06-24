@@ -62,12 +62,12 @@ const Packages = () => {
           <div className="grid md:grid-cols-2 grid-cols-1 gap-12 mt-16 md:mx-12">
             {packages.map((pkg) => (
               <div key={pkg.id} className="hover:scale-[1.05] transition-all duration-300 ease-in-out">
-                <motion.div variants={FadeInUpAnimation} className="bg-[#0C0F16] py-6 h-[300px] px-6 kha rounded-md overflow-y-auto">
+                <motion.div variants={FadeInUpAnimation} className="bg-[#0C0F16] py-6 md:h-[270px] h-[300px] px-6 kha rounded-md overflow-y-auto">
                   <div className="flex items-center justify-between">
                     <h1 className="text-[#FFEDA4] md:text-[27px] text-[20px] font-bold">
                       {pkg.name}
                     </h1>
-                    <h2 className="flex flex-col md:text-[24px] text-[12px] font-semibold">
+                    <h2 className="flex flex-col md:text-[24px] text-[12px] md:leading-[1.8rem] leading-[1.2rem] font-semibold">
                       {pkg.price}
                       <span className="md:text-[14px] text-[10px] font-normal">
                         ({pkg.discount})
@@ -89,7 +89,7 @@ const Packages = () => {
             ))}
 
             <div className="hover:scale-[1.05] transition-all duration-300 ease-in-out ">
-              <motion.div variants={FadeInUpAnimation} className="bg-[#0C0F16] py-6 px-6 h-[300px] rounded-md flex flex-col gap-4">
+              <motion.div variants={FadeInUpAnimation} className="bg-[#0C0F16] py-6 px-6 md:h-[270px] h-[300px] rounded-md flex flex-col gap-4">
                 <h1 className="text-[#FFEDA4] md:text-[27px] font-bold">CUSTOM</h1>
                 <p>A package tailored to your needs</p>
                 <p>

@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../Config/Firebase";
 import search from "../../assets/Search.png";
+
 const Requests = () => {
   const [registerData, setRegisterData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [open, setOpen] = useState(1);
+  const [openRequest, setOpenRequest] = useState(true); // true for pending, false for completed
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,7 +23,6 @@ const Requests = () => {
           data.push({ id: doc.id, ...item });
         });
 
-        // Sort data by createdAt in descending order
         const sortedData = data.sort(
           (a, b) => (b.createdAt || 0) - (a.createdAt || 0)
         );
@@ -42,7 +43,6 @@ const Requests = () => {
     setOpen(index);
   };
 
-  // Button data
   const buttons = [
     { id: 1, label: "All" },
     { id: 2, label: "Signature" },
@@ -52,7 +52,6 @@ const Requests = () => {
     { id: 6, label: "Custom" },
   ];
 
-  // Filter and sort data based on search term and selected package
   const filteredData = registerData
     .filter((item) => {
       const lowercaseName = item.step2.name
@@ -88,40 +87,45 @@ const Requests = () => {
         ).label;
         return item.step1.package?.label === selectedButtonLabel;
       }
-    });
+    })
+    .filter((item) => openRequest ? item.status !== "completed" : item.status === "completed");
 
   return (
     <div className="mx-4">
       <h1 className="text-[33px] font-bold text-white mt-4">Requests</h1>
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4 mt-6">
-          {buttons.map((button) => (
-            <button
-              key={button.id}
-              onClick={() => handleClick(button.id)}
-              className={`${
-                open === button.id
-                  ? "bg-[#161C27] rounded-md py-2 px-6 text-[12px]"
-                  : "text-[12px] border-[1px] border-[#1e2635] py-2 px-6 rounded-md"
-              } text-[#dddddd]`}
-            >
-              {button.label}
-            </button>
-          ))}
+        <div className=" flex items-center gap-2">
+          <button onClick={() => setOpenRequest(true)} className={`${openRequest ? "bg-[#161C27] py-2 mt-6 px-6 rounded-md" : "border-[1px] border-[#161C27] py-2 mt-6 px-6 rounded-md"}`}>Pending</button>
+          <button onClick={() => setOpenRequest(false)} className={`${!openRequest ? "bg-[#161C27] py-2 mt-6 px-6 rounded-md" : "border-[1px] border-[#161C27] py-2 mt-6 px-6 rounded-md"}`}>Completed</button>
         </div>
-        <div className=" bg-[#161C27] py-2 px-6 rounded-md mt-6 flex items-center gap-3">
-          <img src={search} alt="" />
-          <input
-            className=" bg-transparent"
-            type="search"
-            placeholder="Search"
-            value={searchTerm}
-            onChange={handleSearch}
-          />
+        <div className="flex items-center gap-2">
+          <div className="bg-[#161C27] py-2 px-6 rounded-md mt-6 flex items-center gap-3">
+            <img src={search} alt="" />
+            <input
+              className="bg-transparent"
+              type="search"
+              placeholder="Search"
+              value={searchTerm}
+              onChange={handleSearch}
+            />
+          </div>
+          <div className="bg-[#161C27] py-2 px-6 rounded-md mt-6 cursor-pointer">
+            <select
+              className="bg-transparent text-[12px] text-[#dddddd] cursor-pointer outline-none"
+              value={open}
+              onChange={(e) => setOpen(parseInt(e.target.value))}
+            >
+              {buttons.map((button) => (
+                <option className=" w-full bg-black" key={button.id} value={button.id}>
+                  {button.label}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
       <div className="mt-8">
-        <div className="grid grid-cols-8 gap-6 pl-6 py-3 bg-[#161C27]">
+        <div className="grid grid-cols-8 gap-6 pl-6 py-2 bg-[#161C27] rounded-md">
           <h4>Name</h4>
           <h4>E-mail Address</h4>
           <h4>Phone Number</h4>
@@ -132,10 +136,10 @@ const Requests = () => {
           <h4>Action</h4>
         </div>
         <div className="flex flex-col gap-3 mt-3">
-          {filteredData.map((item) => (
+         {filteredData.map((item) => (
             <div
               key={item.id}
-              className="grid grid-cols-8 gap-6 bg-[#161C27] py-3 pl-6"
+              className="grid grid-cols-8 gap-6 bg-[#161C27] py-3 pl-6 rounded-md"
             >
               <h5 className="text-[13px] text-[#dddddd]">{item.step2.name}</h5>
               <h5 className="text-[13px] text-[#dddddd]">{item.step2.email}</h5>
@@ -146,7 +150,7 @@ const Requests = () => {
                 {item.createdAt.toLocaleDateString()}
               </h5>
               <h5 className="text-[13px] text-[#dddddd]">
-                {item.createdAt.toLocaleDateString()}
+                {new Date(item?.step2?.dates).toLocaleDateString()}
               </h5>
               <h5 className="text-[13px] text-[#EDBD57] bg-[#EDBD571A] w-fit px-2">
                 {item.step1.package?.label}
