@@ -17,7 +17,7 @@ const Form3 = () => {
   const handleClose = () => setOpen(false);
   const { step2 } = useSelector((state) => state.register.form) || {}; // Provide default empty object
 
-  const [name, setName] = useState(step2?.name || ""); // Use optional chaining to prevent error
+  const [name, setName] = useState(step2?.name || ""); 
   const [email, setEmail] = useState(step2?.email || "");
   const [message, setMessage] = useState(step2?.message || "");
   const [dates, setDates] = useState(
@@ -97,9 +97,9 @@ const Form3 = () => {
     const email = e.target.value;
   
     // Check if the length of the email exceeds 20 characters
-    if (email.length > 20) {
+    if (email.length > 45) {
       // If yes, truncate the email to 20 characters
-      setEmail(email.slice(0, 20));
+      setEmail(email.slice(0, 45));
     } else {
       // If not, update the email state with the entered value
       setEmail(email);
@@ -167,7 +167,7 @@ const Form3 = () => {
           <label>Contact Number</label>
           <div className=" bg-[#0C0F16] py-3 px-6 rounded-md">
             <PhoneInput
-              country={"pk"}
+              country={"ae"}
               value={number}
               onChange={(phone) => setNumber(phone)}
               containerClass="custom-phone-input"
@@ -220,7 +220,7 @@ const Form3 = () => {
 
         <div className="flex items-center gap-3 mt-8">
           <Link
-            to="/form"
+            to="/pack"
             className="py-3 w-full text-center rounded-md border-[#ddd] border-[2px] b1"
           >
             Go Back

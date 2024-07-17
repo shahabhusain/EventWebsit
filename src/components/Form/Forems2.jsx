@@ -5,13 +5,7 @@ import Select from "react-select";
 import { useDispatch, useSelector } from "react-redux";
 import { addForm1data } from "../../store/dataSlice";
 import { useNavigate } from "react-router-dom";
-import {
-  ModalItem,
-  customStyles,
-  options,
-  options1,
-  options2,
-} from "../Data/data";
+import { ModalItem, customStyles, options, options1 } from "../Data/data";
 import close from "../../assets/close.png";
 
 const Forems2 = () => {
@@ -20,13 +14,10 @@ const Forems2 = () => {
 
   const formOneState = useSelector((s) => s).register.form.step1;
   const [for1, setFor1] = useState(formOneState.plan || null);
-  const [choose, setChoose] = useState(formOneState.package || {});
   const [titleArray, setTitleArray] = useState(formOneState?.items || []);
   const [selectedItem, setSelectedItem] = useState(formOneState.type || {});
   const [open, setOpen] = useState(false);
-  const [openItems, setOpenItems] = useState(
-    Array(ModalItem.length).fill(false)
-  );
+  const [openItems, setOpenItems] = useState(Array(ModalItem.length).fill(false));
   const [tempAddedItems, setTempAddedItems] = useState([]);
 
   useEffect(() => {
@@ -42,11 +33,10 @@ const Forems2 = () => {
     const data = {
       type: selectedItem,
       plan: for1,
-      package: choose,
       items: titleArray,
     };
     dispatch(addForm1data(data));
-    navigate("/reg");
+    navigate("/pack");
   };
 
   const handleClose = () => {
@@ -76,14 +66,12 @@ const Forems2 = () => {
     const data = {
       type: selectedItem,
       plan: for1,
-      package: choose,
       items: updatedData,
     };
 
     dispatch(addForm1data(data));
     localStorage.setItem("type", selectedItem);
     localStorage.setItem("for1", for1);
-    localStorage.setItem("choose", choose);
     localStorage.setItem("titleArray", JSON.stringify(updatedData));
   };
 
@@ -94,14 +82,12 @@ const Forems2 = () => {
     const data = {
       type: selectedItem,
       plan: for1,
-      package: choose,
       items: updatedArray,
     };
 
     dispatch(addForm1data(data));
     localStorage.setItem("type", selectedItem);
     localStorage.setItem("for1", for1);
-    localStorage.setItem("choose", choose);
     localStorage.setItem("titleArray", JSON.stringify(updatedArray));
   };
 
@@ -115,15 +101,6 @@ const Forems2 = () => {
     dispatch(addForm1data(data));
   };
 
-  const handeSelectTwo = (e) => {
-    setChoose(null);
-    const data = {
-      choose: e,
-      package: null,
-    };
-    dispatch(addForm1data(data));
-  };
-
   const handleGoBack = () => {
     const updatedTitleArray = titleArray.filter(
       (item) =>
@@ -132,21 +109,6 @@ const Forems2 = () => {
     setTitleArray(updatedTitleArray); // Remove only the items added during the modal session
     setTempAddedItems([]); // Clear tempAddedItems when "Go Back" is clicked
     setOpen(false);
-  };
-
-  const handleChange = (selectedOption) => {
-    setChoose(selectedOption);
-    handleOpen(selectedOption);
-
-    if (selectedOption.value == "Custom") {
-      console.log("select option => ", selectedOption);
-      const data = {
-        items: [],
-      };
-
-      dispatch(addForm1data(data));
-      setTitleArray([]);
-    }
   };
 
   return (
@@ -165,7 +127,6 @@ const Forems2 = () => {
         <Select
           onChange={(e) => {
             handeSelectOne(e);
-            handeSelectTwo(e);
           }}
           placeholder={"What type of event are you planning?"}
           styles={customStyles}
@@ -186,52 +147,33 @@ const Forems2 = () => {
           }
         />
 
-        <Select
-          placeholder={"Choose a Package"}
-          styles={customStyles}
-          onChange={handleChange}
-          options={options2.filter((item) => item.Id === selectedItem?.id)}
-          required
-          value={
-            choose && options2.find((option) => option.value === choose?.value)
-          }
-          formatOptionLabel={(option) => (
-            <div className=" flex justify-between">
-              <span>{option.label}</span>
-              {option.title && <span>({option.title})</span>}
-            </div>
-          )}
-        />
-
-        {choose?.value !== "Custom" && (
-          <div className="mt-3">
-            <p
-              onClick={() => setOpen(true)}
-              className="flex items-center gap-3 bg-[#0C0F16]  py-3 px-6 rounded-full w-fit cursor-pointer"
-            >
-              <img src={icon} alt="" /> click to add items
-            </p>
-            <div className="flex gap-2 items-center flex-wrap mt-4">
-              {titleArray.map((item, index) => (
-                <div
-                  key={index}
-                  className="border-[2px] border-[#ddd] py-3 rounded-full px-6 flex items-center gap-4"
-                >
-                  <h5 className="text-[13px] text-[#dddddd]">{item.title}</h5>
-                  <h5 className="text-[13px] text-[#dddddd]">
-                    {item.subtitle}
-                  </h5>
-                  <img
-                    src={close}
-                    alt="close"
-                    onClick={() => removeItem(item.title)}
-                    className="cursor-pointer"
-                  />
-                </div>
-              ))}
-            </div>
+        <div className="mt-3">
+          <p
+            onClick={() => setOpen(true)}
+            className="flex items-center gap-3 bg-[#0C0F16]  py-3 px-6 rounded-full w-fit cursor-pointer"
+          >
+            <img src={icon} alt="" /> click to add items
+          </p>
+          <div className="flex gap-2 items-center flex-wrap mt-4">
+            {titleArray.map((item, index) => (
+              <div
+                key={index}
+                className="border-[2px] border-[#ddd] py-3 rounded-full px-6 flex items-center gap-4"
+              >
+                <h5 className="text-[13px] text-[#dddddd]">{item.title}</h5>
+                <h5 className="text-[13px] text-[#dddddd]">
+                  {item.subtitle}
+                </h5>
+                <img
+                  src={close}
+                  alt="close"
+                  onClick={() => removeItem(item.title)}
+                  className="cursor-pointer"
+                />
+              </div>
+            ))}
           </div>
-        )}
+        </div>
         <button
           type="submit"
           className="bg-[#FFEDA4] text-center py-3 px-6 text-black rounded-md"

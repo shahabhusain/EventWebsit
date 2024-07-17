@@ -5,6 +5,7 @@ const dataSlice = createSlice({
   initialState: {
     step1: {},
     step2: {},
+    selectedPackage: {},
   },
 
   reducers: {
@@ -24,7 +25,20 @@ const dataSlice = createSlice({
     },
     clearItems: (state) => {
       state.form.step1.items = [];
-    }
+    },
+    addSelectedPackage(state, action) {
+      if (action.payload.id === "custom") {
+        state.selectedPackage = {
+          ...action.payload,
+          name: "Custom Package",
+          price: "Custom Price",
+          features: ["Custom Feature 1", "Custom Feature 2"], // Add custom features here
+          customText: "Custom package selected!"
+        };
+      } else {
+        state.selectedPackage = action.payload;
+      }
+    },
   },
 });
 
@@ -34,7 +48,8 @@ export const {
   fetchDataFailure,
   addForm1data,
   addForm2data,
-  clearItems
+  clearItems,
+  addSelectedPackage,
 } = dataSlice.actions;
 
 export default dataSlice.reducer;

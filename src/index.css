@@ -245,5 +245,49 @@ td{
 }
 
 
+/* Custom styles for the select element */
+.custom-select {
+  background-color: #161C27;
+  padding: 10px 30px;
+  font-size: 16px;
+  border-radius: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Custom styles for the option elements */
+.custom-select option {
+  background-color: #161C27;
+  color: #fff;
+}
+
+/* To remove the default arrow */
+.custom-select-container {
+  position: relative;
+  display: inline-block;
+}
+
+
+.custom-select-container::after {
+  content: '▼';
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #fff;
+ 
+}
+
+.custom-select:focus {
+  border: none;
+  outline: none;
+}
+
+input:focus{
+  border: none;
+  outline: none;
+}
 
 

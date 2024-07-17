@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import menu from "../assets/menu.png";
 import { Link } from "react-scroll";
-import { motion } from "framer-motion";
 import Btn from "./Btn";
 
 const Header = () => {
@@ -17,20 +16,7 @@ const Header = () => {
 
     return () => window.removeEventListener("scroll", scrollHandler);
   }, []);
-  const FadeInUpAnimation = {
-    hidden: {
-      opacity: 0,
-      y: 100,
-    },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        staggerChildren: 0.3,
-        duration: 1,
-      },
-    },
-  };
+
   const [openDesktop, setOpenDesktop] = useState(0);
   const [openMobile, setOpenMobile] = useState(false);
 
@@ -40,27 +26,16 @@ const Header = () => {
   };
 
   return (
-    <motion.div
-    initial={{
-      opacity: 0,
-      y: 0
-    }}
-    animate={{
-      opacity: 1,
-      y: 0
-    }}
+    <div
     className=" md:pt-5" id="home">
-      <motion.div
-        initial="hidden"
-        animate="show"
-        variants={FadeInUpAnimation}
+      <div
       className="w-[100%] md:flex hidden items-center justify-center z-[1000]  ">
         <div className={` fixed ${isActive ? " top-0" : "top-4"} w-[80%] bg-[#161C27] z-[100] py-4 flex items-center justify-between px-12 ${
         isActive
           ? "bg-[#161C27] shadow-md transition-all fixed w-full duration-300 ease-in-out"
           : " px-12"
       }`}>
-          <img src={logo} alt="" />
+          <img className=" w-[100px]" src={logo} alt="" />
           <div className="flex items-center gap-12">
             <Link
               to="home"
@@ -130,18 +105,15 @@ const Header = () => {
           </div>
           <Btn />
         </div>
-      </motion.div>
+      </div>
 
       <div className=" md:hidden  fixed z-[1000] w-full ">
         <div className=" flex items-center justify-between  bg-[#232c3b] py-4 px-4 ">
           <img onClick={() => setOpenMobile(!openMobile)} src={menu} alt="" />
-          <img src={logo} alt="" />
+          <img className="w-[100px]" src={logo} alt="" />
         </div>
         {openMobile && (
-          <motion.div
-          initial="hidden"
-          whileInView="show"
-          variants={FadeInUpAnimation}
+          <div
           className="flex flex-col w-[80%] bg-[#232c3b] h-screen ">
             <div className=" flex flex-col items-center gap-12">
               <Link
@@ -213,10 +185,10 @@ const Header = () => {
              <div className=" ml-[6rem] mt-8">
              <Btn />
              </div>
-          </motion.div>
+          </div>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 };
 

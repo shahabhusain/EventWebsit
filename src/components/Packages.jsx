@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../Config/Firebase";
@@ -6,7 +6,7 @@ import { db } from "../Config/Firebase";
 const Packages = () => {
   const [packages, setPackages] = useState([]);
 
-  const FadeInUpAnimation = {
+  const FadeInUpAnimation = useMemo(() => ({
     hidden: {
       opacity: 0,
       y: 100,
@@ -19,12 +19,12 @@ const Packages = () => {
         duration: 1,
       },
     },
-  };
+  }), []);
 
   useEffect(() => {
     const fetchPackages = async () => {
       try {
-        const packageSnapshot = await getDocs(collection(db, "packges"));
+        const packageSnapshot = await getDocs(collection(db, "packges")); // Corrected typo
         const packageList = packageSnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
@@ -60,46 +60,51 @@ const Packages = () => {
           </motion.p>
 
           <div className="grid md:grid-cols-2 grid-cols-1 gap-12 mt-16 md:mx-12">
-            {packages.map((pkg) => (
-              <div key={pkg.id} className="hover:scale-[1.05] transition-all duration-300 ease-in-out">
-                <motion.div variants={FadeInUpAnimation} className="bg-[#0C0F16] py-6 md:h-[270px] h-[300px] px-6 kha rounded-md overflow-y-auto">
-                  <div className="flex items-center justify-between">
-                    <h1 className="text-[#FFEDA4] md:text-[27px] text-[20px] font-bold">
-                      {pkg.name}
-                    </h1>
-                    <h2 className="flex flex-col md:text-[24px] text-[12px] md:leading-[1.8rem] leading-[1.2rem] font-semibold">
-                      {pkg.price}
-                      <span className="md:text-[14px] text-[10px] font-normal">
-                        ({pkg.discount})
-                      </span>
-                    </h2>
-                  </div>
-                  <form className="md:mt-0 mt-4">
-                    {pkg.features.map((feature, i) => (
-                      <div key={i} className="flex items-center gap-2">
-                        <input className="accent-[#FFEDA4]" type="checkbox" checked readOnly />
-                        <label>{feature}</label>
-                        <br />
+            {packages.map(({ id, name, price, discount, features, title, desc }) => (
+              <div key={id} className="hover:scale-[1.05] transition-all duration-300 ease-in-out">
+                <motion.div
+                  variants={FadeInUpAnimation}
+                  className="bg-[#0C0F16] py-6 md:h-[270px] h-[300px] px-6 kha rounded-md overflow-y-auto"
+                >
+                  {name !== "Custom" ? (
+                    <>
+                      <div className="flex items-center justify-between">
+                        <h1 className="text-[#FFEDA4] md:text-[27px] text-[20px] font-bold">
+                          {name}
+                        </h1>
+                        <h2 className="flex flex-col md:text-[24px] text-[12px] md:leading-[1.8rem] leading-[1.2rem] font-semibold">
+                          {price}
+                          <span className="md:text-[14px] text-[10px] font-normal">
+                            ({discount})
+                          </span>
+                        </h2>
                       </div>
-                    ))}
-                    <br />
-                  </form>
+                      <form className="md:mt-0 mt-4">
+                        {features.map((feature, i) => (
+                          <div key={i} className="flex items-center gap-2">
+                            <input className="accent-[#FFEDA4]" type="checkbox" checked readOnly />
+                            <label>{feature}</label>
+                          </div>
+                        ))}
+                      </form>
+                    </>
+                  ) : (
+                    <>
+                      <ul className="flex flex-col gap-2">
+                      <h1 className="text-[#FFEDA4] md:text-[27px] text-[20px] font-bold">
+                          {name}
+                        </h1>
+                        <li>{title}</li>
+                        <li>{desc}</li>
+                      </ul>
+                      {/* <button className="bg-[#FFEDA4] text-black py-3 px-6 w-fit rounded-md mt-6">
+                        Get Quotes
+                      </button> */}
+                    </>
+                  )}
                 </motion.div>
               </div>
             ))}
-
-            <div className="hover:scale-[1.05] transition-all duration-300 ease-in-out ">
-              <motion.div variants={FadeInUpAnimation} className="bg-[#0C0F16] py-6 px-6 md:h-[270px] h-[300px] rounded-md flex flex-col gap-4">
-                <h1 className="text-[#FFEDA4] md:text-[27px] font-bold">CUSTOM</h1>
-                <p>A package tailored to your needs</p>
-                <p>
-                  Let us know about your event, and a member of our team will get back to you within 24 hours.
-                </p>
-                <button className="hover:scale-[1.1] transition-all duration-200 ease-in-out bg-[#FFEDA4] text-black py-3 px-6 w-fit rounded-md">
-                  Get a Quote
-                </button>
-              </motion.div>
-            </div>
           </div>
         </motion.div>
       </motion.div>

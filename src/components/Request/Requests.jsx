@@ -7,8 +7,8 @@ import search from "../../assets/Search.png";
 const Requests = () => {
   const [registerData, setRegisterData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [open, setOpen] = useState(1);
-  const [openRequest, setOpenRequest] = useState(true); // true for pending, false for completed
+  const [open, setOpen] = useState("All");
+  const [sortCriteria, setSortCriteria] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,7 +18,7 @@ const Requests = () => {
         querySnapshot.forEach((doc) => {
           const item = doc.data();
           if (item.createdAt && item.createdAt.toDate) {
-            item.createdAt = item.createdAt.toDate(); // Parse Firestore Timestamp to Date
+            item.createdAt = item.createdAt.toDate();
           }
           data.push({ id: doc.id, ...item });
         });
@@ -39,88 +39,110 @@ const Requests = () => {
     setSearchTerm(event.target.value);
   };
 
-  const handleClick = (index) => {
-    setOpen(index);
+  const handleButtonClick = (label) => {
+    setOpen(label);
   };
+  const handleSortChange = (event) => {
+    setSortCriteria(event.target.value);
+  };
+  const sortData = (data) => {
+    if (sortCriteria === "Request Date") {
+      return data.sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0));
+    } else if (sortCriteria === "Event Date") {
+      return data.sort(
+        (a, b) => new Date(a.step2?.dates || 0) - new Date(b.step2?.dates || 0)
+      );
+    }
+    return data;
+  };
+  const packageLabels = ["All", "Signature", "Deluxe", "Premium", "Custom"];
 
-  const buttons = [
-    { id: 1, label: "All" },
-    { id: 2, label: "Signature" },
-    { id: 3, label: "Deluxe" },
-    { id: 4, label: "Premium" },
-    { id: 5, label: "Individual" },
-    { id: 6, label: "Custom" },
-  ];
+  // const filteredData = registerData.filter((item) => {
+  //   const lowercaseName = item.step2?.name?.toLowerCase() || "";
+  //   const lowercaseEmail = item.step2?.email?.toLowerCase() || "";
+  //   const lowercasePhone = item.step2?.number?.toLowerCase() || "";
+  //   const lowercaseRequestDate = item.createdAt
+  //     ? item.createdAt.toLocaleDateString().toLowerCase()
+  //     : "";
+  //   const lowercasePackage = item.step1?.packageName || "";
+  //   const searchTermLower = searchTerm.toLowerCase();
+  //   console.log("lower", lowercasePackage);
+  //   // Check if the item matches the search term and selected package label
+  //   return (
+  //     (lowercaseName.includes(searchTermLower) ||
+  //       lowercaseEmail.includes(searchTermLower) ||
+  //       lowercasePhone.includes(searchTermLower) ||
+  //       lowercaseRequestDate.includes(searchTermLower)) &&
+  //     (open === "All" || lowercasePackage === open)
+  //   );
+  // });
 
-  const filteredData = registerData
-    .filter((item) => {
-      const lowercaseName = item.step2.name
-        ? item.step2.name.toLowerCase()
-        : "";
-      const lowercaseEmail = item.step2.email
-        ? item.step2.email.toLowerCase()
-        : "";
-      const lowercasePhone = item.step2.number
-        ? item.step2.number.toLowerCase()
-        : "";
+  const filteredData = sortData(
+    registerData.filter((item) => {
+      const lowercaseName = item.step2?.name?.toLowerCase() || "";
+      const lowercaseEmail = item.step2?.email?.toLowerCase() || "";
+      const lowercasePhone = item.step2?.number?.toLowerCase() || "";
       const lowercaseRequestDate = item.createdAt
         ? item.createdAt.toLocaleDateString().toLowerCase()
         : "";
-      const lowercasePackage = item.step1.package
-        ? item.step1.package.label.toLowerCase()
-        : "";
+      const lowercasePackage = item.step1?.packageName || "";
       const searchTermLower = searchTerm.toLowerCase();
+
       return (
-        lowercaseName.includes(searchTermLower) ||
-        lowercaseEmail.includes(searchTermLower) ||
-        lowercasePhone.includes(searchTermLower) ||
-        lowercaseRequestDate.includes(searchTermLower) ||
-        lowercasePackage.includes(searchTermLower)
+        (lowercaseName.includes(searchTermLower) ||
+          lowercaseEmail.includes(searchTermLower) ||
+          lowercasePhone.includes(searchTermLower) ||
+          lowercaseRequestDate.includes(searchTermLower)) &&
+        (open === "All" || lowercasePackage === open)
       );
     })
-    .filter((item) => {
-      if (open === 1) {
-        return true;
-      } else {
-        const selectedButtonLabel = buttons.find(
-          (btn) => btn.id === open
-        ).label;
-        return item.step1.package?.label === selectedButtonLabel;
-      }
-    })
-    .filter((item) => openRequest ? item.status !== "completed" : item.status === "completed");
+  );
+  console.log("filteredData", filteredData);
 
   return (
     <div className="mx-4">
       <h1 className="text-[33px] font-bold text-white mt-4">Requests</h1>
       <div className="flex items-center justify-between">
-        <div className=" flex items-center gap-2">
-          <button onClick={() => setOpenRequest(true)} className={`${openRequest ? "bg-[#161C27] py-2 mt-6 px-6 rounded-md" : "border-[1px] border-[#161C27] py-2 mt-6 px-6 rounded-md"}`}>Pending</button>
-          <button onClick={() => setOpenRequest(false)} className={`${!openRequest ? "bg-[#161C27] py-2 mt-6 px-6 rounded-md" : "border-[1px] border-[#161C27] py-2 mt-6 px-6 rounded-md"}`}>Completed</button>
-        </div>
         <div className="flex items-center gap-2">
-          <div className="bg-[#161C27] py-2 px-6 rounded-md mt-6 flex items-center gap-3">
+          {packageLabels.map((label) => (
+            <button
+              key={label}
+              className={`${
+                open === label
+                  ? "bg-[#161C27] py-2 mt-6 px-6 rounded-md text-white"
+                  : "border-[1px] border-[#161C27] py-2 mt-6 px-6 rounded-md text-[#61666e]"
+              }`}
+              onClick={() => handleButtonClick(label)}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+        <div className="flex items-center gap-2 mt-6">
+          <div className="">
+            <div className="custom-select-container ">
+              <select
+                className="custom-select"
+                value={sortCriteria}
+                onChange={handleSortChange}
+              >
+                <option value="" disabled>
+                  Sort by
+                </option>
+                <option value="Event Date">Event Date</option>
+                <option value="Request Date">Request Date</option>
+              </select>
+            </div>
+          </div>
+          <div className="bg-[#161C27] py-2 px-6 rounded-md  flex items-center gap-3">
             <img src={search} alt="" />
             <input
-              className="bg-transparent"
+              className="bg-transparent text-white"
               type="search"
               placeholder="Search"
               value={searchTerm}
               onChange={handleSearch}
             />
-          </div>
-          <div className="bg-[#161C27] py-2 px-6 rounded-md mt-6 cursor-pointer">
-            <select
-              className="bg-transparent text-[12px] text-[#dddddd] cursor-pointer outline-none"
-              value={open}
-              onChange={(e) => setOpen(parseInt(e.target.value))}
-            >
-              {buttons.map((button) => (
-                <option className=" w-full bg-black" key={button.id} value={button.id}>
-                  {button.label}
-                </option>
-              ))}
-            </select>
           </div>
         </div>
       </div>
@@ -136,24 +158,28 @@ const Requests = () => {
           <h4>Action</h4>
         </div>
         <div className="flex flex-col gap-3 mt-3">
-         {filteredData.map((item) => (
+          {filteredData.map((item) => (
             <div
               key={item.id}
               className="grid grid-cols-8 gap-6 bg-[#161C27] py-3 pl-6 rounded-md"
             >
-              <h5 className="text-[13px] text-[#dddddd]">{item.step2.name}</h5>
-              <h5 className="text-[13px] text-[#dddddd]">{item.step2.email}</h5>
+              <h5 className="text-[13px] text-[#dddddd]">{item.step2?.name}</h5>
               <h5 className="text-[13px] text-[#dddddd]">
-                {item.step2.number}
+                {item.step2?.email}
               </h5>
               <h5 className="text-[13px] text-[#dddddd]">
-                {item.createdAt.toLocaleDateString()}
+                {item.step2?.number}
               </h5>
               <h5 className="text-[13px] text-[#dddddd]">
-                {new Date(item?.step2?.dates).toLocaleDateString()}
+                {item.createdAt?.toLocaleDateString()}
+              </h5>
+              <h5 className="text-[13px] text-[#dddddd]">
+                {item.step2?.dates
+                  ? new Date(item.step2.dates).toLocaleDateString()
+                  : ""}
               </h5>
               <h5 className="text-[13px] text-[#EDBD57] bg-[#EDBD571A] w-fit px-2">
-                {item.step1.package?.label}
+                {item.step1?.packageName || "N/A"}
               </h5>
               <h5 className="text-[13px] text-[#dddddd]">{item.totalValue}</h5>
               <h5>

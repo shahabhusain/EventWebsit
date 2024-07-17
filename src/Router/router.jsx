@@ -14,6 +14,7 @@ import Request from "../Pages/Request";
 import PackagesPage from "../Pages/PackagesPage";
 import Reviews from "../components/Review/Reviews";
 import Reviewws from "../components/Request/Reviewws";
+import Package from "../components/Form/Package";
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -23,6 +24,7 @@ export const router = createBrowserRouter(
         <Route path="/reg" element={<Registration />} />
         <Route path="/reg/review" element={<Reviews />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/pack" element={<Package />} />
       </Route>
 
       <Route path="/admin" element={<Layout1 />}>
