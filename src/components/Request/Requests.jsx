@@ -57,26 +57,6 @@ const Requests = () => {
   };
   const packageLabels = ["All", "Signature", "Deluxe", "Premium", "Custom"];
 
-  // const filteredData = registerData.filter((item) => {
-  //   const lowercaseName = item.step2?.name?.toLowerCase() || "";
-  //   const lowercaseEmail = item.step2?.email?.toLowerCase() || "";
-  //   const lowercasePhone = item.step2?.number?.toLowerCase() || "";
-  //   const lowercaseRequestDate = item.createdAt
-  //     ? item.createdAt.toLocaleDateString().toLowerCase()
-  //     : "";
-  //   const lowercasePackage = item.step1?.packageName || "";
-  //   const searchTermLower = searchTerm.toLowerCase();
-  //   console.log("lower", lowercasePackage);
-  //   // Check if the item matches the search term and selected package label
-  //   return (
-  //     (lowercaseName.includes(searchTermLower) ||
-  //       lowercaseEmail.includes(searchTermLower) ||
-  //       lowercasePhone.includes(searchTermLower) ||
-  //       lowercaseRequestDate.includes(searchTermLower)) &&
-  //     (open === "All" || lowercasePackage === open)
-  //   );
-  // });
-
   const filteredData = sortData(
     registerData.filter((item) => {
       const lowercaseName = item.step2?.name?.toLowerCase() || "";

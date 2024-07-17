@@ -35,7 +35,7 @@ const SideBar = () => {
     <div className=" bg-[#161C27] px-3 w-[270px] fixed left-0 h-[100%]">
       <div className=" flex flex-col justify-between h-[95%]">
         <div className=" flex-col flex items-center">
-          <img className=" mt-12" src={logo} alt="" />
+          <img className=" mt-12 w-[100px]" src={logo} alt="" />
           <div className=" flex flex-col gap-4 mt-24">
             <h5
               onClick={() => {

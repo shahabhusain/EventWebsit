@@ -30,7 +30,7 @@ const Logins = () => {
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="mx-auto bg-[#000000] md:w-[40%] w-[90%] rounded-xl">
         <div className="md:px-12 px-4 py-12 flex flex-col gap-1 items-center">
-          <img src={logo} alt="Logo" />
+          <img className="w-[133px]" src={logo} alt="Logo" />
           <h1 className="text-[33px] font-bold text-[#FFEDA4]">Welcome Back</h1>
           <p>Please log into your account</p>
           <form onSubmit={signIn} className="flex flex-col gap-2 w-full">

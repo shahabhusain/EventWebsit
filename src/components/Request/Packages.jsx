@@ -127,7 +127,7 @@ const Packages = () => {
     <div className="mt-12 w-[95%] mx-auto">
       <div className="flex items-center justify-between">
         <h1 className="text-[33px] font-bold">Packages</h1>
-        <button onClick={() => handleOpen(null)} className="bg-[#FFEDA4] py-3 cursor-pointer px-6 text-black rounded-md text-[18px] font-bold">
+        <button onClick={() => handleOpen(null)} className="bg-[#FFEDA4] py-3 cursor-pointer px-6 text-black rounded-md text-[18px] font-[600] ">
           Add Package
         </button>
       </div>
