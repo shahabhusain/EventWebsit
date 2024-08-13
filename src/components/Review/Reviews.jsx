@@ -67,8 +67,8 @@ const Reviews = () => {
 
   // State for dropdown visibility
   const [isVisible, setIsVisible] = useState(false);
-  const [isVisible1, setIsVisible1] = useState(false);
-  const [isVisible2, setIsVisible2] = useState(false);
+  const [isVisible1, setIsVisible1] = useState(true);
+  const [isVisible2, setIsVisible2] = useState(true);
   const [isVisible3, setIsVisible3] = useState(false);
 
   // Function to toggle dropdown visibility
@@ -101,14 +101,14 @@ const Reviews = () => {
   };
 
   // Reset dropdown states when unmounting or navigating away
-  useEffect(() => {
-    return () => {
-      setIsVisible(false);
-      setIsVisible1(true);
-      setIsVisible2(true);
-      setIsVisible3(false);
-    };
-  }, []);
+  // useEffect(() => {
+  //   return () => {
+  //     setIsVisible(false);
+  //     setIsVisible1(true);
+  //     setIsVisible2(true);
+  //     setIsVisible3(false);
+  //   };
+  // }, []);
 
   return (
     <div className="pb-12 w-full">
