@@ -80,12 +80,12 @@ const Reviewws = () => {
           <div className="mt-12">
             <div className="bg-[#161C27] py-5 px-12 rounded-2xl">
               <div className="flex flex-col gap-4">
-                <h5 className="text-[#fff] flex items-center justify-between font-medium text-[17px]">
+                <h5 onClick={() => toggleVisibility("isVisible")} className="text-[#fff] cursor-pointer flex items-center justify-between font-medium text-[17px]">
                   Basic Info
                   <img
                     src={arr}
                     alt=""
-                    onClick={() => toggleVisibility("isVisible")}
+          
                   />
                 </h5>
                 {dropdownStates.isVisible && (
@@ -110,7 +110,7 @@ const Reviewws = () => {
                     </h5>
                     <h5 className="flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
                       Additional Comment
-                      <span className="text-[15px] font-medium max-w-[355px] text-white">
+                      <span className="text-[15px] font-medium  text-white">
                         {requestData.step2.message}
                       </span>
                     </h5>
@@ -119,12 +119,12 @@ const Reviewws = () => {
               </div>
             </div>
             <div className="bg-[#161C27] py-5 px-12 rounded-2xl flex flex-col gap-4 mt-5">
-              <h5 className="text-[#fff] flex items-center justify-between font-medium text-[17px]">
+              <h5  onClick={() => toggleVisibility("isVisible1")} className="text-[#fff] cursor-pointer flex items-center justify-between font-medium text-[17px]">
                 Event Detail
                 <img
                   src={arr}
                   alt=""
-                  onClick={() => toggleVisibility("isVisible1")}
+                 
                 />
               </h5>
               {dropdownStates.isVisible1 && (
@@ -158,12 +158,12 @@ const Reviewws = () => {
             </div>
           </div>
           <div className="bg-[#161C27] py-5 rounded-2xl px-12 flex flex-col gap-3 mt-5">
-            <h5 className="text-[#fff] flex items-center  justify-between font-medium text-[17px]">
+            <h5  onClick={() => toggleVisibility("isVisible2")} className="text-[#fff] cursor-pointer flex items-center  justify-between font-medium text-[17px]">
               Item
               <img
                 src={arr}
                 alt=""
-                onClick={() => toggleVisibility("isVisible2")}
+               
               />
             </h5>
             {dropdownStates.isVisible2 && (

@@ -42,9 +42,11 @@ const Requests = () => {
   const handleButtonClick = (label) => {
     setOpen(label);
   };
+
   const handleSortChange = (event) => {
     setSortCriteria(event.target.value);
   };
+
   const sortData = (data) => {
     if (sortCriteria === "Request Date") {
       return data.sort((a, b) => (a.createdAt || 0) - (b.createdAt || 0));
@@ -55,7 +57,21 @@ const Requests = () => {
     }
     return data;
   };
-  const packageLabels = ["All", "Signature", "Deluxe", "Premium", "Custom"];
+
+  const packageLabels = ["All", "Signature", "Deluxe", "Premium", "Custom", "Passed Events"];
+
+  // Function to check if the event date has passed
+  const isEventPassed = (eventDate) => {
+    const today = new Date();
+    const event = new Date(eventDate);
+    return event < today;
+  };
+
+   const isEventPassed1 = (eventDate) => {
+    const today = new Date();
+    const event = new Date(eventDate);
+    return event >= today;
+  };
 
   const filteredData = sortData(
     registerData.filter((item) => {
@@ -73,11 +89,11 @@ const Requests = () => {
           lowercaseEmail.includes(searchTermLower) ||
           lowercasePhone.includes(searchTermLower) ||
           lowercaseRequestDate.includes(searchTermLower)) &&
-        (open === "All" || lowercasePackage === open)
+        (open === "All" ? isEventPassed1(item.step2?.dates) : lowercasePackage === open ||
+          (open === "Passed Events" ? isEventPassed(item.step2?.dates) : lowercasePackage === open))
       );
     })
   );
-  console.log("filteredData", filteredData);
 
   return (
     <div className="mx-4">
@@ -114,7 +130,7 @@ const Requests = () => {
               </select>
             </div>
           </div>
-          <div className="bg-[#161C27] py-2 px-6 rounded-md  flex items-center gap-3">
+          <div className="bg-[#161C27] py-2 px-6 rounded-md flex items-center gap-3">
             <img src={search} alt="" />
             <input
               className="bg-transparent text-white"

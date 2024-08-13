@@ -119,21 +119,19 @@ const Reviews = () => {
           <div className="md:text-start text-center flex flex-col gap-5">
             <div className="flex flex-col gap-4">
               {/* Basic Info Section */}
-              <div className="bg-[#161C27] flex gap-24 py-5 px-8 rounded-2xl">
-                <div className="flex flex-col gap-4 w-[100vh]">
-                  <h5 className="text-[#fff] flex items-center justify-between">
+              <div  className="bg-[#161C27] flex gap-24 py-5 px-8 rounded-2xl">
+                <div  className="flex flex-col gap-4 w-[100vh]">
+                  <h5 onClick={toggleVisibility2} className="text-white text-[15px] cursor-pointer font-medium flex items-center justify-between">
                     Basic Info
                     {isVisible2 ? (
                       <img
                         className="cursor-pointer"
-                        onClick={toggleVisibility2}
                         src={arr}
                         alt=""
                       />
                     ) : (
                       <img
                         className="cursor-pointer"
-                        onClick={toggleVisibility2}
                         src={arr1}
                         alt=""
                       />
@@ -159,9 +157,9 @@ const Reviews = () => {
                           +{step2.number || null}
                         </span>
                       </h5>
-                      <h5 className="flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
+                      <h5 className="flex flex-col gap-1 text-[#C5C5C5] text-[14px] ">
                         Additional Comment
-                        <span className="text-[17px] font-medium max-w-[355px] text-white">
+                        <span className="text-[17px] font-medium text-white">
                           {step2.message || null}
                         </span>
                       </h5>
@@ -172,19 +170,19 @@ const Reviews = () => {
 
               {/* Event Detail Section */}
               <div className="flex flex-col gap-4 bg-[#161C27] py-5 md:px-8 px-4 rounded-2xl">
-                <h5 className="text-[#fff] flex items-center justify-between">
+                <h5 onClick={toggleVisibility3} className="text-white text-[15px] cursor-pointer font-medium flex items-center justify-between">
                   Event Detail
                   {isVisible3 ? (
-                    <img
+                    <button>
+                         <img
                       className="cursor-pointer"
-                      onClick={toggleVisibility3}
                       src={arr}
                       alt=""
                     />
+                    </button>
                   ) : (
                     <img
                       className="cursor-pointer"
-                      onClick={toggleVisibility3}
                       src={arr1}
                       alt=""
                     />
@@ -228,14 +226,13 @@ const Reviews = () => {
           <div className="bg-[#161C27] py-12 rounded-2xl px-6 flex flex-col gap-3">
             {/* Individual Price Section */}
             <div className="border-[1px] border-[#616161] py-3 px-4 rounded-xl flex flex-col gap-4">
-              <h5 className="text-[#fff] flex items-center justify-between">
+              <h5 onClick={toggleVisibility} className="text-white text-[15px] cursor-pointer font-medium flex items-center justify-between">
                 Individual Price
                 <span className="flex items-center gap-3">
                   {totalValue}
                   <img
                     src={isVisible ? arr : arr1}
                     alt=""
-                    onClick={toggleVisibility}
                     style={{ cursor: "pointer" }}
                   />
                 </span>
@@ -258,15 +255,14 @@ const Reviews = () => {
 
             {/* Selected Package Section */}
             <div className="border-[1px] border-[#616161] py-3 px-4 rounded-xl flex flex-col gap-4">
-              <h4 className="text-[#ffff] flex items-center justify-between">
+              <h4 onClick={toggleVisibility1} className=" text-white cursor-pointer text-[15px] font-medium flex items-center justify-between">
                 {formState?.selectedPackage?.name || null}
-                <span className="text-white">
+                <span className="">
                   <span className=" flex items-center gap-3">
                     {formState?.selectedPackage?.price || null}
                     <img
                       src={isVisible1 ? arr : arr1}
                       alt=""
-                      onClick={toggleVisibility1}
                       style={{ cursor: "pointer" }}
                     />
                   </span>
@@ -275,7 +271,7 @@ const Reviews = () => {
               {isVisible1 && (
                 <ul className="flex flex-col gap-3">
                   {formState?.selectedPackage?.features?.map((item, index) => (
-                    <li key={index}>{item}</li>
+                    <li className=" text-[#C5C5C5]" key={index}>{item}</li>
                   )) || null}
                 </ul>
               )}

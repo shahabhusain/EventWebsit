@@ -203,7 +203,7 @@ const Form3 = () => {
           />
           {errors.dates && <span className="text-red-500">{errors.dates}</span>}
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 w-full">
           <label>Additional Comments</label>
           <textarea
             onChange={(e) => setMessage(e.target.value)}

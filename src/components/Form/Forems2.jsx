@@ -147,7 +147,7 @@ const Forems2 = () => {
           }
         />
 
-        <div className="mt-3">
+        {/* <div className="mt-3">
           <p
             onClick={() => setOpen(true)}
             className="flex items-center gap-3 bg-[#0C0F16]  py-3 px-6 rounded-full w-fit cursor-pointer"
@@ -173,7 +173,7 @@ const Forems2 = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
         <button
           type="submit"
           className="bg-[#FFEDA4] text-center py-3 px-6 text-black rounded-md"
@@ -182,7 +182,7 @@ const Forems2 = () => {
         </button>
       </form>
 
-      <Modal
+      {/* <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
@@ -283,7 +283,7 @@ const Forems2 = () => {
             </div>
           </div>
         </div>
-      </Modal>
+      </Modal> */}
     </div>
   );
 };
