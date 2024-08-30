@@ -114,11 +114,8 @@ const Forems2 = () => {
   return (
     <div className="md:w-[60%] mx-auto bg-[#161C27] h-screen pb-12 md:px-16 px-4 rounded-md">
       <h1 className="md:text-[32px] text-[25px] font-bold text-center pt-24">
-        Event Planning Registration
+      Let's Get Started Planning Your Event
       </h1>
-      <p className="md:text-[16px] text-[12px] md:mt-0 mt-4 text-[#C5C5C5] font-normal text-center">
-        Simplify Your Event Arrangements with Us
-      </p>
       <div className="flex items-center gap-4 mt-8 mx-72">
         <div className="bg-[#FFEDA4] h-[5px] w-full rounded-full"></div>
         <div className="bg-[#797979] h-[5px] w-full rounded-full"></div>
@@ -181,8 +178,8 @@ const Forems2 = () => {
           Next
         </button>
       </form>
-
-      {/* <Modal
+{/* 
+      <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"

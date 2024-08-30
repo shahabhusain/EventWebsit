@@ -46,18 +46,8 @@ const Over = () => {
         </motion.h1>
         <motion.div variants={FadeInUpAnimation} className=" bg-[#FFEDA4] h-[3px] md:mr-[422px] "></motion.div>
         <motion.p variants={FadeInUpAnimation} className=" text-[#C5C5C5] text-[14px] font-[400]">
-          Welcome to our vibrant online space, where we specialize in curating
-          exceptional events tailored to your desires. With a wide array of
-          services spanning from conceptualization to execution, we offer a
-          seamless experience for weddings, corporate functions, and special
-          occasions. Our passionate team is committed to bringing your dreams to
-          life, leaving you free to savor every moment of your event. Let us be
-          your trusted partner in creating cherished memories that will be
-          treasured for years to come. Read More...
+        Our vision is to create exceptional, personalised events that leave a lasting impression. We aim to craft each event with meticulous attention to detail, ensuring that every celebration reflects the unique story and personality of our clients. Through creativity, passion, and precision, we aspire to make every event we design not just memorable, but truly unforgettable.
         </motion.p>
-        <motion.button variants={FadeInUpAnimation}  className=" bg-[#FFEDA4] text-black py-3 px-6 w-fit rounded-md">
-          Learn More
-        </motion.button>
       </motion.div>
       </motion.div>
     </div>

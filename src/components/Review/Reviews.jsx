@@ -122,7 +122,6 @@ const Reviews = () => {
               <div  className="bg-[#161C27] flex gap-24 py-5 px-8 rounded-2xl">
                 <div  className="flex flex-col gap-4 w-[100vh]">
                   <h5 onClick={toggleVisibility2} className="text-white text-[15px] cursor-pointer font-medium flex items-center justify-between">
-                    Basic Info
                     {isVisible2 ? (
                       <img
                         className="cursor-pointer"
@@ -140,13 +139,13 @@ const Reviews = () => {
                   {isVisible2 && (
                     <>
                       <h5 className="flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
-                        Full Name
+                        Enter Full Name
                         <span className="text-[17px] font-medium text-white">
                           {step2.name || null}
                         </span>
                       </h5>
                       <h5 className="flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
-                        E-mail Address
+                        E-mail
                         <span className="text-[17px] font-medium text-white">
                           {step2.email || null}
                         </span>
@@ -171,7 +170,7 @@ const Reviews = () => {
               {/* Event Detail Section */}
               <div className="flex flex-col gap-4 bg-[#161C27] py-5 md:px-8 px-4 rounded-2xl">
                 <h5 onClick={toggleVisibility3} className="text-white text-[15px] cursor-pointer font-medium flex items-center justify-between">
-                  Event Detail
+                  Detail
                   {isVisible3 ? (
                     <button>
                          <img
@@ -227,9 +226,9 @@ const Reviews = () => {
             {/* Individual Price Section */}
             <div className="border-[1px] border-[#616161] py-3 px-4 rounded-xl flex flex-col gap-4">
               <h5 onClick={toggleVisibility} className="text-white text-[15px] cursor-pointer font-medium flex items-center justify-between">
-                Individual Price
+                Add on Price
                 <span className="flex items-center gap-3">
-                  {totalValue}
+                <span>AED</span>{totalValue}
                   <img
                     src={isVisible ? arr : arr1}
                     alt=""
@@ -246,7 +245,11 @@ const Reviews = () => {
                         className="text-[#C5C5C5] flex items-center justify-between"
                       >
                         {item.title}
-                        <span className="text-white">{item.subtitle}</span>
+                         <div>
+                         <span className="text-white">AED</span>
+                         <span className="text-white">{item.subtitle}</span>
+                         </div>
+                       
                       </h4>
                     ))}
                 </div>
@@ -290,9 +293,9 @@ const Reviews = () => {
             {/* Confirm Button */}
             <button
               onClick={handleConfirm}
-              className="bg-[#FFEDA4] text-black py-3 px-6 rounded-xl w-full mt-1"
+              className="bg-[#FFEDA4] font-medium text-black py-3 px-6 rounded-xl w-full mt-1"
             >
-              {active ? <Loader /> : "Confirm"}
+              {active ? <Loader /> : "CONFIRM"}
             </button>
           </div>
         </div>
@@ -310,7 +313,7 @@ const Reviews = () => {
           <h2 className="text-[24px] font-bold text-center mb-4">
             Registration Successful!
           </h2>
-          <p>Your Event Registration is Successfully Completed!</p>
+          <p>Your event registration is successfully submitted!</p>
           <button
             onClick={() => {
               handleClose();

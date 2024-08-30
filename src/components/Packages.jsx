@@ -56,7 +56,7 @@ const Packages = () => {
             variants={FadeInUpAnimation}
             className="text-center text-[16px] font-[400] text-[#C5C5C5] md:mx-[172px] mt-3"
           >
-            Discover tailored packages for all your needs. From weddings to corporate events, find the perfect solution to simplify your planning process.
+           Explore our tailored packages to find the perfect fit for your event, with a range of props and decor to suit every need.
           </motion.p>
 
           <div className="grid md:grid-cols-2 grid-cols-1 gap-12 mt-16 md:mx-12">

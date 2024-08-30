@@ -40,16 +40,15 @@ const Contact = () => {
      className="md:flex items-center gap-16 w-[80%] mx-auto pt-32"
    >
      <div className="md:w-1/2">
-       <h1 className="text-[32px] font-bold">Get in Touch with Us</h1>
-       <p>Let's Connect and Bring Your Event Vision to Life</p>
+       <h1 className="text-[32px] font-bold">Get in touch with us today</h1>
        <div className="flex flex-col gap-4 mt-8">
          <div className="flex items-center rounded-[50px] gap-4 bg-[#1b222e] py-3 px-6">
            <img src={img1} alt="phone icon" />
-           <p>+92 345 346 543</p>
+           <p>+971 50 123 5694</p>
          </div>
          <div className="flex items-center rounded-[50px] gap-4 bg-[#1b222e] py-3 px-6">
            <img src={img2} alt="email icon" />
-           <p>eventfulcae@gmail.com</p>
+           <p>info@eventfuluae.com</p>
          </div>
        </div>
      </div>

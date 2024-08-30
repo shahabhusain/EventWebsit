@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css"; // Importing DatePicker CSS
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import {
-  isValidPhoneNumber,
+
   parsePhoneNumberFromString,
 } from "libphonenumber-js";
 
@@ -204,7 +204,7 @@ const Form3 = () => {
           {errors.dates && <span className="text-red-500">{errors.dates}</span>}
         </div>
         <div className="flex flex-col gap-2 w-full">
-          <label>Additional Comments</label>
+          <label>Comments</label>
           <textarea
             onChange={(e) => setMessage(e.target.value)}
             className="bg-[#0C0F16] py-3 px-3 w-full rounded-md"

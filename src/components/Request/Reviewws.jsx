@@ -171,6 +171,7 @@ const Reviewws = () => {
                 <div className="py-3 px-4 rounded-xl flex flex-col gap-4 border-[1px] border-[#fff] mt-4">
                   {requestData.step1.items.map((item, index) => (
                     <h5 key={index} className="text-[#C5C5C5] flex items-center justify-between">
+                      
                       {item.title}
                       <span className="text-white">{item.subtitle}</span>
                     </h5>

@@ -21,21 +21,21 @@ const Services = () => {
   const serviceItem = [
     {
       img: img1,
-      title: "PLANING",
+      title: "PLANNING",
       subtitle:
-        "At Eventful, we excel in crafting seamless experiences from A to Z. With an unwavering commitment to perfection, we transform your vision into reality, curating unforgettable events that leave lasting impressions.",
+        "From start to finish, our planning experts handle all the details, creating a seamless experience tailored to your vision.",
     },
     {
       img: img2,
-      title: "TRANSPORT",
+      title: "Transportation",
       subtitle:
-        "Leave the logistics to us! Eventful offers streamlined transportation solutions, ensuring smooth and safe delivery of setups to and from venues. Our dedicated team handles every detail, allowing you to focus solely on savoring the moment.",
+        "Count on us for the safe and timely transportation of all your event materials, so you can focus on the big day.",
     },
     {
       img: img3,
       title: "SET UP & PACK AWAY",
       subtitle:
-        "From inception to teardown, Eventful orchestrates every aspect with precision and care. Our experts manage setup and pack-away with meticulous attention, ensuring a stress-free experience from beginning to end.",
+        "We take care of both setting up and packing away, ensuring your event space is perfectly prepared and efficiently cleared without any hassle.",
     },
   ];
   return (
@@ -70,16 +70,14 @@ const Services = () => {
           variants={FadeInUpAnimation}
           className=" text-center text-[16px] font-[400] text-[#C5C5C5] md:mx-[172px] mt-3"
         >
-          Discover tailored solutions and expert assistance to make your event
-          planning journey effortless and memorable. From start to finish, we're
-          here to bring your vision to life.
+         Explore our full range of services designed to ensure every aspect of your event is managed with care and precision.
         </motion.p>
 
         <div className=" md:flex block gap-12 mt-12 ">
           {serviceItem.map((item) => (
             <motion.div
               variants={FadeInUpAnimation}
-              className=" bg-[#0C0F16] py-20 px-6 rounded-md flex flex-col items-center md:my-0 my-5 justify-center gap-4"
+              className=" bg-[#0C0F16] py-20 px-6 w-[400px] rounded-md flex flex-col items-center md:my-0 my-5 justify-center gap-4"
             >
               <img src={item.img} alt="" />
               <p className=" text-[20px] text-center font-[700]">

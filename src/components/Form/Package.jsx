@@ -109,14 +109,9 @@ const Package = () => {
       <div className="md:w-[80%] w-[90%] mx-auto" id="packages">
         <div>
           <h1 className="text-[32px] font-[700] text-center">
-            <span className="text-[#FFEDA4]">Our</span> Packages
+            <span className="text-[#FFEDA4]">Select</span> Your Package
           </h1>
           <div className="bg-[#FFEDA4] h-[2px] md:mx-[544px] mx-[155px] mt-3"></div>
-          <p className="text-center text-[16px] font-[400] text-[#C5C5C5] md:mx-[172px] mt-3">
-            Discover tailored packages for all your needs. From weddings to
-            corporate events, find the perfect solution to simplify your
-            planning process.
-          </p>
           <div className="grid md:grid-cols-2 grid-cols-1 gap-8 mt-16 md:mx-12">
             {packages.map((pkg) => (
               <div
@@ -190,7 +185,10 @@ const Package = () => {
               className="border-[2px] border-[#ddd] py-3 rounded-full px-6 flex items-center gap-4"
             >
               <h5 className="text-[13px] text-[#dddddd]">{item.title}</h5>
+              <div className=" flex items-center gap-1">
+              <span className="text-[13px] text-[#dddddd]">AED</span>
               <h5 className="text-[13px] text-[#dddddd]">{item.subtitle}</h5>
+              </div>
               <img
                 src={close}
                 alt="close"
@@ -265,7 +263,7 @@ const Package = () => {
                           </label>
                         </div>
                         <h3 className="md:text-[12px] text-[9px]">
-                          {item.subtitle}
+                          <span>AED</span> {item.subtitle}
                         </h3>
                       </div>
                     </div>

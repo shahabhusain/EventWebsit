@@ -32,7 +32,7 @@ const Footer = () => {
                   smooth={true}
                   offset={50}
                   duration={500}
-            className=" list-none cursor-pointer a md:mt-0 mt-1">About Us</Link>
+            className=" list-none cursor-pointer a md:mt-0 mt-1">Our Vision</Link>
             <Link
                to="packages"
                spy={true}
@@ -53,10 +53,7 @@ const Footer = () => {
         <div className=" md:flex items-center justify-between">
           <p>© 2024 Eventful.uae All rights reserved</p>
           <div className=" flex items-center gap-4 md:mt-0 mt-3">
-            <img src={img1} alt="" />
-            <img src={img2} alt="" />
-            <img src={img3} alt="" />
-            <img src={img4} alt="" />
+            <a href="https://www.instagram.com/eventful.uae/"><img src={img3} alt="" /></a>
           </div>
         </div>
       </div>

@@ -45,18 +45,16 @@ const Hero = () => {
             variants={fadeInUpAnimation}
             className=" xl:text-[46px] md:leading-[3.9rem] leading-[2.4rem] md:text-[36px] text-[27px] font-bold text-center"
           >
-            <span className=" text-[#F6E9B9]">Unlock</span> Unforgettable
-            Moments: Your{" "}
-            <span className=" text-[#F6E9B9]">One-Stop Event</span> <br />{" "}
-            Service Hub
+            <span className=" text-[#F6E9B9]">Your dream</span> event, brought to life:
+            Moments:
+            <span className=" text-[#F6E9B9]"> with details that speak</span> {" "}
+           your story
           </motion.h1>
           <motion.p
             variants={fadeInUpAnimation}
             className=" text-center text-[#C5C5C5] text-[16px] font-normal"
           >
-            Crafting unforgettable moments. From weddings to corporate events,
-            we've got you covered. Let us handle the details while you enjoy the
-            magic.
+          Let us handle the details while you enjoy the moment
           </motion.p>
           <motion.div
             variants={fadeInUpAnimation}

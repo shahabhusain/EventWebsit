@@ -30,7 +30,7 @@ const Header = () => {
     className=" md:pt-5" id="home">
       <div
       className="w-[100%] md:flex hidden items-center justify-center z-[1000]  ">
-        <div className={` fixed ${isActive ? " top-0" : "top-4"} w-[80%] bg-[#161C27] z-[100] py-4 flex items-center justify-between px-12 ${
+        <div className={`  fixed ${isActive ? " top-0" : "top-4 rounded-lg"} w-[80%] bg-[#161C27] z-[100] py-4 flex items-center justify-between px-12 ${
         isActive
           ? "bg-[#161C27] shadow-md transition-all fixed w-full duration-300 ease-in-out"
           : " px-12"
@@ -74,7 +74,7 @@ const Header = () => {
               }`}
               onClick={() => handleMenuItemClick(2)} // Add onClick handler
             >
-              About Us
+              Our Vision
             </Link>
             <Link
               to="packages"
