@@ -142,14 +142,14 @@ const Form3 = () => {
               onChange={(e) => setName(e.target.value)}
               className="bg-[#0C0F16] py-4 px-6 rounded-md"
               type="name"
-              placeholder={step2?.name || "User Name"}
+              placeholder={step2?.name || "Enter Full Name"}
               value={name}
               required
             />
             {errors.name && <span className="text-red-500">{errors.name}</span>}
           </div>
           <div className="flex flex-col gap-2 w-full">
-            <label>Email Address</label>
+            <label>Email</label>
             <input
               onChange={handleEmailChange}
               className="bg-[#0C0F16] py-4 px-6 rounded-md"

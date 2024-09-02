@@ -139,7 +139,10 @@ const Packages = () => {
                 <div className="flex items-center justify-between">
                   <h1 className="text-[#FFEDA4] md:text-[27px] text-[20px] font-bold">{pkg.name}</h1>
                   <h2 className="flex flex-col md:text-[24px] text-[12px] md:leading-[1.8rem] leading-[1.2rem] font-semibold">
-                    {pkg.price}
+                      <span>
+                      {pkg.price}
+                      <span className=" text-white">AED</span>
+                      </span>
                     <span className="md:text-[14px] text-[10px] font-normal">({pkg.discount})</span>
                   </h2>
                 </div>

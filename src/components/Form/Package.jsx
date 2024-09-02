@@ -131,7 +131,12 @@ const Package = () => {
                           {pkg.name}
                         </h1>
                         <h2 className="flex flex-col md:text-[24px] text-[12px] md:leading-[1.8rem] leading-[1.2rem] font-semibold">
-                          {pkg.price}
+                          
+                        <span className=" flex items-center gap-2">
+                        <span className=" text-white">AED</span>
+                      {pkg.price}
+                      
+                      </span>
                           <span className="md:text-[14px] text-[10px] font-normal">
                             ({pkg.discount})
                           </span>

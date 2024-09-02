@@ -80,9 +80,9 @@ const Contact = () => {
          />
          <button
            type="submit"
-           className="font-medium bg-[#FFEDA4] text-black py-3 px-6 rounded-md"
+           className="font-medium bg-[#FFEDA4] text-black  py-3 px-6 rounded-md"
          >
-           {isSending ? <Loader /> : "Send"}
+           {isSending ? <Loader /> : "Submit"}
          </button>
        </form>
      </div>

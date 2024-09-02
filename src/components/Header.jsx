@@ -35,7 +35,7 @@ const Header = () => {
           ? "bg-[#161C27] shadow-md transition-all fixed w-full duration-300 ease-in-out"
           : " px-12"
       }`}>
-          <img className=" w-[100px]" src={logo} alt="" />
+          <img className=" w-[120px]" src={logo} alt="" />
           <div className="flex items-center gap-12">
             <Link
               to="home"

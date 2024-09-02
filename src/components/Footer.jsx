@@ -10,8 +10,8 @@ const Footer = () => {
     <div className="bg-[#1b222e] py-8 mt-32">
       <div className=" flex flex-col gap-5 w-[80%] mx-auto">
         <div className=" flex flex-col md:items-center justify-center gap-3">
-          <img className=" w-[93px]" src={logo} alt="" />
-          <div className=" md:flex md:items-center gap-12">
+          <img className=" w-[120px]" src={logo} alt="" />
+          <div className=" md:flex md:items-center gap-12 mt-4">
             <Link
                to="home"
                spy={true}

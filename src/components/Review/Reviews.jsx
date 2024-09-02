@@ -227,7 +227,7 @@ const Reviews = () => {
             <div className="border-[1px] border-[#616161] py-3 px-4 rounded-xl flex flex-col gap-4">
               <h5 onClick={toggleVisibility} className="text-white text-[15px] cursor-pointer font-medium flex items-center justify-between">
                 Add on Price
-                <span className="flex items-center gap-3">
+                <span className="flex items-center gap-2">
                 <span>AED</span>{totalValue}
                   <img
                     src={isVisible ? arr : arr1}
@@ -261,7 +261,8 @@ const Reviews = () => {
               <h4 onClick={toggleVisibility1} className=" text-white cursor-pointer text-[15px] font-medium flex items-center justify-between">
                 {formState?.selectedPackage?.name || null}
                 <span className="">
-                  <span className=" flex items-center gap-3">
+                  <span className=" flex items-center gap-2">
+                  <span>AED</span>
                     {formState?.selectedPackage?.price || null}
                     <img
                       src={isVisible1 ? arr : arr1}
@@ -284,7 +285,8 @@ const Reviews = () => {
             <div className="bg-black py-3 px-4 rounded-xl mt-1">
               <h5 className="text-[#C5C5C5] flex items-center justify-between">
                 Total
-                <span className="text-white">
+                <span className="text-white flex items-center gap-2">
+                  <span>AED</span>
                   {totalWithPackage.toFixed(2)}
                 </span>
               </h5>

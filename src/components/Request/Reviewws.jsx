@@ -173,7 +173,10 @@ const Reviewws = () => {
                     <h5 key={index} className="text-[#C5C5C5] flex items-center justify-between">
                       
                       {item.title}
-                      <span className="text-white">{item.subtitle}</span>
+                      <div>
+                      <span className="text-white">AED</span>
+                      <span className="text-white" >{item.subtitle}</span>
+                      </div>
                     </h5>
                   ))}
                 </div>
