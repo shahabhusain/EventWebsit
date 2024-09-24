@@ -183,13 +183,13 @@ const Reviewws = () => {
                 <div className="border-[1px] border-[#fff] rounded-xl py-3 px-6">
                   <h4 className="text-[#C5C5C5] flex items-center justify-between">
                     {requestData.step1?.packageName || null}
-                    <span className="text-white">{requestData.step1?.package || null}</span>
+                    <span className="text-white">AED {requestData.step1?.package || null}</span>
                   </h4>
                 </div>
                 <div className="bg-black py-3 px-4 rounded-xl">
                   <h5 className="text-[#C5C5C5] flex items-center justify-between">
                     Total
-                    <span className="text-white">{totalWithPackage.toFixed(2)}</span>
+                    <span className="text-white">AED {totalWithPackage.toFixed(2)}</span>
                   </h5>
                 </div>
               </>

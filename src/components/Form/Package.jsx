@@ -276,7 +276,7 @@ const Package = () => {
                   <button
                     type="button"
                     onClick={handleGoBack}
-                    className="md:py-3 md:px-6 w-[665px] py-2 px-3 md:text-[15px] text-[12px] rounded-md border-[#ddd] border-[2px] mt-3"
+                    className="md:py-3 md:px-6 md:w-[665px]  py-2 px-3 md:text-[15px] text-[12px] rounded-md border-[#ddd] border-[2px] mt-3"
                   >
                     Go Back
                   </button>

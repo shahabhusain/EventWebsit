@@ -32,7 +32,7 @@ const dataSlice = createSlice({
           ...action.payload,
           name: "Custom Package",
           price: "Custom Price",
-          features: ["Custom Feature 1", "Custom Feature 2"], // Add custom features here
+          features: ["Custom Feature 1", "Custom Feature 2"], 
           customText: "Custom package selected!"
         };
       } else {

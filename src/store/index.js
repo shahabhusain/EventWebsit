@@ -1,4 +1,3 @@
-// store/index.js
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import dataReducer from "./dataSlice";
 import dataSlice from "./dataSlice";
@@ -22,12 +21,6 @@ const rootReducer = combineReducers({
 });
 export const store = configureStore({
   reducer: rootReducer,
-  // middleware: (getDefaultMiddleware) =>
-  //   getDefaultMiddleware({
-  //     serializableCheck: {
-  //       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-  //     },
-  //   }),
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
