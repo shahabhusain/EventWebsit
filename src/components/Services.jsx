@@ -77,7 +77,7 @@ const Services = () => {
           {serviceItem.map((item) => (
             <motion.div
               variants={FadeInUpAnimation}
-              className=" bg-[#0C0F16] py-20 px-6 w-[400px] rounded-md flex flex-col items-center md:my-0 my-5 justify-center gap-4"
+              className=" bg-[#0C0F16] py-20 px-6 md:w-[400px] rounded-md flex flex-col items-center md:my-0 my-5 justify-center gap-4"
             >
               <img src={item.img} alt="" />
               <p className=" text-[20px] text-center font-[700]">
