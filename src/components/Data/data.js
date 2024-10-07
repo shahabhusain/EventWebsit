@@ -8,7 +8,7 @@ export const options = [
 ];
 
 export const options1 = [
-  { value: "Kids (1-10)", label: "Kids (1-10)", Id: 1 },
+  { value: "Children (1-10)", label: "Kids (1-10)", Id: 1 },
   { value: "Teens (11-17)", label: "Teens (11-17)", Id: 1 },
   { value: "Pre-adults (18-20)", label: "Pre-adults (18-20)", Id: 1 },
   {

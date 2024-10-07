@@ -27,7 +27,7 @@ const Services = () => {
     },
     {
       img: img2,
-      title: "Transportation",
+      title: "TRANSPORTATION",
       subtitle:
         "Count on us for the safe and timely transportation of all your event materials, so you can focus on the big day.",
     },

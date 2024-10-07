@@ -61,7 +61,7 @@ const Header = () => {
               }`}
               onClick={() => handleMenuItemClick(1)} // Add onClick handler
             >
-              Service
+              Services
             </Link>
             <Link
               to="about"
@@ -140,7 +140,7 @@ const Header = () => {
                 }`}
                 onClick={() => handleMenuItemClick(1)} // Add onClick handler
               >
-                Service
+                Services
               </Link>
               <Link
                 to="about"

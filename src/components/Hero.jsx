@@ -46,7 +46,7 @@ const Hero = () => {
             className=" xl:text-[46px] md:leading-[3.9rem] leading-[2.4rem] md:text-[36px] text-[27px] font-bold text-center"
           >
             <span className=" text-[#F6E9B9]">Your dream</span> event, brought to life:
-            Moments:
+            Moments
             <span className=" text-[#F6E9B9]"> with details that speak</span> {" "}
            your story
           </motion.h1>
