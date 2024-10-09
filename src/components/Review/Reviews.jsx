@@ -100,15 +100,6 @@ const Reviews = () => {
     });
   };
 
-  // Reset dropdown states when unmounting or navigating away
-  // useEffect(() => {
-  //   return () => {
-  //     setIsVisible(false);
-  //     setIsVisible1(true);
-  //     setIsVisible2(true);
-  //     setIsVisible3(false);
-  //   };
-  // }, []);
 
   return (
     <div className="pb-12 w-full">

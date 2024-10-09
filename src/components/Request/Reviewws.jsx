@@ -63,13 +63,13 @@ const Reviewws = () => {
     return <div>No data found for the given request ID.</div>;
   }
 
-  const totalValue = requestData.step1.items.reduce((total, item) => {
+  const totalValue = requestData?.step1?.items?.reduce((total, item) => {
     const subtitleValue = parseFloat(item.subtitle) || 0;
     const titleValue = parseInt(item.title) || 0;
     return total + subtitleValue + titleValue;
   }, 0);
 
-  const packagePrice = parseFloat(requestData.step1.package) || 0;
+  const packagePrice = parseFloat(requestData?.step1?.package) || 0;
   const totalWithPackage = totalValue + packagePrice;
 
   return (
@@ -82,36 +82,32 @@ const Reviewws = () => {
               <div className="flex flex-col gap-4">
                 <h5 onClick={() => toggleVisibility("isVisible")} className="text-[#fff] cursor-pointer flex items-center justify-between font-medium text-[17px]">
                   Basic Info
-                  <img
-                    src={arr}
-                    alt=""
-          
-                  />
+                  <img src={arr} alt="" />
                 </h5>
-                {dropdownStates.isVisible && (
+                {dropdownStates.isVisible && requestData?.step2 && (
                   <>
                     <h5 className="flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
                       Full Name
                       <span className="text-[15px] font-medium text-white">
-                        {requestData.step2.name}
+                        {requestData.step2.name || "N/A"}
                       </span>
                     </h5>
                     <h5 className="flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
                       E-mail Address
                       <span className="text-[15px] font-medium text-white">
-                        {requestData.step2.email}
+                        {requestData.step2.email || "N/A"}
                       </span>
                     </h5>
                     <h5 className="flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
                       Contact Number
                       <span className="text-[15px] font-medium text-white">
-                        {requestData.step2.number}
+                        {requestData.step2.number || "N/A"}
                       </span>
                     </h5>
                     <h5 className="flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
                       Additional Comment
                       <span className="text-[15px] font-medium  text-white">
-                        {requestData.step2.message}
+                        {requestData.step2.message || "N/A"}
                       </span>
                     </h5>
                   </>
@@ -119,38 +115,34 @@ const Reviewws = () => {
               </div>
             </div>
             <div className="bg-[#161C27] py-5 px-12 rounded-2xl flex flex-col gap-4 mt-5">
-              <h5  onClick={() => toggleVisibility("isVisible1")} className="text-[#fff] cursor-pointer flex items-center justify-between font-medium text-[17px]">
+              <h5 onClick={() => toggleVisibility("isVisible1")} className="text-[#fff] cursor-pointer flex items-center justify-between font-medium text-[17px]">
                 Event Detail
-                <img
-                  src={arr}
-                  alt=""
-                 
-                />
+                <img src={arr} alt="" />
               </h5>
-              {dropdownStates.isVisible1 && (
+              {dropdownStates.isVisible1 && requestData?.step1 && (
                 <>
                   <h5 className="flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
                     Event Type
                     <span className="text-[15px] font-medium text-white">
-                      {requestData.step1.type.label}
+                      {requestData.step1?.type?.label || "N/A"}
                     </span>
                   </h5>
                   <h5 className="flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
                     Event Category
                     <span className="text-[15px] font-medium text-white">
-                      {requestData.step1.plan.label}
+                      {requestData.step1?.plan?.label || "N/A"}
                     </span>
                   </h5>
                   <h5 className="flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
                     Event Date
                     <span className="text-[15px] font-medium text-white">
-                      {new Date(requestData.step2.dates).toLocaleDateString()}
+                      {new Date(requestData.step2?.dates).toLocaleDateString() || "N/A"}
                     </span>
                   </h5>
                   <h5 className="flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
                     Selected Plan
                     <span className="text-[15px] font-medium text-white">
-                      {requestData.step1.packageName}
+                      {requestData.step1?.packageName || "N/A"}
                     </span>
                   </h5>
                 </>
@@ -158,24 +150,19 @@ const Reviewws = () => {
             </div>
           </div>
           <div className="bg-[#161C27] py-5 rounded-2xl px-12 flex flex-col gap-3 mt-5">
-            <h5  onClick={() => toggleVisibility("isVisible2")} className="text-[#fff] cursor-pointer flex items-center  justify-between font-medium text-[17px]">
+            <h5 onClick={() => toggleVisibility("isVisible2")} className="text-[#fff] cursor-pointer flex items-center  justify-between font-medium text-[17px]">
               Item
-              <img
-                src={arr}
-                alt=""
-               
-              />
+              <img src={arr} alt="" />
             </h5>
-            {dropdownStates.isVisible2 && (
+            {dropdownStates.isVisible2 && requestData?.step1?.items && (
               <>
                 <div className="py-3 px-4 rounded-xl flex flex-col gap-4 border-[1px] border-[#fff] mt-4">
                   {requestData.step1.items.map((item, index) => (
                     <h5 key={index} className="text-[#C5C5C5] flex items-center justify-between">
-                      
                       {item.title}
                       <div>
-                      <span className="text-white">AED</span>
-                      <span className="text-white" >{item.subtitle}</span>
+                        <span className="text-white">AED</span>
+                        <span className="text-white">{item.subtitle}</span>
                       </div>
                     </h5>
                   ))}
@@ -196,6 +183,7 @@ const Reviewws = () => {
             )}
           </div>
         </div>
+        {/* Checklist Sidebar */}
         <ul className="w-[40%] bg-[#161C27] px-6 py-6 rounded-2xl mt-12 flex flex-col gap-4">
           <li className="mt-3 font-medium text-[17px]">Checklist</li>
           <div className="w-full h-[0.5px] bg-[#ffffff36] rounded-xl"></div>
@@ -227,7 +215,7 @@ const Reviewws = () => {
             <input className="accent-[#FFEDA4] h-[18px] w-[18px]" type="checkbox" />
           </li>
           <li className="flex items-center justify-between">
-            <span>50% Deposit Payment </span>
+            <span>50% Deposit Payment</span>
             <input className="accent-[#FFEDA4] h-[18px] w-[18px]" type="checkbox" />
           </li>
           <li className="flex items-center justify-between">
@@ -235,7 +223,7 @@ const Reviewws = () => {
             <input className="accent-[#FFEDA4] h-[18px] w-[18px]" type="checkbox" />
           </li>
           <li className="flex items-center justify-between">
-            <span>Set up 5 hours prior </span>
+            <span>Set up 5 hours prior</span>
             <input className="accent-[#FFEDA4] h-[18px] w-[18px]" type="checkbox" />
           </li>
           <li className="flex items-center justify-between">
