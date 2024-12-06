@@ -12,12 +12,13 @@ export const options1 = [
   { value: "Children (1-10)", label: "Children (1-10)", Id: 1 },
   { value: "Teens (11-17)", label: "Teens (11-17)", Id: 1 },
   { value: "Pre-adults (18-20)", label: "Pre-adults (18-20)", Id: 1 },
+  { value: "Adult (21+)", label: "Adult (21+)", Id: 1 },
   {
     value: "Special (21, 30, 40, etc)",
     label: "Special (21, 30, 40, etc)",
     Id: 1,
   },
-  { value: "Adult (21+)", label: "Adult (21+)", Id: 1 },
+
   { value: "Baby Shower", label: "Baby Shower", Id: 2 },
   { value: "Gender Reveal", label: "Gender Reveal", Id: 2 },
   { value: "Leaving do", label: "Leaving do", Id: 2 },
@@ -29,6 +30,7 @@ export const options1 = [
   { value: "Halloween", label: "Halloween", Id: 3 },
   { value: "NYE", label: "NYE", Id: 3 },
   { value: "Thanksgiving", label: "Thanksgiving", Id: 3 },
+  { value: "National Day", label: "National Day", Id: 3 },
   { value: "St Patricks Day", label: "St Patricks Day", Id: 3 },
   { value: "Product Launch", label: "Product Launch", Id: 4 },
   {
@@ -93,8 +95,9 @@ export const ModalItem = [
   { title: "Podium (up to 3)", subtitle: " 400 " },
   { title: "Balloon arch", subtitle: " 600 " },
   { title: "Balloon column (2)", subtitle: " 450 " },
-  { title: "Light up signage", subtitle: " 250 " },
+  { title: "Light up sign", subtitle: " 250 " },
   { title: "Themed prop", subtitle: " 400 " },
+  { title: "Printed Invitation' (Up to 30)", subtitle: "  250 " },
   { title: "Personalised sticker", subtitle: " 200 " },
   { title: "Light up letter or number", subtitle: " 400 " },
 ];

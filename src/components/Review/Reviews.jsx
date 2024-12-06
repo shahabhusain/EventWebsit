@@ -103,7 +103,7 @@ const Reviews = () => {
 
   return (
     <div className="pb-12 w-full">
-      <h1 className="text-[33px] font-bold text-center mt-12">Review</h1>
+      <h1 className="text-[33px] font-bold text-center mt-12">Booking Review</h1>
       <div className="flex flex-col md:flex-row gap-6 w-[80%] mx-auto">
         {/* Left Section */}
         <div className="md:w-[60%]">
@@ -130,13 +130,13 @@ const Reviews = () => {
                   {isVisible2 && (
                     <>
                       <h5 className="flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
-                        Enter Full Name
+                        Full Name
                         <span className="text-[17px] font-medium text-white">
                           {step2.name || null}
                         </span>
                       </h5>
                       <h5 className="flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
-                        E-mail
+                      Email Address
                         <span className="text-[17px] font-medium text-white">
                           {step2.email || null}
                         </span>
@@ -199,7 +199,7 @@ const Reviews = () => {
                       </span>
                     </h5>
                     <h5 className="flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
-                      Selected Plan
+                      Selected Package
                       <span className="text-[17px] font-medium text-white">
                         {formState?.selectedPackage?.name || null}
                       </span>
@@ -306,7 +306,8 @@ const Reviews = () => {
           <h2 className="text-[24px] font-bold text-center mb-4">
             Registration Successful!
           </h2>
-          <p>Your event registration is successfully submitted!</p>
+          <p className=" text-center">Your event registration is successfully submitted! <br /> A member of our
+          team will contact you in within 24 hours to confirm your booking</p>
           <button
             onClick={() => {
               handleClose();

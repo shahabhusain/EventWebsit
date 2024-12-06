@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addForm2data } from "../../store/dataSlice";
-import DatePicker from "react-datepicker"; // Importing DatePicker
+import DatePicker from "react-datepicker";
+import { format } from "date-fns";
+ // Importing DatePicker
 import "react-datepicker/dist/react-datepicker.css"; // Importing DatePicker CSS
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
@@ -33,6 +35,8 @@ const Form3 = () => {
     const pattern = /[a-zA-Z]{3,}/;
     return pattern.test(text);
   };
+
+  
 
   const isValidEmailDomain = (email) => {
     const emailDomain = email.split("@")[1];
@@ -113,7 +117,7 @@ const Form3 = () => {
         name: name || step2?.name,
         email: email || step2?.email,
         message: message || step2?.message,
-        dates: dates ? dates.getTime() : null, // Store date as timestamp
+        dates: dates ? format(dates, "dd/MM/yyyy") : null, // Store date as timestamp
         number: number || step2?.number,
       };
       dispatch(addForm2data(data));
@@ -124,14 +128,10 @@ const Form3 = () => {
   return (
     <div className="md:w-[60%] mx-auto bg-[#161C27] h-screen pb-12 md:px-24 px-4 rounded-md">
       <h1 className="md:text-[32px] text-[24px] font-bold text-center md:pt-12 pt-7">
-        Event Planning Registration
+         <span className=" text-[#FFEDA4]">Event Planning</span> Registration
       </h1>
-      <p className="md:text-[16px] text-[12px] text-[#C5C5C5] font-normal text-center mt-2">
-        Simplify Your Event Arrangements with Us
-      </p>
-      <div className="flex items-center gap-4 mt-8 mx-[17rem]">
-        <div className="bg-[#FFEDA4] h-[5px] rounded-full w-full"></div>
-        <div className="bg-[#FFEDA4] h-[5px] rounded-full w-full"></div>
+      <div className=" mt-4 mx-[17rem]">
+        <div className="bg-[#FFEDA4] h-[3px] rounded-full w-full"></div>
       </div>
 
       <form onSubmit={onclick} className="flex flex-col gap-3 mt-6">
@@ -149,7 +149,7 @@ const Form3 = () => {
             {errors.name && <span className="text-red-500">{errors.name}</span>}
           </div>
           <div className="flex flex-col gap-2 w-full">
-            <label>Email</label>
+            <label>Email Address</label>
             <input
               onChange={handleEmailChange}
               className="bg-[#0C0F16] py-4 px-6 rounded-md"
@@ -166,26 +166,27 @@ const Form3 = () => {
         <div className="flex flex-col gap-2">
           <label>Contact Number</label>
           <div className=" bg-[#0C0F16] py-3 px-6 rounded-md">
-            <PhoneInput
-              country={"ae"}
-              value={number}
-              onChange={(phone) => setNumber(phone)}
-              containerClass="custom-phone-input"
-              inputStyle={{
-                width: "100%",
-                backgroundColor: "#0C0F16",
-                color: "white",
-                border: "none",
-              }}
-              buttonStyle={{
-                backgroundColor: "black",
-                border: "none",
-              }}
-              dropdownStyle={{
-                backgroundColor: "black",
-                color: "white",
-              }}
-            />
+          <PhoneInput
+  country={""}
+  value={number}
+  onChange={(phone) => setNumber(phone)}
+  placeholder="05X-XXX-XXXX" // Custom placeholder
+  containerClass="custom-phone-input"
+  inputStyle={{
+    width: "100%",
+    backgroundColor: "#0C0F16",
+    color: "white",
+    border: "none",
+  }}
+  buttonStyle={{
+    backgroundColor: "black",
+    border: "none",
+  }}
+  dropdownStyle={{
+    backgroundColor: "black",
+    color: "white",
+  }}
+/>
           </div>
           {errors.number && (
             <span className="text-red-500">{errors.number}</span>
@@ -199,7 +200,8 @@ const Form3 = () => {
             onChange={(date) => setDates(date)}
             withPortal
             className="bg-[#0C0F16] py-4 px-6 w-full rounded-md"
-            placeholderText="dd/mm/yyy"
+            placeholderText="DD/MM/YYYY"
+             dateFormat="dd/MM/yyyy"
           />
           {errors.dates && <span className="text-red-500">{errors.dates}</span>}
         </div>
@@ -208,7 +210,7 @@ const Form3 = () => {
           <textarea
             onChange={(e) => setMessage(e.target.value)}
             className="bg-[#0C0F16] py-3 px-3 w-full rounded-md"
-            placeholder={step2?.message || "Write here ..."}
+            placeholder={step2?.message || "Write here..."}
             rows={4}
             value={message}
             required

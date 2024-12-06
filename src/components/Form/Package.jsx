@@ -206,7 +206,7 @@ const Package = () => {
 
         <Modal
           open={open}
-          // onClose={handleClose}
+          onClose={handleGoBack}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
@@ -276,9 +276,9 @@ const Package = () => {
                   <button
                     type="button"
                     onClick={handleGoBack}
-                    className="md:py-3 md:px-6 md:w-[665px]  py-2 px-3 md:text-[15px] text-[12px] rounded-md border-[#ddd] border-[2px] mt-3"
+                    className="md:py-3 md:px-6  py-2 px-3 md:text-[15px] text-[12px] rounded-md hover:bg-[#FFEDA4] hover:text-black transition-all duration-300 ease-in-out hover:border-none border-[#ddd] border-[2px]"
                   >
-                    Go Back
+                    Submit
                   </button>
                   {/* <button
                     type="button"

@@ -74,7 +74,7 @@ const Header = () => {
               }`}
               onClick={() => handleMenuItemClick(2)} // Add onClick handler
             >
-              Our Vision
+              Vision
             </Link>
             <Link
               to="packages"
@@ -153,7 +153,7 @@ const Header = () => {
                 }`}
                 onClick={() => handleMenuItemClick(2)} // Add onClick handler
               >
-                About Us
+                Vision
               </Link>
               <Link
                 to="packages"

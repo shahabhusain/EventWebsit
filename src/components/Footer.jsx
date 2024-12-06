@@ -25,14 +25,14 @@ const Footer = () => {
              smooth={true}
              offset={10}
              duration={500}
-            className=" list-none cursor-pointer a md:mt-0 mt-1">Service</Link>
+            className=" list-none cursor-pointer a md:mt-0 mt-1">Services</Link>
             <Link
                   to="about"
                   spy={true}
                   smooth={true}
                   offset={50}
                   duration={500}
-            className=" list-none cursor-pointer a md:mt-0 mt-1">Our Vision</Link>
+            className=" list-none cursor-pointer a md:mt-0 mt-1">Vision</Link>
             <Link
                to="packages"
                spy={true}

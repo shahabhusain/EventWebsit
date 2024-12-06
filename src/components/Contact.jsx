@@ -43,11 +43,11 @@ const Contact = () => {
        <h1 className="text-[32px] font-bold">Get in touch with us today</h1>
        <div className="flex flex-col gap-4 mt-8">
          <div className="flex items-center rounded-[50px] gap-4 bg-[#1b222e] py-3 px-6">
-           <img src={img1} alt="phone icon" />
+           <img src={img2} alt="email icon" />
            <p>+971 50 123 5694</p>
          </div>
          <div className="flex items-center rounded-[50px] gap-4 bg-[#1b222e] py-3 px-6">
-           <img src={img2} alt="email icon" />
+           <img src={img1} alt="phone icon" />
            <p>info@eventfuluae.com</p>
          </div>
        </div>
