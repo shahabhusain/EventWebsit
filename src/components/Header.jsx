@@ -30,9 +30,9 @@ const Header = () => {
     className=" md:pt-5" id="home">
       <div
       className="w-[100%] md:flex hidden items-center justify-center z-[1000]  ">
-        <div className={`  fixed ${isActive ? " top-0" : "top-4 rounded-lg"} w-[80%] bg-[#161C27] z-[100] py-4 flex items-center justify-between px-12 ${
+        <div className={`  fixed ${isActive ? " top-0" : "top-4 rounded-lg"} w-[80%] bg-[#000000] z-[100] py-4 flex items-center justify-between px-12 ${
         isActive
-          ? "bg-[#161C27] shadow-md transition-all fixed w-full duration-300 ease-in-out"
+          ? "bg-[#000000] shadow-md transition-all fixed w-full duration-300 ease-in-out"
           : " px-12"
       }`}>
           <img className=" w-[120px]" src={logo} alt="" />
@@ -108,13 +108,13 @@ const Header = () => {
       </div>
 
       <div className=" md:hidden  fixed z-[1000] w-full ">
-        <div className=" flex items-center justify-between  bg-[#232c3b] py-4 px-4 ">
+        <div className=" flex items-center justify-between  bg-[#000000] py-4 px-4 ">
           <img onClick={() => setOpenMobile(!openMobile)} src={menu} alt="" />
           <img className="w-[100px]" src={logo} alt="" />
         </div>
         {openMobile && (
           <div
-          className="flex flex-col w-[80%] bg-[#232c3b] h-screen ">
+          className="flex flex-col w-[80%] bg-[#000000] h-screen ">
             <div className=" flex flex-col items-center gap-12">
               <Link
                 to="home"

@@ -44,9 +44,9 @@ const Over = () => {
       <motion.h1 variants={FadeInUpAnimation} className=" text-[46px] font-[700]">
           <span className=" text-[#FFEDA4]">Our</span> Vision
         </motion.h1>
-        <motion.div variants={FadeInUpAnimation} className=" bg-[#FFEDA4] h-[3px] md:mr-[422px] "></motion.div>
+        <motion.div variants={FadeInUpAnimation} className=" bg-[#FFEDA4] h-[3px] md:mr-[472px] "></motion.div>
         <motion.p variants={FadeInUpAnimation} className=" text-[#C5C5C5] text-[14px] font-[400]">
-        Our vision is to create exceptional, personalised events that leave a lasting impression. We aim to craft each event with meticulous attention to detail, ensuring that every celebration reflects the unique story and personality of our clients. Through creativity, passion, and precision, we aspire to make every event we design not just memorable, but truly unforgettable.
+        Our vision is to create exceptional and personalized events that leave a lasting impression. We aim to craft each event with meticulous attention to detail, ensuring that every celebration reflects the unique story and personality of our clients. Through creativity, passion, and precision, we aspire to make every event we design not just memorable, but truly unforgettable.
         </motion.p>
       </motion.div>
       </motion.div>

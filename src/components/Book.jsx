@@ -38,7 +38,7 @@ const Book = () => {
       variants={FadeInUpAnimation}
     className=' md:w-1/2 flex flex-col gap-4'>
        <motion.h1 variants={FadeInUpAnimation} className=' text-[46px] font-[700]'><span className=' text-[#FFEDA4]'>Book</span> Now</motion.h1>
-       <motion.div variants={FadeInUpAnimation} className=' bg-[#FFEDA4] h-[3px] mr-[422px]'></motion.div>
+       <motion.div variants={FadeInUpAnimation} className=' bg-[#FFEDA4] h-[3px] mr-[402px]'></motion.div>
        <motion.p variants={FadeInUpAnimation} className=' text-[#C5C5C5] text-[14px] font-[400]'>Ready to bring your vision to life? Book your event with us today to begin planning an unforgettable experience. At Eventful, every detail truly matters, and our dedicated team is committed to ensuring your celebration is a cherished memory for you and your guests.</motion.p>
        <Link to="/form" variants={FadeInUpAnimation} className=' bg-[#FFEDA4] text-black py-3 px-6 w-fit rounded-md b'>Book Now</Link>
     </motion.div>

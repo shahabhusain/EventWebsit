@@ -34,11 +34,15 @@ const Contact = () => {
   };
 
   return (
-    <div   id="contact">
-       <div
-     
-     className="md:flex items-center gap-16 w-[80%] mx-auto pt-32"
-   >
+    <div className=" pt-32"   id="contact">
+         <div>
+          <h1 className=" text-[46px] font-[700] text-center">
+            <span className=" text-[#FFEDA4]">Contact </span> Us
+            <div className=" bg-[#FFEDA4] h-[3px] md:ml-[655px] md:mr-[752px] mx-[122px] mt-3"></div>
+          </h1>
+        </div>
+       <div className="md:flex items-center gap-16 w-[80%] mx-auto pt-20">
+    
      <div className="md:w-1/2">
        <h1 className="text-[32px] font-bold">Get in touch with us today</h1>
        <div className="flex flex-col gap-4 mt-8">

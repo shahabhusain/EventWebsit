@@ -23,8 +23,9 @@ const Form3 = () => {
   const [email, setEmail] = useState(step2?.email || "");
   const [message, setMessage] = useState(step2?.message || "");
   const [dates, setDates] = useState(
-    step2?.dates ? new Date(step2.dates) : null
+    step2?.dates && !isNaN(new Date(step2.dates)) ? new Date(step2.dates) : null
   );
+  
   const [number, setNumber] = useState(step2?.number || "");
   const [errors, setErrors] = useState({});
   console.log("date", dates);

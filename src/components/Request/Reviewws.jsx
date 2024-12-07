@@ -74,7 +74,7 @@ const Reviewws = () => {
 
   return (
     <div className="pt-8 h-screen ml-[70px] w-[90%] mx-auto">
-      <h1 className="text-[33px] font-bold">Booking Review</h1>
+      <h1 className="text-[33px] font-bold">Review</h1>
       <div className="flex justify-between gap-12">
         <div className="w-[60%]">
           <div className="mt-12">

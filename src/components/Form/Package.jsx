@@ -7,7 +7,7 @@ import { db } from "../../Config/Firebase";
 import Modal from "@mui/material/Modal";
 import icon from "../../assets/icon.png";
 import close from "../../assets/close.png";
-import { ModalItem } from "../Data/data"; // Adjust this import as needed
+import { ModalItem } from "../Data/data";
 
 const Package = () => {
   const dispatch = useDispatch();
@@ -23,6 +23,8 @@ const Package = () => {
   const [tempAddedItems, setTempAddedItems] = useState([]);
   const [packages, setPackages] = useState([]);
   const [selectedPackage, setSelectedPackage] = useState(null);
+  const [packagePrice, setPackagePrice] = useState(0); // State for package price
+  const [totalPrice, setTotalPrice] = useState(0); // State for total price
 
   useEffect(() => {
     const fetchPackages = async () => {
@@ -41,29 +43,28 @@ const Package = () => {
   }, []);
 
   useEffect(() => {
-    const storedOpenItems = titleArray.map((item) => item.title);
-    const newOpenItems = ModalItem.map((item) =>
-      storedOpenItems.includes(item.title)
+    // Calculate total price (package price + items price) whenever titleArray or selectedPackage changes
+    const itemsTotal = titleArray.reduce(
+      (acc, item) => acc + parseFloat(item.subtitle || 0),
+      0
     );
-    setOpenItems(newOpenItems);
-  }, [titleArray]);
+    setTotalPrice(itemsTotal + packagePrice);
+  }, [titleArray, packagePrice]);
 
   const handlePackageClick = (pkg) => {
-    setSelectedPackage(pkg.id === selectedPackage ? null : pkg.id);
-    dispatch(addSelectedPackage(pkg));
+    if (pkg.id === selectedPackage) {
+      // Deselect package
+      setSelectedPackage(null);
+      setPackagePrice(0);
+    } else {
+      // Select package
+      setSelectedPackage(pkg.id);
+      setPackagePrice(parseFloat(pkg.price || 0));
+      dispatch(addSelectedPackage(pkg));
+    }
   };
 
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
-
   const handleGoBack = () => {
-    // const updatedTitleArray = titleArray.filter(
-    //   (item) =>
-    //     !tempAddedItems.some((tempItem) => tempItem.title === item.title)
-    // );
-    // setTitleArray(updatedTitleArray);
-    // setTempAddedItems([]);
     setOpen(false);
   };
 
@@ -85,8 +86,6 @@ const Package = () => {
     localStorage.setItem("for1", for1);
     localStorage.setItem("titleArray", JSON.stringify(updatedData));
   };
-
-  console.log("titleArray", titleArray);
 
   const removeItem = (title) => {
     const updatedArray = titleArray.filter((item) => item.title !== title);
@@ -111,7 +110,7 @@ const Package = () => {
           <h1 className="text-[32px] font-[700] text-center">
             <span className="text-[#FFEDA4]">Select</span> Your Package
           </h1>
-          <div className="bg-[#FFEDA4] h-[2px] md:mx-[544px] mx-[155px] mt-3"></div>
+          <div className=" bg-[#FFEDA4] h-[3px] md:ml-[470px] md:mr-[602px] mx-[122px] mt-3"></div>
           <div className="grid md:grid-cols-2 grid-cols-1 gap-8 mt-16 md:mx-12">
             {packages.map((pkg) => (
               <div
@@ -131,12 +130,10 @@ const Package = () => {
                           {pkg.name}
                         </h1>
                         <h2 className="flex flex-col md:text-[24px] text-[12px] md:leading-[1.8rem] leading-[1.2rem] font-semibold">
-                          
-                        <span className=" flex items-center gap-2">
-                        <span className=" text-white">AED</span>
-                      {pkg.price}
-                      
-                      </span>
+                          <span className="flex items-center gap-2">
+                            <span className="text-white">AED</span>
+                            {pkg.price}
+                          </span>
                           <span className="md:text-[14px] text-[10px] font-normal">
                             ({pkg.discount})
                           </span>
@@ -175,13 +172,11 @@ const Package = () => {
         <div className="flex items-center gap-4 justify-center">
           <p
             onClick={() => setOpen(true)}
-            className="flex mt-12 items-center gap-3 bg-[#0C0F16]  py-3 px-6 rounded-md w-fit cursor-pointer"
+            className="flex mt-12 items-center gap-3 bg-[#0C0F16] py-3 px-6 rounded-md w-fit cursor-pointer"
           >
             <img src={icon} alt="" /> click to add items
           </p>
         </div>
-
-        {/* ////////// */}
 
         <div className="flex gap-2 items-center justify-center flex-wrap mt-8">
           {titleArray.map((item, index) => (
@@ -213,7 +208,12 @@ const Package = () => {
           <div className="flex flex-col items-center justify-center h-screen">
             <div className="flex bg-[#1b222e] rounded-2xl md:w-[50%] w-[95%] mx-auto items-center justify-center px-2 md:py-7 py-4 pb-12">
               <div>
-                <h1 className="text-[20px] font-bold">Add Items</h1>
+                <div className=" flex items-center justify-between">
+                <h1 className="text-[20px] font-bold">Add Items</h1> 
+          <div className="text-center font-bold text-white mt-4">
+                    Total Price: AED {totalPrice}
+                  </div>
+                </div>
                 <div className="h-[1px] w-full bg-[#8a8787] mb-5"></div>
                 <div className="md:w-[666px] grid md:grid-cols-2 grid-cols-2 md:gap-4 gap-1">
                   {ModalItem.map((item, index) => (
@@ -237,19 +237,7 @@ const Package = () => {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
                           <div
-                            className="custom-radio md:w-[1rem] md:h-[1rem] w-[.8rem] h-[.8rem] "
-                            onClick={() => {
-                              const updatedTitleArray = titleArray.map(
-                                (titleItem) => {
-                                  if (titleItem.title === item.title) {
-                                    return { ...titleItem, selected: true };
-                                  } else {
-                                    return { ...titleItem, selected: false };
-                                  }
-                                }
-                              );
-                              setTitleArray(updatedTitleArray);
-                            }}
+                            className="custom-radio md:w-[1rem] md:h-[1rem] w-[.8rem] h-[.8rem]"
                             style={{
                               backgroundColor: titleArray.some(
                                 (titleItem) =>
@@ -273,28 +261,21 @@ const Package = () => {
                       </div>
                     </div>
                   ))}
+                 
                   <button
                     type="button"
                     onClick={handleGoBack}
-                    className="md:py-3 md:px-6  py-2 px-3 md:text-[15px] text-[12px] rounded-md hover:bg-[#FFEDA4] hover:text-black transition-all duration-300 ease-in-out hover:border-none border-[#ddd] border-[2px]"
+                    className="md:py-3 md:px-6 py-2 px-3 md:text-[15px] text-[12px] rounded-md hover:bg-[#FFEDA4] hover:text-black transition-all duration-300 ease-in-out hover:border-none border-[#ddd] border-[2px]"
                   >
                     Submit
                   </button>
-                  {/* <button
-                    type="button"
-                    onClick={handleClose}
-                    className="md:py-3 md:px-6 py-2 px-3 md:text-[15px] text-[12px] font-medium rounded-md bg-[#FFEDA4] text-black mt-3"
-                  >
-                    Add Items
-                  </button> */}
                 </div>
               </div>
             </div>
           </div>
         </Modal>
 
-        {/* ///////// */}
-        <div className=" flex items-center justify-center">
+        <div className="flex items-center justify-center">
           <button
             onClick={() => navigate("/reg")}
             className="bg-[#FFEDA4] text-black py-3 px-20 mt-12 rounded-md"
