@@ -36,9 +36,28 @@ const Reviews = () => {
   const packagePrice = parseFloat(formState?.selectedPackage?.price) || 0;
   const totalWithPackage = totalValue + packagePrice;
 
-  const formattedDate = step2?.dates
-    ? new Date(step2.dates).toLocaleDateString()
-    : null;
+  const parseCustomDateFormat = (dateStr) => {
+    if (!dateStr) return "No date provided";
+  
+    const parts = dateStr.split('/'); // Split the string into day, month, year
+    if (parts.length !== 3) return "Invalid date";
+  
+    const day = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1; // Month is zero-based in JS Date
+    const year = parseInt(parts[2], 10);
+  
+    const date = new Date(year, month, day);
+  
+    if (isNaN(date.getTime())) return "Invalid date";
+  
+    const formattedDay = String(date.getDate()).padStart(2, '0');
+    const formattedMonth = String(date.getMonth() + 1).padStart(2, '0');
+    const formattedYear = date.getFullYear();
+  
+    return `${formattedDay}/${formattedMonth}/${formattedYear}`;
+  };
+  
+
 
   const handleConfirm = async () => {
     setActive(true);
@@ -193,11 +212,12 @@ const Reviews = () => {
                       </span>
                     </h5>
                     <h5 className="flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
-                      Event Date
-                      <span className="text-[17px] font-medium text-white">
-                        {formattedDate}
-                      </span>
-                    </h5>
+  Event Date
+  <span className="text-[15px] font-medium text-white">
+    {parseCustomDateFormat(step2?.dates)}
+    
+  </span>
+</h5>
                     <h5 className="flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
                       Selected Package
                       <span className="text-[17px] font-medium text-white">
