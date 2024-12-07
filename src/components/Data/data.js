@@ -97,7 +97,7 @@ export const ModalItem = [
   { title: "Balloon column (2)", subtitle: " 450 " },
   { title: "Light up sign", subtitle: " 250 " },
   { title: "Themed prop", subtitle: " 400 " },
-  { title: "Printed Invitation' (Up to 30)", subtitle: "  250 " },
+  { title: "Printed Invitation (Up to 30)", subtitle: "  250 " },
   { title: "Personalised sticker", subtitle: " 200 " },
   { title: "Light up letter or number", subtitle: " 400 " },
 ];
