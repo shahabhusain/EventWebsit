@@ -292,8 +292,9 @@ const Reviews = () => {
               )}
             </div>
 
-            {/* Total Section */}
-            <div className="bg-black py-3 px-4 rounded-xl mt-1">
+         <div>
+              {/* Total Section */}
+              <div className="bg-black py-3 px-4 rounded-xl mt-1">
               <h5 className="text-[#C5C5C5] flex items-center justify-between">
                 Total
                 <span className="text-white flex items-center gap-2">
@@ -302,6 +303,7 @@ const Reviews = () => {
                 </span>
               </h5>
             </div>
+              <h1 className=" text-white text-[16px] font-medium ml-2">All prices subject to 5% VAT</h1>
 
             {/* Confirm Button */}
             <button
@@ -310,6 +312,7 @@ const Reviews = () => {
             >
               {active ? <Loader /> : "CONFIRM"}
             </button>
+         </div>
           </div>
         </div>
       </div>
