@@ -39,11 +39,11 @@ const Reviews = () => {
   const parseCustomDateFormat = (dateStr) => {
     if (!dateStr) return "No date provided";
   
-    const parts = dateStr.split('/'); // Split the string into day, month, year
+    const parts = dateStr.split('/');
     if (parts.length !== 3) return "Invalid date";
   
     const day = parseInt(parts[0], 10);
-    const month = parseInt(parts[1], 10) - 1; // Month is zero-based in JS Date
+    const month = parseInt(parts[1], 10) - 1;
     const year = parseInt(parts[2], 10);
   
     const date = new Date(year, month, day);

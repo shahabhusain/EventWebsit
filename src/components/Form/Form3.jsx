@@ -202,7 +202,7 @@ const Form3 = () => {
             withPortal
             className="bg-[#0C0F16] py-4 px-6 w-full rounded-md"
             placeholderText="DD/MM/YYYY"
-             dateFormat="dd/MM/yyyy"
+             dateFormat="DD/MM/YYYY"
           />
           {errors.dates && <span className="text-red-500">{errors.dates}</span>}
         </div>

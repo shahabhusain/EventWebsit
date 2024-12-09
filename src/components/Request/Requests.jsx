@@ -170,9 +170,7 @@ const Requests = () => {
                 {item.createdAt?.toLocaleDateString()}
               </h5>
               <h5 className="text-[13px] text-[#dddddd]">
-                {item.step2?.dates
-                  ? new Date(item.step2.dates).toLocaleDateString()
-                  : ""}
+                {item.step2?.dates}
               </h5>
               <h5 className="text-[13px] text-[#EDBD57] bg-[#EDBD571A] w-fit px-2">
                 {item.step1?.packageName || "N/A"}

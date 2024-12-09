@@ -72,6 +72,8 @@ const Reviewws = () => {
   const packagePrice = parseFloat(requestData?.step1?.package) || 0;
   const totalWithPackage = totalValue + packagePrice;
 
+  console.log("data", requestData.step2?.dates)
+
   return (
     <div className="pt-8 h-screen ml-[70px] w-[90%] mx-auto">
       <h1 className="text-[33px] font-bold">Review</h1>
@@ -136,7 +138,7 @@ const Reviewws = () => {
                   <h5 className="flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
                     Event Date
                     <span className="text-[15px] font-medium text-white">
-                      {new Date(requestData.step2?.dates).toLocaleDateString() || "N/A"}
+                      {requestData.step2?.dates}
                     </span>
                   </h5>
                   <h5 className="flex flex-col gap-1 text-[#C5C5C5] text-[14px]">
